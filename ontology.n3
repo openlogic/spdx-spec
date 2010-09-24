@@ -1,0 +1,26 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix : <http://spdx.org/ont#>.
+
+:SpdxDocument a owl:Class;
+  rdfs:comment
+"""An SpdxDocument is a collection of license and copyright information regarding one or more packages and the files contained in those packages""" .
+
+:File a owl:Class;
+  rdfs:comment
+"""A file is a member of a packages.  Files are the most basic level at which SPDX allows license and copyright information to be tracked.""" .
+
+:Package a owl:Class;
+  rdfs:comment
+"""A package is a distributable unit of software.  Examples of packages are source release tarballs, binary packages built from source releases or even install programs released by commercial software providers.""" .
+
+:License a owl:Class;
+  rdfs:subClassOf dcterms:LicenseDocument ;
+  rdfs:comment
+"""A License is a legal document which decribes the rights and responsibilities specified by the rights holder to an agent which copies a file or package.""" .
+
+
+
