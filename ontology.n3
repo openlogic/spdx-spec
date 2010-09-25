@@ -9,22 +9,45 @@
   rdfs:comment
 """Companies and organizations (collectively “Organizations”) are widely using and reusing open source and other software packages. Compliance with the associated licenses requires a set of analysis activities and due diligence that each Organization performs independently including: a manual and/or automated scan of software and identification of associated licenses followed by manual verification. Software development teams across the globe use the same open source packages, but little infrastructure exists to facilitate collaboration on the analysis or share the results of these analysis activities. As a result, many groups are performing the same work leading to duplicated efforts and redundant information being created. The SPDX working group seeks to create a data exchange format so that information about software packages and related content, may be collected and shared in a common format with the goal of saving time and improving data accuracy.""" .
 
-:SpdxDocument a owl:Class;
+:SPDXDocument 
+  a owl:Class;
+  rdfs:subClassOf
+    [ a owl:Restriction;
+      owl:onProperty :SPDXVersion;
+      owl:cardinality 1];
   rdfs:comment
 """An SpdxDocument is a collection of license and copyright information regarding one or more packages and the files contained in those packages""" .
 
-:File a owl:Class;
+:File 
+  a owl:Class;
   rdfs:comment
 """A file is a member of a packages.  Files are the most basic level at which SPDX allows license and copyright information to be tracked.""" .
 
-:Package a owl:Class;
+:Package 
+  a owl:Class;
   rdfs:comment
 """A package is a distributable unit of software.  Examples of packages are source release tarballs, binary packages built from source releases or even install programs released by commercial software providers.""" .
 
-:License a owl:Class;
+:License 
+  a owl:Class;
   rdfs:subClassOf dcterms:LicenseDocument ;
   rdfs:comment
 """A License is a legal document which decribes the rights and responsibilities specified by the rights holder to an agent which copies a file or package.""" .
 
 
 
+:SPDXVersion
+  a owl:DatatypeProperty;
+  a owl:FunctionalProperty;
+  rdfs:domain :SPDXDocument;
+  rdfs:range xsd:string;
+  rdfs:comment
+"""Purpose: Provide a reference number that can be used to understand how to parse and interpret the rest of the file. It will enable both future changes to the specification and to support backward compatibility.	The version number consists of a Major and Minor version indicator. The Major field will be incramented when one or more sections are created, modified or deleted. The Minor field will be incremented when either only the fields within a section are modified or standard recognized licenses are added to appendix.
+
+Intent: Here, parties exchanging Identification Information in accordance with SPDX specification need to provide 100% transparency as to which SPDX specification such Identification Information is conforming to.
+
+Data Format: SPDX-M.N where: M is Major version number, N is minor version number.
+
+Example:
+    SPDXVersion: SPDX-1.0
+""" .
