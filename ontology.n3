@@ -5,11 +5,23 @@
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix : <http://spdx.org/ont#>.
 
-<> a owl:Ontology;
-  rdfs:comment
-"""
-Companies and organizations (collectively “Organizations”) are widely using and reusing open source and other software packages. Compliance with the associated licenses requires a set of analysis activities and due diligence that each Organization performs independently including: a manual and/or automated scan of software and identification of associated licenses followed by manual verification. Software development teams across the globe use the same open source packages, but little infrastructure exists to facilitate collaboration on the analysis or share the results of these analysis activities. As a result, many groups are performing the same work leading to duplicated efforts and redundant information being created. The SPDX working group seeks to create a data exchange format so that information about software packages and related content, may be collected and shared in a common format with the goal of saving time and improving data accuracy.
-""" .
+<> a owl:Ontology; 
+  rdfs:comment 
+"""Companies and organizations (collectively “Organizations”) are
+widely using and reusing open source and other software
+packages. Compliance with the associated licenses requires a set of
+analysis activities and due diligence that each Organization performs
+independently including: a manual and/or automated scan of software
+and identification of associated licenses followed by manual
+verification. Software development teams across the globe use the same
+open source packages, but little infrastructure exists to facilitate
+collaboration on the analysis or share the results of these analysis
+activities. As a result, many groups are performing the same work
+leading to duplicated efforts and redundant information being
+created. The SPDX working group seeks to create a data exchange format
+so that information about software packages and related content, may
+be collected and shared in a common format with the goal of saving
+time and improving data accuracy.  """ .
 
 :SPDXDocument 
   a owl:Class;
@@ -27,28 +39,36 @@ Companies and organizations (collectively “Organizations”) are widely using 
       owl:cardinality 1];
   rdfs:comment
 """
-An SpdxDocument is a collection of license and copyright information regarding one or more packages and the files contained in those packages.
+An SpdxDocument is a collection of license and copyright
+information regarding one or more packages and the files contained in
+those packages.
 """ .
 
 :File 
   a owl:Class;
   rdfs:comment
 """
-A file is a member of a packages.  Files are the most basic level at which SPDX allows license and copyright information to be tracked.
+A file is a member of a packages.  Files are the most basic level
+at which SPDX allows license and copyright information to be tracked.
 """ .
 
 :Package 
   a owl:Class;
   rdfs:comment
 """
-A package is a distributable unit of software.  Examples of packages are source release tarballs, binary packages built from source releases or even install programs released by commercial software providers.
+A package is a distributable unit of software.  Examples of
+packages are source release tarballs, binary packages built from
+source releases or even install programs released by commercial
+software providers.
 """ .
 
 :License 
   a owl:Class;
   rdfs:comment
 """
-A License is a legal document which decribes the rights and responsibilities specified by the rights holder to an agent which copies a file or package.
+A License is a legal document which decribes the rights and
+responsibilities specified by the rights holder to an agent which
+copies a file or package.
 """ .
 
 
@@ -60,9 +80,19 @@ A License is a legal document which decribes the rights and responsibilities spe
   rdfs:range xsd:string;
   rdfs:comment
 """
-Purpose: Provide a reference number that can be used to understand how to parse and interpret the rest of the file. It will enable both future changes to the specification and to support backward compatibility.	The version number consists of a Major and Minor version indicator. The Major field will be incramented when one or more sections are created, modified or deleted. The Minor field will be incremented when either only the fields within a section are modified or standard recognized licenses are added to appendix.
+Purpose: Provide a reference number that can be used to understand
+how to parse and interpret the rest of the file. It will enable both
+future changes to the specification and to support backward
+compatibility. The version number consists of a Major and Minor
+version indicator. The Major field will be incramented when one or
+more sections are created, modified or deleted. The Minor field will
+be incremented when either only the fields within a section are
+modified or standard recognized licenses are added to appendix.
 
-Intent: Here, parties exchanging Identification Information in accordance with SPDX specification need to provide 100% transparency as to which SPDX specification such Identification Information is conforming to.
+Intent: Here, parties exchanging Identification Information in
+accordance with SPDX specification need to provide 100% transparency
+as to which SPDX specification such Identification Information is
+conforming to.
 
 Data Format: SPDX-M.N where: M is Major version number, N is minor version number.
 
@@ -77,11 +107,20 @@ Example:
   rdfs:range xsd:string;
   rdfs:comment
 """
-Purpose: Identify how the meta data information in the SPDX file was generated. If it was generated manually, it should indicate – who did the analysis. If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.
+Purpose: Identify how the meta data information in the SPDX file
+was generated. If it was generated manually, it should indicate – who
+did the analysis. If the information in the file was generated with a
+software tool, the file should indicate an identifier and version for
+that tool.
 
-Intent: Here, the generation method will assist the reader of the Identification Information in self determining the general reliability/accuracy of the Identification Information.
+Intent: Here, the generation method will assist the reader of the
+Identification Information in self determining the general
+reliability/accuracy of the Identification Information.
 
-Data Format: ”Person: person name” (with optional email) or "Company: company" (depending on which is accountable) or "Tool: tool identifier - version”.  If multiple participants in the analysis, then they should be indicated with separate instances.
+Data Format: ”Person: person name” (with optional email) or "Company:
+company" (depending on which is accountable) or "Tool: tool identifier
+- version”.  If multiple participants in the analysis, then they
+should be indicated with separate instances.
 
 Example:
 
@@ -96,12 +135,19 @@ Example:
   rdfs:domain :SPDXDocument;
   rdfs:range xsd:date;
   rdfs:comment
-"""
-Purpose: Identify when the analysis was done and the SPDX file was originally created. This is to be specified according to combined data and time in UTC format as specified in ISO 8601 standard.
+""" 
+Purpose: Identify when the analysis was done and the SPDX file was
+originally created. This is to be specified according to combined data
+and time in UTC format as specified in ISO 8601 standard.
 
-Intent: Here, the Time Stamp can serve as a verification as to whether the analysis needs to be updated.
+Intent: Here, the Time Stamp can serve as a verification as to whether
+the analysis needs to be updated.
 
-Data Format: YYYY-MM-DDThh:mm:ssZ where: YYYY is year, MM is month with leading zero, DD is day with leading zero, T is delimiter for time, hh is hours with leading zero in 24 hour time, mm is minutes with leading zero, ss is seconds with leading zero, and Z is universal time indicator.
+Data Format: YYYY-MM-DDThh:mm:ssZ where: YYYY is year, MM is month
+with leading zero, DD is day with leading zero, T is delimiter for
+time, hh is hours with leading zero in 24 hour time, mm is minutes
+with leading zero, ss is seconds with leading zero, and Z is universal
+time indicator.
 
 Example: 
 
@@ -114,11 +160,27 @@ Example:
   rdfs:range xsd:string;
   rdfs:comment
 """
-Purpose: List of the people who have reviewed the SPDX file and the date of that review. Note that there is no requirement for a particular reviewer to add their name to the file, however it may be important for participants in the software supply chain to validate whether upstream providers have reviewed the SPDX file. This can be considered as an equivalent to “signed off” or “reviewed by”. Additional reviewers can be added after the original version of the SPDX file is created and can occur as an append to the original file.
+Purpose: List of the people who have reviewed the SPDX file and
+the date of that review. Note that there is no requirement for a
+particular reviewer to add their name to the file, however it may be
+important for participants in the software supply chain to validate
+whether upstream providers have reviewed the SPDX file. This can be
+considered as an equivalent to “signed off” or “reviewed
+by”. Additional reviewers can be added after the original version of
+the SPDX file is created and can occur as an append to the original
+file.
 
-Intent: Here, as time progresses certain reviewers will begin to gain credibility as reliable. This field intends to make such information transparent.
+Intent: Here, as time progresses certain reviewers will begin to gain
+credibility as reliable. This field intends to make such information
+transparent.
 
-Data Format: "Person: person name (with optional email) YYYY-MM- DDThh:mm:ssZ”.	Where YYYY is year, MM is month with leading zero, DD is day with leading zero, T is delimiter for time, hh is hours with leading zero in 24 hour time, mm is minutes with leading zero, ss is seconds with leading zero, and Z is universal time indicator. If multiple people participated in the analysis, then each should be represented with separate instances.
+Data Format: "Person: person name (with optional email) YYYY-MM-
+DDThh:mm:ssZ”. Where YYYY is year, MM is month with leading zero, DD
+is day with leading zero, T is delimiter for time, hh is hours with
+leading zero in 24 hour time, mm is minutes with leading zero, ss is
+seconds with leading zero, and Z is universal time indicator. If
+multiple people participated in the analysis, then each should be
+represented with separate instances.
 
 Example:
  
