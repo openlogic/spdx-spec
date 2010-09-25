@@ -46,7 +46,6 @@ A package is a distributable unit of software.  Examples of packages are source 
 
 :License 
   a owl:Class;
-  rdfs:subClassOf dcterms:LicenseDocument ;
   rdfs:comment
 """
 A License is a legal document which decribes the rights and responsibilities specified by the rights holder to an agent which copies a file or package.
