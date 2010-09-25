@@ -6,7 +6,6 @@
 @prefix : <http://spdx.org/ont#>.
 
 <> a owl:Ontology;
-  owl:imports <http://purl.org/dc/terms>;
   rdfs:comment
 """Companies and organizations (collectively “Organizations”) are widely using and reusing open source and other software packages. Compliance with the associated licenses requires a set of analysis activities and due diligence that each Organization performs independently including: a manual and/or automated scan of software and identification of associated licenses followed by manual verification. Software development teams across the globe use the same open source packages, but little infrastructure exists to facilitate collaboration on the analysis or share the results of these analysis activities. As a result, many groups are performing the same work leading to duplicated efforts and redundant information being created. The SPDX working group seeks to create a data exchange format so that information about software packages and related content, may be collected and shared in a common format with the goal of saving time and improving data accuracy.""" .
 
