@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<html>
+<body
+    xmlns:owl ='http://www.w3.org/2002/07/owl#'
+    xmlns:xsd ='http://www.w3.org/2001/XMLSchema#'
+    xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#'
+    xmlns:rdf ='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+    xmlns:spdx='http://spdx.org/ont#'>
+  
+<h1 about="http://spdx.org/ont" typeof='http://www.w3.org/2002/07/owl#Ontology property='http://www.w3.org/2000/01/rdf-schema#label'>Software Package Data Exchange (SPDXTM) Specification</h1>
+
+<h2>Rationale<h2>
+
+<h3>Charter</h3>
+
+<p>To create a set of data exchange standards that enable companies and
+organizations to share + and component information (metadata) for
+software packages and related content with the aim of facilitating
+license and other policy compliance.</p>
+
+<h3>Definition<h3>
+
+<p>The Software Package Data Exchange (SPDXTM) specification is a
+standard format for communicating the components, licenses and
+copyrights associated with a software package. An SPDX file is
+associated with a particular software package and contains information
+about that package in the SPDX format.</p>
+
+<h3>Why is a common format for data exchange needed?</h3>
+
+<p about="http://spdx.org/ont" property='http://www.w3.org/2000/01/rdf-schema#comment'>Companies and organizations (collectively “Organizations”) are widely
+using and reusing open source and other software packages. Compliance
+with the associated licenses requires a set of analysis activities and
+due diligence that each Organization performs independently including:
+a manual and/or automated scan of software and identification of
+associated licenses followed by manual verification. Software
+development teams across the globe use the same open source packages,
+but little infrastructure exists to facilitate collaboration on the
+analysis or share the results of these analysis activities. As a
+result, many groups are performing the same work leading to duplicated
+efforts and redundant information being created. The SPDX working
+group seeks to create a data exchange format so that information about
+software packages and related content, may be collected and shared in
+a common format with the goal of saving time and improving data
+accuracy.</p>
+
+<h3>What does this specification cover?</h3>
+----
+
+<p>Identification Information: Meta data to associate analysis results with a specific package. This includes a unique identifier that identifies a specific instance of a package and permits correlation to the corresponding SPDX file.</p>
+
+<p>Overview Information: Facts that are common properties of the entire package.</p>
+
+<p>File Specific Information: Facts ( e.g. copyrights, licenses) that are specific to each file included in the package.</p>
+
+<p>Common Licenses: A list of common licenses likely to be encountered and a standardized naming convention for referring to these licenses within an SPDX document. This naming convention will also be the basis for extending this set of common licenses over time.</p>
+
+<p>Evolution Hooks: A set of mechanisms that permit extending the specification in a structured manner under specific future versions of the specification.</p>
+
+<h3>What is not covered in the specification?</h3>
+
+<p>Information that cannot be derived from an inspection (whether manual or using automated tools) of the package to be analyzed.</p>
+
+<p>How the data stored in and SPDX file is used by the recipient. 1.5.3. Any identification of any patent(s) which may or may not relate to the package. 1.5.4. Legal interpretation of the licenses or any compliance actions that might need to be taken.</p>
+
+<h3>Format Requirements</h3>
+
+<ul>
+ <li>Must be in a human readable form.</li>
+ <li>Must be in a syntax that a software tool can read and write.</li>
+ <li>Must be suitable to be checked for syntactic correctness independent of how it was generated (human or tool)</li>
+ <li>The SPDX file character set must support UTF-8 encoding. 1.6.5. Must permit automated specification syntax validation.</li>
+ <li>Resource Description Framework (RDF) will be used to represent certain semantic information.</li>
+</ul>
+
+<h3>RDF Vocabulary</h3>
+
+
+<div about='http://spdx.org/ont#SPDXDocument' typeof='http://www.w3.org/2002/07/owl#Class'>
+  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>SPDXDocument</h4>
+  
+  <p property='http://www.w3.org/2000/01/rdf-schema#comment'>An SpdxDocument is a collection of license and copyright
+information regarding one or more packages and the files contained in
+those packages.</p>
+<div>
+
+<div about='http://spdx.org/ont#SPDXVersion' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty' typeof='http://www.w3.org/2002/07/owl#FunctionalProperty'>
+  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>SPDXVersion</h4>
+  <p>Purpose: <span  property='http://www.w3.org/2000/01/rdf-schema#comment'>Provide a reference number that can be used to understand
+how to parse and interpret the rest of the file. It will enable both
+future changes to the specification and to support backward
+compatibility. The version number consists of a Major and Minor
+version indicator. The Major field will be incramented when one or
+more sections are created, modified or deleted. The Minor field will
+be incremented when either only the fields within a section are
+modified or standard recognized licenses are added to appendix.</span></p>
+
+<p>Intent: Here, parties exchanging Identification Information in
+accordance with SPDX specification need to provide 100% transparency
+as to which SPDX specification such Identification Information is
+conforming to.</p>
+
+<p>Domain: <span property='http://www.w3.org/2002/07/owl#domain'>http://spdx.org/ont#SPDXDocument</span></p>
+
+<p>Range: <span property='http://www.w3.org/2002/07/owl#range'>http://www.w3.org/2001/XMLSchema#string</span></p>
+
+<p>Data Format: SPDX-M.N where: M is Major version number, N is minor version number.</p>
+
+<p>Example:
+
+    <pre><code>SPDXVersion: SPDX-1.0</code></pre></p>
+
+</div>
+
+
+</body>
+</html>
