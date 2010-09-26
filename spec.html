@@ -1,11 +1,5 @@
 <html>
-<body
-    xmlns:owl ='http://www.w3.org/2002/07/owl#'
-    xmlns:xsd ='http://www.w3.org/2001/XMLSchema#'
-    xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#'
-    xmlns:rdf ='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-    xmlns:spdx='http://spdx.org/ont#'>
-  
+<body>  
 <h1 about="http://spdx.org/ont" typeof='http://www.w3.org/2002/07/owl#Ontology property='http://www.w3.org/2000/01/rdf-schema#label'>Software Package Data Exchange (SPDXTM) Specification</h1>
 
 <h2>Rationale<h2>
@@ -17,7 +11,7 @@ organizations to share + and component information (metadata) for
 software packages and related content with the aim of facilitating
 license and other policy compliance.</p>
 
-<h3>Definition<h3>
+<h3>Definition</h3>
 
 <p>The Software Package Data Exchange (SPDXTM) specification is a
 standard format for communicating the components, licenses and
@@ -80,9 +74,10 @@ accuracy.</p>
   <p property='http://www.w3.org/2000/01/rdf-schema#comment'>An SpdxDocument is a collection of license and copyright
 information regarding one or more packages and the files contained in
 those packages.</p>
-<div>
 
-<div about='http://spdx.org/ont#SPDXVersion' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty' typeof='http://www.w3.org/2002/07/owl#FunctionalProperty'>
+</div>
+
+<div about='http://spdx.org/ont#SPDXVersion' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty'>
   <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>SPDXVersion</h4>
   <p>Purpose: <span  property='http://www.w3.org/2000/01/rdf-schema#comment'>Provide a reference number that can be used to understand
 how to parse and interpret the rest of the file. It will enable both
@@ -93,23 +88,64 @@ more sections are created, modified or deleted. The Minor field will
 be incremented when either only the fields within a section are
 modified or standard recognized licenses are added to appendix.</span></p>
 
-<p>Intent: Here, parties exchanging Identification Information in
+  <p>Intent: Here, parties exchanging Identification Information in
 accordance with SPDX specification need to provide 100% transparency
 as to which SPDX specification such Identification Information is
 conforming to.</p>
 
-<p>Domain: <span property='http://www.w3.org/2002/07/owl#domain'>http://spdx.org/ont#SPDXDocument</span></p>
+  <p>Domain: <a rel='http://www.w3.org/2000/01/rdf-schema#domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
 
-<p>Range: <span property='http://www.w3.org/2002/07/owl#range'>http://www.w3.org/2001/XMLSchema#string</span></p>
+  <p>Range: <a rel='http://www.w3.org/2000/01/rdf-schema#range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
 
-<p>Data Format: SPDX-M.N where: M is Major version number, N is minor version number.</p>
+  <p>Data Format: SPDX-M.N where: M is Major version number, N is minor version number.</p>
 
-<p>Example:
+  <p>Example:
 
     <pre><code>SPDXVersion: SPDX-1.0</code></pre></p>
 
 </div>
 
+<div about='http://spdx.org/ont#CreatedBy' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty'>
+  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>CreatedBy</h4>
+
+  <p>Purpose: <span property='http://www.w3.org/2000/01/rdf-schema#comment'>Identify how the meta data information in the SPDX file was generated. If it was generated manually, it should indicate – who did the analysis. If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.</span></p>
+
+  <p>Intent: Here, the generation method will assist the reader of the Identification Information in self determining the general reliability/accuracy of the Identification Information.</p>
+
+  <p>Domain: <a rel='http://www.w3.org/2000/01/rdf-schema#domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
+
+  <p>Range: <a rel='http://www.w3.org/2000/01/rdf-schema#range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
+
+  <p>Cardinality: Mandatory, one or more.</p>
+  
+  <p>Data Format: "Person: person name" (with optional email) or "Company: company" (depending on which is accountable) or "Tool: tool identifier - version". If multiple participants in the analysis, then they should be indicated with separate instances.</p>
+
+  <p>Example:
+    <pre><code>
+CreatedBy: Person: Jane Doe (jane.doe@company.com)
+CreatedBy: Company: ExampleCodeInspect (contact@ECI.com)
+CreatedBy: Tool: LicenseFInd-1.0</code></pre></p>
+</div>
+
+<div about='http://spdx.org/ont#Created' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty'>
+  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>Created</h4>
+
+  <p>Purpose: <span property='http://www.w3.org/2000/01/rdf-schema#comment'>Identify when the analysis was done and the SPDX file was originally created. This is to be specified according to combined data and time in UTC format as specified in ISO 8601 standard.</span></p>
+  
+  <p>Intent: Here, the Time Stamp can serve as a verification as to whether the analysis needs to be updated.</p>
+
+  <p>Domain: <a rel='http://www.w3.org/2000/01/rdf-schema#domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
+
+  <p>Range: <a rel='http://www.w3.org/2000/01/rdf-schema#range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
+
+  <p>Cardinality: Mandatory, single instance.</p>
+
+  <p>Data Format: YYYY-MM-DDThh:mm:ssZ where: YYYY is year, MM is month with leading zero, DD is day with leading zero, T is delimiter for time, hh is hours with leading zero in 24 hour time, mm is minutes with leading zero, ss is seconds with leading zero, and Z is universal time indicator.</p>
+
+  <p>Example: 
+    <pre><code>Created: 2010-01-29T18:30:22Z</code></pre></p>
+
+</div>
 
 </body>
 </html>
