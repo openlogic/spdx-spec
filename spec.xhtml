@@ -5,14 +5,15 @@
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
       xmlns:owl="http://www.w3.org/2002/07/owl#"
       xmlns:rdfs ='http://www.w3.org/2000/01/rdf-schema#'
-      xmlns:dc="http://purl.org/dc/elements/1.1/">
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+      xmlns:spdx="http://spdx.org/ont#">
   <head>
     <meta http-equiv="Content-Type"
           content="application/xhtml+xml; charset=UTF-8"/>
   </head>
 <body>  
 
-<h1 about="http://spdx.org/ont" typeof='http://www.w3.org/2002/07/owl#Ontology' property='http://www.w3.org/2000/01/rdf-schema#label'>Software Package Data Exchange (SPDXTM) Specification</h1>
+<h1 about="http://spdx.org/ont" typeof='owl:Ontology' property='rdfs:label'>Software Package Data Exchange (SPDXTM) Specification</h1>
 
 <h2>Rationale</h2>
 
@@ -33,7 +34,7 @@ about that package in the SPDX format.</p>
 
 <h3>Why is a common format for data exchange needed?</h3>
 
-<p about="http://spdx.org/ont" property='http://www.w3.org/2000/01/rdf-schema#comment'>Companies and organizations (collectively “Organizations”) are widely
+<p about="http://spdx.org/ont" property='rdfs:comment'>Companies and organizations (collectively “Organizations”) are widely
 using and reusing open source and other software packages. Compliance
 with the associated licenses requires a set of analysis activities and
 due diligence that each Organization performs independently including:
@@ -80,25 +81,18 @@ accuracy.</p>
 <h3>RDF Vocabulary</h3>
 
 
-<div about='http://spdx.org/ont#SPDXDocument' typeof='http://www.w3.org/2002/07/owl#Class'>
-  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>SPDXDocument</h4>
+<div about='http://spdx.org/ont#SPDXDocument' typeof='owl:Class'>
+  <h4 property='rdfs:label'>SPDXDocument</h4>
   
-  <p property='http://www.w3.org/2000/01/rdf-schema#comment'>An SpdxDocument is a collection of license and copyright
+  <p property='rdfs:comment'>An SpdxDocument is a collection of license and copyright
 information regarding one or more packages and the files contained in
 those packages.</p>
-
-  <div rel='http://www.w3.org/2000/01/rdf-schema#subClassOf'>
-    <div rel='http://www.w3.org/2002/07/owl#Restriction'>
-      <a rel='http://www.w3.org/2002/07/owl#onProperty' href="http://spdx.org/ont#CreatedBy">CreatedBy</a>
-      Minimum cardinality: <span property='http://www.w3.org/2002/07/owl#minCardinality'>1</span>
-    </div>
-  </div>
   
 </div>
 
-<div about='http://spdx.org/ont#SPDXVersion' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty'>
-  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>SPDXVersion</h4>
-  <p>Purpose: <span  property='http://www.w3.org/2000/01/rdf-schema#comment'>Provide a reference number that can be used to understand
+<div about='http://spdx.org/ont#SPDXVersion' typeof='owl:DatatypeProperty'>
+  <h4 property='rdfs:label'>SPDXVersion</h4>
+  <p>Purpose: <span  property='rdfs:comment'>Provide a reference number that can be used to understand
 how to parse and interpret the rest of the file. It will enable both
 future changes to the specification and to support backward
 compatibility. The version number consists of a Major and Minor
@@ -112,11 +106,11 @@ accordance with SPDX specification need to provide 100% transparency
 as to which SPDX specification such Identification Information is
 conforming to.</p>
 
-  <p>Domain: <a rel='http://www.w3.org/2000/01/rdf-schema#domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
+  <p>Domain: <a rel='rdfs:domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
 
-  <p>Range: <a rel='http://www.w3.org/2000/01/rdf-schema#range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
+  <p>Range: <a rel='rdfs:range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
 
-  <p about='http://spdx.org/ont#SPDXVersion' typeof='http://www.w3.org/2002/07/owl#FunctionalProperty'>Cardinality: Mandatory, single instance</p>
+  <p about='http://spdx.org/ont#SPDXVersion' typeof='owl:FunctionalProperty'>Cardinality: Mandatory, single instance</p>
 
   <p>Data Format: SPDX-M.N where: M is Major version number, N is minor version number.</p>
 
@@ -126,19 +120,23 @@ conforming to.</p>
 
 </div>
 
-<div about='http://spdx.org/ont#CreatedBy' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty'>
-  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>CreatedBy</h4>
+<div about='http://spdx.org/ont#CreatedBy' typeof='owl:DatatypeProperty'>
+  <h4 property='rdfs:label'>CreatedBy</h4>
 
-  <p>Purpose: <span property='http://www.w3.org/2000/01/rdf-schema#comment'>Identify how the meta data information in the SPDX file was generated. If it was generated manually, it should indicate – who did the analysis. If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.</span></p>
+  <p>Purpose: <span property='rdfs:comment'>Identify how the meta data information in the SPDX file was generated. If it was generated manually, it should indicate – who did the analysis. If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.</span></p>
 
   <p>Intent: Here, the generation method will assist the reader of the Identification Information in self determining the general reliability/accuracy of the Identification Information.</p>
 
-  <p>Domain: <a rel='http://www.w3.org/2000/01/rdf-schema#domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
+  <p>Domain: <a rel='rdfs:domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
 
-  <p>Range: <a rel='http://www.w3.org/2000/01/rdf-schema#range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
+  <p>Range: <a rel='rdfs:range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
 
-  <p>Cardinality: Mandatory, one or more.
-  </p>
+  <div about="http://spdx.org/ont#SPDXDocument" rel='rdfs:subClassOf'>
+    <div typeof='owl:Restriction'>
+      Cardinality: Mandatory, one (<span property='owl:minCardinality'>1</span>) or more.
+      <a rel='owl:onProperty' href="http://spdx.org/ont#CreatedBy"></a>
+    </div>
+  </div>
   
   <p>Data Format: "Person: person name" (with optional email) or "Company: company" (depending on which is accountable) or "Tool: tool identifier - version". If multiple participants in the analysis, then they should be indicated with separate instances.</p>
 
@@ -149,18 +147,18 @@ CreatedBy: Company: ExampleCodeInspect (contact@ECI.com)
 CreatedBy: Tool: LicenseFInd-1.0</code></pre></p>
 </div>
 
-<div about='http://spdx.org/ont#Created' typeof='http://www.w3.org/2002/07/owl#DatatypeProperty'>
-  <h4 property='http://www.w3.org/2000/01/rdf-schema#label'>Created</h4>
+<div about='http://spdx.org/ont#Created' typeof='owl:DatatypeProperty'>
+  <h4 property='rdfs:label'>Created</h4>
 
-  <p>Purpose: <span property='http://www.w3.org/2000/01/rdf-schema#comment'>Identify when the analysis was done and the SPDX file was originally created. This is to be specified according to combined data and time in UTC format as specified in ISO 8601 standard.</span></p>
+  <p>Purpose: <span property='rdfs:comment'>Identify when the analysis was done and the SPDX file was originally created. This is to be specified according to combined data and time in UTC format as specified in ISO 8601 standard.</span></p>
   
   <p>Intent: Here, the Time Stamp can serve as a verification as to whether the analysis needs to be updated.</p>
 
-  <p>Domain: <a rel='http://www.w3.org/2000/01/rdf-schema#domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
+  <p>Domain: <a rel='rdfs:domain' href='http://spdx.org/ont#SPDXDocument'>SPDXDocument</a></p>
 
-  <p>Range: <a rel='http://www.w3.org/2000/01/rdf-schema#range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
+  <p>Range: <a rel='rdfs:range' href='http://www.w3.org/2001/XMLSchema#string'>xsd:string</a></p>
 
-  <p about='http://spdx.org/ont#Created' typeof='http://www.w3.org/2002/07/owl#FunctionalProperty'>Cardinality: Mandatory, single instance.</p>
+  <p about='http://spdx.org/ont#Created' typeof='owl:FunctionalProperty'>Cardinality: Mandatory, single instance.</p>
 
   <p>Data Format: YYYY-MM-DDThh:mm:ssZ where: YYYY is year, MM is month with leading zero, DD is day with leading zero, T is delimiter for time, hh is hours with leading zero in 24 hour time, mm is minutes with leading zero, ss is seconds with leading zero, and Z is universal time indicator.</p>
 
