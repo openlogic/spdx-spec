@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE> </TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Unix)">
+	<META NAME="AUTHOR" CONTENT=" ">
+	<META NAME="CREATED" CONTENT="20100806;16220000">
+	<META NAME="CHANGEDBY" CONTENT="mgisi">
+	<META NAME="CHANGED" CONTENT="20100806;17580000">
+	<META NAME="CLASSIFICATION" CONTENT=" ">
+	<META NAME="DESCRIPTION" CONTENT=" ">
+	<META NAME="DocXDocID" CONTENT="4707919v2">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-right: 1in; margin-top: 0.5in; margin-bottom: 0.5in }
+		@page:first { }
+		P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
+		P.western { font-family: "Arial", sans-serif; font-size: 10pt; so-language: en-US }
+		H1 { margin-left: 0.25in; margin-top: 0in; margin-bottom: 0in; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
+		H1.western { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US }
+		A:link { color: #0000ff }
+		A:visited { color: #800080 }
+		A.western:visited { so-language: en-US }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" VLINK="#800080" DIR="LTR">
+
+<DIV ID="Section3" DIR="LTR">
+	<H1 CLASS="western"></A>3. Common Overview Information</H1>
+
+	<P CLASS="western" STYLE="margin-left: 0.25in">One instance of the Common Overview Information is required per
+	package being analyzed.   A package can contain sub-packages, but
+	the overview is a reference to the entire contents of the package
+	listed.</P>
+
+	<P CLASS="western" STYLE="margin-left: 0.25in">Fields: </P>
+
+	<OL START=3>
+		<OL>
+			<LI><P CLASS="western"> <B>Formal Name</B></P>
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> Full name of the package
+				as given by originator with version information if available.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, the formal name of
+				each package is an important conventional technical identifier to
+				be maintained for each package.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory single
+				instance.</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> &quot;DeclaredName:&quot;</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/DeclaredName</P>
+
+				<LI><P CLASS="western"><B>DataFormat:</B> text string of full
+				name and version information if available.</P>
+
+				<LI><P CLASS="western"><B>Example:</B> DeclaredName: glibc 2.11.1</P>
+			</OL>
+	
+			<LI><P CLASS="western"><B>Specific Package File Name</B></P>
+	
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> File name of package
+				instance.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, the actual filename
+				of the compressed file (containing the package) is a significant
+				technical element that needs to be carried with each package's
+				Identification Information.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> MachineName:</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/MachineName</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> text string of machine
+				generated file name and version typically includes the packaging
+				and compression methods used.</P>
+
+				<LI><P CLASS="western"><B>Example:</B> MachineName:
+				glibc-2.11.1.tar.gz</P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Unique Identifier</B></P>
+
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This field provides an
+				independently reproducible mechanism that permits unique
+				identification of a specific package that correlates to the data
+				in this SPDX file. This identifier enables a recipient to
+				determine if any file in the original package has been changed. 
+				The SHA1 unique identifier mechanism will be used.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, by providing an
+				unique identifier of each package, confusion over which
+				version/modification of a specific package the Identification
+				Information references should be eliminated.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> &quot;SHA1&quot;</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/SHA1</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> 160 bit value
+				represented as 40 hexadecimal digits.</P>
+
+				<LI><P CLASS="western"><B>Example:</B> SHA1:
+				d6a770ba38583ed4bb4525bd96e50461655d2758</P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Download URL</B></P>
+	
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This field identifies the
+				download Universal Resource Locator (URL) for this package at the
+				time that the SPDX file was initially created and the analysis
+				was done.  If there is no public URL, then it is explicitly
+				marked as “unknown”. 
+				</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, where to download the
+				exact package being referenced is a critical verification and
+				tracking datum.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> URL:</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				<FONT COLOR="#0000ff"><U><A CLASS="western" HREF="mailto:/RDF/SPDXDoc/Describes/Package/URL/@rdf:resource">/RDF/SPDXDoc/Describes/Package/URL/@rdf:resource</A></U></FONT></P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> uniform resource
+				locator  (when the URL is explicitly “unknown” use 
+				<FONT COLOR="#0000ff"><U><A CLASS="western" HREF="http://spdx.org/rdf/unknown">http://spdx.org/rdf/unknown</A></U></FONT>)     
+
+				<LI><P CLASS="western"><B>Example:</B> URL:
+				<FONT COLOR="#0000ff"><U><A CLASS="western" HREF="http://ftp.gnu.org/gnu/glibc/">http://ftp.gnu.org/gnu/glibc/</A></U></FONT></P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Additional Source Information</B></P>
+
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This is a free form text
+				field that contains additional comments about the origin of the
+				package. For instance, this field might include comments
+				indicating whether the package been pulled from a source code
+				management system or has been repackaged.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, by providing a
+				freeform field, reviewers can provide any additional information
+				to describe any anomalies, or discoveries, in the determination
+				of the origin of the package.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Optional single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> &quot;SourceInfo:&quot;</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/SourceInfo</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> free form text without
+				line separator</P>
+
+				<LI><P CLASS="western"><B>Example: </B>
+				</P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Declared License(s) for a Package</B></P>
+
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This field lists the
+				licenses that have been declared by the creators of the package. 
+				The licenses are listed using a standard short form name. See
+				Appendix I for standardized license short forms. If a Declared
+				License is not one of the standardized license short forms, this
+				field must contain a reference to the full license text included
+				in this SPDX file. If no license is declared, the “NotSpecified”
+				short form in Appendix I should be used.  If it is unclear if
+				there is a license reference or not, use “Unknown” short form
+				from Appendix I.  If more than one license is formally declared
+				for package, then each should be listed.  If the creators of the
+				package offer the recipent a choice of licenses, then each of the
+				choices will be declared as a “disjunctive” license.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> This is simply the license
+				identified in text in the actual package source code files
+				(typically in the header of each package file.)  This field may
+				have multiple declared licenses, if multiple licenses are
+				declared at the package level.</P>
+
+				<LI><P CLASS="western"><B>Cardinality</B>: Mandatory, one or
+				multiple.</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> &quot;DeclaredLicense:&quot;  
+
+				<LI><P CLASS="western"><B>RDF</B>:</P>
+
+	<P CLASS="western" STYLE="margin-left: 0.83in; text-indent: 0.33in">/RDF/SPDXDoc/Describes/Package/DeclaredLicense</P>
+	<P CLASS="western" STYLE="margin-left: 0.83in; text-indent: 0.33in">/RDF/SPDXDoc/Describes/Package/DeclaredLicense/DisjunctiveLicense</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> &lt;short form
+				identifier in Appendix I&gt; | &quot;FullLicense&quot;-N</P>
+
+				<LI><P CLASS="western"><B>Example:</B> DeclaredLicense: LGPL-2.0</P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Detected License(s) in Package</B></P>
+
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This field list of all
+				licenses found in the package by scanning the files, manually or
+				using automated tools.  The licenses should use the standard
+				short form names.   See Appendix I for standardized license short
+				forms.  If a Detected License is not one of the standardized
+				license short forms, this field must contain a reference to the
+				full licenses text included in this SPDX file.  If no licenses
+				are detected then the “NotSpecified” short form in Appendix I
+				should be used. If it is unclear if there is a license reference
+				or not, use “Unknown” short form from Appendix I.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, we intend to capture
+				all licenses within the package detected by any scanning tools
+				used by the package reviewer.</P>
+	
+				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory, one or
+				multiple.</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> &quot;DetectedLicense:&quot;</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/DetectedLicense/</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> &lt;short form
+				identifier in Appendix I&gt; | &quot;FullLicense&quot;-N</P>
+	
+				<LI><P CLASS="western"><B>Example:</B> 
+
+	<P CLASS="western" STYLE="margin-left: 1.17in">DetectedLicense:
+	GPL-2.0</P>
+	<P CLASS="western" STYLE="margin-left: 1.17in">DetectedLicense:
+	FullLicense-1</P>
+	<P CLASS="western" STYLE="margin-left: 1.17in">DetectedLicense:
+	FullLicense-2</P>
+	<P CLASS="western" STYLE="margin-left: 1.17in"><BR>
+		</OL>
+	
+			<LI><P CLASS="western"><B>Declared Copyright Holder of Package</B></P>
+	
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> Identify the author(s) and
+				licensor(s) of package, as well as any dates present.   This will
+				be a free form text field extracted from the package information
+				files.</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, by identifying the
+				actual author(s), some ambiguities, e.g., under which license the
+				author(s) were intending to license the package, may be
+				resolvable by knowing who to contact for clarity.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory, single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> &quot;DeclaredCopyright:&quot;</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/DeclaredCopyright</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> free form text  | 
+				&quot;unknown&quot; 
+				</P>
+
+				<LI><P CLASS="western"><B>Example:</B> DeclaredCopyright:
+				Copyright 2008-2010 John Smith</P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Short Description</B></P>
+
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This field is a short
+				description of the package</P>
+
+				<LI><P CLASS="western"><B>Intent:</B> Here, the intent is to
+				allow a reader/reviewer of this field to quickly understand the
+				function/use of the package, at a high level, without having to
+				parse the source code of the actual package.</P>
+
+				<LI><P CLASS="western"><B>Cardinality:</B> Optional single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag:</B> “ShortDesc:”</P>
+
+				<LI><P CLASS="western"><B>RDF:</B>
+				/RDF/SPDXDoc/Describes/Package/ShortDesc</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> free form text that
+				can span multiple lines</P>
+
+				<LI><P CLASS="western"><B>Example:</B> ShortDesc: gnu c library 
+				</P>
+			</OL>
+
+			<LI><P CLASS="western"><B>Description</B></P>
+
+			<OL>
+				<LI><P CLASS="western"><B>Purpose:</B> This field is a more
+				detailed description of the package.  It may be extracted from
+				the packages itself. 
+				</P>
+
+				<LI><P CLASS="western"><B>Intent:  </B>Here, the intent is to
+				provide technical readers/reviewers with a detailed technical
+				explanation of the functionality, anticipated use, and
+				anticipated implementation of the package.  This field may also
+				include a description of improvements over prior version of the
+				package, where applicable.</P>
+
+				<LI><P CLASS="western"><B>Cardinality: </B>Optional single
+				instance</P>
+
+				<LI><P CLASS="western"><B>Tag: “</B>Description:”</P>
+
+				<LI><P CLASS="western"><B>RDF: 
+				</B>/RDF/SPDXDoc/Describes/Package/Description</P>
+
+				<LI><P CLASS="western"><B>Data Format:</B> free form text than
+				can span multiple lines.</P>
+
+				<LI><P CLASS="western"><B>Example:</B> Description: …..</P>
+			</OL>
+		</OL>
+	</OL>
+
+</DIV>
+</BODY>
+</HTML>
