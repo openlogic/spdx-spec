@@ -1,190 +1,225 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-	<TITLE> </TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Unix)">
-	<META NAME="AUTHOR" CONTENT=" ">
-	<META NAME="CREATED" CONTENT="20100806;16220000">
-	<META NAME="CHANGEDBY" CONTENT="Kate Stewart">
-	<META NAME="CHANGED" CONTENT="20100921;13571900">
-	<META NAME="CLASSIFICATION" CONTENT=" ">
-	<META NAME="DESCRIPTION" CONTENT=" ">
-	<META NAME="DocXDocID" CONTENT="4707919v2">
-	<META NAME="Info 2" CONTENT="">
-	<META NAME="Info 3" CONTENT="">
-	<META NAME="Info 4" CONTENT="">
-	<STYLE TYPE="text/css">
-	<!--
-		@page { margin-right: 1in; margin-top: 0.5in; margin-bottom: 0.5in }
-		@page:first { }
-		P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
-		P.western { font-family: "Arial", sans-serif; font-size: 10pt; so-language: en-US }
-		H1 { margin-left: 0.25in; margin-top: 0in; margin-bottom: 0in; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
-		H1.western { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US }
-		A:link { color: #0000ff }
-		A:visited { color: #800080 }
-		A.western:visited { so-language: en-US }
-	-->
-	</STYLE>
-</HEAD>
-<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" VLINK="#800080" DIR="LTR">
-<P CLASS="western"><BR>
-</P>
-<DIV ID="Section2" DIR="LTR">
-	<H1 CLASS="western">2. Identification Information</H1>
-	
-	<P CLASS="western" STYLE="margin-left: .25in">One instance of the Identification Information is required per package instance.</P>
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:dc="http://purl.org/dc/terms/">
 
-	<OL START=2>
-            <OL>
-		<LI><P CLASS="western"><B>SPDX Specification Version Number</B></P>
-			<OL>
-				<LI><P CLASS="western"><B>Purpose:</B> Provide a reference number
-				that can be used to understand how to parse and interpret the
-				rest of the file.  It will enable both future changes to the
-				specification and to support backward compatibility.   The
-				version number consists of a Major and Minor version indicator. 
-				The Major field will be incramented when one or more sections are
-				created, modified or deleted.  The Minor field will be
-				incremented when either only the fields within a section are
-				modified or standard recognized licenses are added to appendix.</P></LI>
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+  <meta NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Unix)"/>
+  <meta NAME="AUTHOR" CONTENT=" "/>
+  <meta NAME="CREATED" CONTENT="20100806;16220000"/>
+  <meta NAME="CHANGEDBY" CONTENT="Kate Stewart"/>
+  <meta NAME="CHANGED" CONTENT="20100921;13571900"/>
+  <meta NAME="CLASSIFICATION" CONTENT=" "/>
+  <meta NAME="DESCRIPTION" CONTENT=" "/>
+  <meta NAME="DocXDocID" CONTENT="4707919v2"/>
+  <meta NAME="Info 2" CONTENT=""/>
+  <meta NAME="Info 3" CONTENT=""/>
+  <meta NAME="Info 4" CONTENT=""/>
+  <style TYPE="text/css">
+    <!--
+	@page { margin-right: 1in; margin-top: 0.5in; margin-bottom: 0.5in }
+	@page:first { }
+	P { font-family: "Arial", sans-serif; font-size: 10pt; so-language: en-US; test-align: justify;}
+	H1 { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US }
+	H2 { font-family: "Arial", sans-serif; font-size: 12pt; so-language: en-US }
+        .section { margin-left: 3em; }
+	A:link { color: #0000ff }
+	A:visited { color: #800080 }
+	A.western:visited { so-language: en-US }
+      -->
+  </style>
+</head>
+<body LANG="en-US" TEXT="#000000" LINK="#0000ff" VLINK="#800080" DIR="LTR" typeof="owl:Ontology">
 
-				<LI><P CLASS="western"><B>Intent:</B> Here, parties exchanging
-				Identification Information in accordance with SPDX specification
-				need to provide 100% transparency as to which SPDX specification
-				such Identification Information is conforming to.</P></LI>
+  <div ID="Section2" DIR="LTR">
+    <H1 CLASS="western">2. RDF Vocabulary</H1>
+    
+    <p><span property="rdfs:label">Software Package Data Exchange</span> format is based on RDF.  This section defines the vocabulary to descirbe the rights and obligations associated with a software package.</p>
 
-				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory, single
-				instance</P>
+    <div class="rdf-class" about="#SPDXDoc" typeof="owl:Class">
+      <a name="SPDXDoc"></a>
+      <h3>2.1 <span property="rdfs:label">SPDXDoc</span></h3>
+      
+      <p property="rdfs:comment">An SpdxDoc is a collection of license and copyright informatixon regarding one or more packages and the files contained in those packages.</p>
+      
+      <h3>Properties</h3>
+      <ul>
+        <li rel="rdfs:subClassOf">
+          <p typeof="owl:Restriction">
+            <a href="#SPDXVersion" rel="owl:onProperty">SPDXVersion</a>
+                <br/>Cardinality: Mandatory (<span property="owl:cardinality">1</span>).
+          </p>
+        </li>
+        
+        <li rel="rdfs:subClassOf"> 
+          <p typeof="owl:Restriction">
+          <a href="#CreatedBy" rel="owl:onProperty">CreatedBy</a>
+              <br/>Cardinality: Mandatory, one (<span property="owl:minCardinality">1</span>) or more.</p>
+        </li>
 
-				<LI><P CLASS="western"><B>Tag:</B> SPDXVersion</P>
+        <li rel="rdfs:subClassOf"> 
+          <p typeof="owl:Restriction">
+          <a href="#Created" rel="owl:onProperty">Created</a>
+              <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>)</p>
+        </li>
 
-				<LI><P CLASS="western"><B>RDF:</B> /RDF/SPDXDoc/SPDXVersion</P>
+      </ul>
 
-				<LI><P CLASS="western"><B>Data Format:</B>  SPDX-M.N  <B>where:</B>
-				M is Major version number, N is minor version number.</P>
+    </div> <!-- SPDXDoc -->
 
-				<LI><P CLASS="western"><B>Example:</B> SPDXVersion: SPDX-1.0</P>
-			</OL>
+    <div class="rdf-property" about="#SPDXVersion" typeof="owl:DatatypeProperty">
+      <a name="SPDXVersion"/>
+      <h3>2.1.1 <span property="rdfs:label">SPDXVersion</span></h3>
+       
+      <p property="rdfs:comment">
+        <b>Purpose:</b> Provide a reference number
+        that can be used to understand how to parse and interpret the
+        rest of the file.  It will enable both future changes to the
+        specification and to support backward compatibility.   The
+        version number consists of a Major and Minor version indicator. 
+        The Major field will be incramented when one or more sections are
+        created, modified or deleted.  The Minor field will be
+        incremented when either only the fields within a section are
+        modified or standard recognized licenses are added to appendix.</p>
 
-			<LI><P CLASS="western"><B>Generation Method</B></P>
+      <p>
+        <b>Intent:</b> Here, parties exchanging Identification
+        Information in accordance with SPDX specification need to
+        provide 100% transparency as to which SPDX specification such
+        Identification Information is conforming to.</p>
 
-			<OL>
-				<LI><P CLASS="western"><B>Purpose:</B> Identify how the meta data
-				information in the SPDX file was generated. If it was generated
-				manually, it should indicate – who did the analysis.  If the
-				information in the file was generated with a software tool, the
-				file should indicate an identifier and version for that tool. 
-				</P>
+      <p>
+        <b>Domain:</b> 
+        <a rel="rdfs:domain" href="#SPDXDoc">SPDXDoc</a></p>
 
-				<LI><P CLASS="western"><B>Intent:</B> Here, the generation method
-				will assist the reader of the Identification Information in self
-				determining the general reliability/accuracy of the
-				Identification Information.</P>
+      <p><b>Data Format:</b>  SPDX-M.N  <b>where:</b>
+        M is Major version number, N is minor version number.</p>
 
-				<LI><P CLASS="western"><B>Cardinality: </B>Mandatory, one or
-				more.</P>
+      <p><b>Example:</b> SPDXVersion: SPDX-1.0</p>
+    </div>
+          
+    
+    <div class="rdf-property" about="#CreatedBy" typeof="owl:DatatypeProperty">
+      <a name="CreateBy"/>
+      <h2>2.1.2 <span property="rdfs:label">CreatedBy</span></h2>
 
-				<LI><P CLASS="western"><B>Tag</B>: &quot;CreatedBy&quot;</P>
+      <p property="rdfs:comment">
+        <b>Purpose:</b> Identify how the meta data information in the
+	SPDX file was generated. If it was generated manually, it
+	should indicate – who did the analysis.  If the information in
+	the file was generated with a software tool, the file should
+	indicate an identifier and version for that tool.
+      </p>
+                
+      <p><b>Intent:</b> Here, the generation method
+	will assist the reader of the Identification Information in
+	self determining the general reliability/accuracy of the
+	Identification Information.</p>
+                
+      <p><b>Data Format</b>: ”Person: person name”
+	(with optional email) or &quot;Company: company&quot;
+	(depending on which is accountable) or &quot;Tool: tool
+	identifier - version”.  If multiple participants in the
+	analysis, then they should be indicated with separate
+	instances.
+      </p>
 
-				<LI><P CLASS="western"><B>RDF</B>: /RDF/SPDXDoc/CreatedBy</P>
+      <p>
+        <b>Domain:</b> <a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
+                
+      <p><b>Example</b>: </p>
+      
+      <p>
+        CreatedBy: Person: Jane Doe (jane.doe@company.com)
+      </p>
+      <p>
+        CreatedBy: ExampleCodeInspect (contact@ECI.com)
+      </p>
+      <p>
+        CreatedBy: Tool: LicenseFInd-1.0
+      </p>
+    </div>
 
-				<LI><P CLASS="western"><B>Data Format</B>: ”Person: person
-				name” (with optional email)  or &quot;Company: company&quot;
-				(depending on which is accountable) or    &quot;Tool: tool
-				identifier - version”.   If multiple participants in the
-				analysis, then they should be indicated with separate instances. 
-				</P>
- 
-				<LI><P CLASS="western"><B>Example</B>: 
-				</P>
+    <div class="rdf-property" about="#Created" typeof="owl:DatatypeProperty">
+      <a name="Created"/>
+      <h2>2.1.3 <span property="rdfs:label">Created</span></h2>
 
-	<P CLASS="western" STYLE="margin-left: 1.5in">CreatedBy: Person:
-	Jane Doe (<FONT COLOR="#0000ff"><U><A CLASS="western" HREF="mailto:jane.doe@company.com">jane.doe@company.com</A></U></FONT>)
-		</P>
-	<P CLASS="western" STYLE="margin-left: 1.5in">CreatedBy: Company:
-	ExampleCodeInspect (<FONT COLOR="#0000ff"><U><A CLASS="western" HREF="mailto:contact@codeinspect.com">contact@ECI.com</A></U></FONT>)</P>
-	<P CLASS="western" STYLE="margin-left: 1.5in">CreatedBy: Tool:
-	LicenseFInd-1.0</P>
-	<P CLASS="western"><BR>
-	</P>
+      <p><b>Purpose:</b> Identify when the analysis
+	was done and the SPDX file was originally created.  This is to be
+	specified according to combined data and time in UTC format as
+	specified in ISO 8601 standard. 
+      </p>
 
-                             </OL>
+      <p><b>Intent:</b> Here, the Time Stamp can
+	serve as a verification as to whether the analysis needs to be
+	updated.  
+      </p>
 
-			<LI><P CLASS="western"><B>Creation Time Stamp</B></P>
+      <p>
+        <b>Domain:</b> <a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
 
-			<OL>
-				<LI><P CLASS="western"><B>Purpose:</B> Identify when the analysis
-				was done and the SPDX file was originally created.  This is to be
-				specified according to combined data and time in UTC format as
-				specified in ISO 8601 standard. 
-				</P>
+      <p>
+        <b>Range:</b> <a href="http://www.w3.org/2000/10/XMLSchema-datatypes#dateTime" rel="rdfs:range">xsd:dateTime</a></p>
 
-				<LI><P CLASS="western"><B>Intent:</B> Here, the Time Stamp can
-				serve as a verification as to whether the analysis needs to be
-				updated.  
-				</P>
+      <p>
+        <b>Refines:</b> <a rel="rdfs:subPropertyOf" href="dc:created"><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></span></p>
 
-				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory, single
-				instance.</P>
+      <p><b>Data Format:</b> YYYY-MM-DDThh:mm:ssZ
+	where: YYYY is year, MM is month with leading zero, DD is day
+	with leading zero, T is delimiter for time, hh is hours with
+	leading zero in 24 hour time, mm is minutes with leading zero, ss
+	is seconds with leading zero, and Z is universal time indicator.</p>
 
-				<LI><P CLASS="western"><B>Tag:</B> &quot;Created:&quot;</P>
+      <p><b>Example:</b> Created:
+	2010-01-29T18:30:22Z</p>
+    </div>
+  
+<li><p><b>Reviewers</b></p>
+  
+  <OL>
+    <li><p><b>Purpose:</b> List of the people who
+	have reviewed the SPDX file and the date of that review.  Note
+	that there is no requirement for a particular reviewer to add
+	their name to the file, however it may be important for
+	participants in the software supply chain to validate whether
+	upstream providers have reviewed the SPDX file.  This can be
+	considered as an equivalent to “signed off” or “reviewed
+	by”.  Additional reviewers can be added after the original
+	version of the SPDX file is created and can occur as an append to
+	the original file. 
+      </p>
 
-				<LI><P CLASS="western"><B>RDF:</B> /RDF/SPDXDoc/Created</P>
+    <li><p><b>Intent:</b> Here, as time progresses
+	certain reviewers will begin to gain credibility as reliable. 
+	This field intends to make such information transparent.</p>
+      
+    <li><p><b>Cardinality:</b> Optional, zero to
+	many.</p>
 
-				<LI><P CLASS="western"><B>Data Format:</B> YYYY-MM-DDThh:mm:ssZ
-				where: YYYY is year, MM is month with leading zero, DD is day
-				with leading zero, T is delimiter for time, hh is hours with
-				leading zero in 24 hour time, mm is minutes with leading zero, ss
-				is seconds with leading zero, and Z is universal time indicator.</P>
+    <li><p><b>Tag:</b> &quot;ReviewedBy:&quot;</p>
 
-				<LI><P CLASS="western"><B>Example:</B> Created:
-				2010-01-29T18:30:22Z</P>
-			</OL>
-	
-			<LI><P CLASS="western"><B>Reviewers</B></P>
-	
-			<OL>
-				<LI><P CLASS="western"><B>Purpose:</B> List of the people who
-				have reviewed the SPDX file and the date of that review.  Note
-				that there is no requirement for a particular reviewer to add
-				their name to the file, however it may be important for
-				participants in the software supply chain to validate whether
-				upstream providers have reviewed the SPDX file.  This can be
-				considered as an equivalent to “signed off” or “reviewed
-				by”.  Additional reviewers can be added after the original
-				version of the SPDX file is created and can occur as an append to
-				the original file. 
-				</P>
+    <li><p><b>RDF:</b> /RDF/SPDXDoc/ReviewedBy</p>
 
-				<LI><P CLASS="western"><B>Intent:</B> Here, as time progresses
-				certain reviewers will begin to gain credibility as reliable. 
-				This field intends to make such information transparent.</P>
-	
-				<LI><P CLASS="western"><B>Cardinality:</B> Optional, zero to
-				many.</P>
+    <li><p><b>Data Format:</b> &quot;Person: person
+	name (with optional email) YYYY-MM-DDThh:mm:ssZ”.   Where YYYY
+	is year, MM is month with leading zero, DD is day with leading
+	zero, T is delimiter for time, hh is hours with leading zero in
+	24 hour time, mm is minutes with leading zero, ss is seconds with
+	leading zero, and Z is universal time indicator. If multiple
+	people participated in the analysis, then each should be
+	represented with separate instances.</p>
 
-				<LI><P CLASS="western"><B>Tag:</B> &quot;ReviewedBy:&quot;</P>
+    <li><p><b>Example:</b> ReviewedBy: Person: Jane
+	Doe (<FONT COLOR="#0000ff"><U><A HREF="mailto:jane@company.com">jane@company.com</A></U></FONT>)
+	2010-08-01T14:30:00Z</p>
+  </OL>
+</OL>
+</OL>
 
-				<LI><P CLASS="western"><B>RDF:</B> /RDF/SPDXDoc/ReviewedBy</P>
-
-				<LI><P CLASS="western"><B>Data Format:</B> &quot;Person: person
-				name (with optional email) YYYY-MM-DDThh:mm:ssZ”.   Where YYYY
-				is year, MM is month with leading zero, DD is day with leading
-				zero, T is delimiter for time, hh is hours with leading zero in
-				24 hour time, mm is minutes with leading zero, ss is seconds with
-				leading zero, and Z is universal time indicator. If multiple
-				people participated in the analysis, then each should be
-				represented with separate instances.</P>
-
-				<LI><P CLASS="western"><B>Example:</B> ReviewedBy: Person: Jane
-				Doe (<FONT COLOR="#0000ff"><U><A CLASS="western" HREF="mailto:jane@company.com">jane@company.com</A></U></FONT>)
-				2010-08-01T14:30:00Z</P>
-			</OL>
-		</OL>
-	</OL>
-
-</DIV>
-</BODY>
-</HTML>
+</div>
+</body>
+</html>
