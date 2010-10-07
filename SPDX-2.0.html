@@ -64,7 +64,13 @@
         <li rel="rdfs:subClassOf"> 
           <p typeof="owl:Restriction">
           <a href="#Created" rel="owl:onProperty">Created</a>
-              <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>)</p>
+              <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).</p>
+        </li>
+
+        <li rel="rdfs:subClassOf"> 
+          <p typeof="owl:Restriction">
+          <a href="#ReviewedBy" rel="owl:onProperty">Created</a>
+              <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>) or more.</p>
         </li>
 
       </ul>
@@ -134,13 +140,13 @@
       <p><b>Example</b>: </p>
       
       <p>
-        CreatedBy: Person: Jane Doe (jane.doe@company.com)
+        Person: Jane Doe (jane.doe@company.com)
       </p>
       <p>
-        CreatedBy: ExampleCodeInspect (contact@ECI.com)
+        ExampleCodeInspect (contact@ECI.com)
       </p>
       <p>
-        CreatedBy: Tool: LicenseFInd-1.0
+        Tool: LicenseFInd-1.0
       </p>
     </div>
 
@@ -178,10 +184,11 @@
 	2010-01-29T18:30:22Z</p>
     </div>
   
-<li><p><b>Reviewers</b></p>
-  
-  <OL>
-    <li><p><b>Purpose:</b> List of the people who
+    <div class="rdf-property" about="#ReviewedBy" typeof="owl:DatatypeProperty">
+      <a name="ReviewBy"/>
+      <h2>2.1.4 <span property="rdfs:label">ReviewedBy</span></h2>
+
+      <p property="rdfs:comment"><b>Purpose:</b> List of the people who
 	have reviewed the SPDX file and the date of that review.  Note
 	that there is no requirement for a particular reviewer to add
 	their name to the file, however it may be important for
@@ -192,34 +199,29 @@
 	version of the SPDX file is created and can occur as an append to
 	the original file. 
       </p>
-
-    <li><p><b>Intent:</b> Here, as time progresses
-	certain reviewers will begin to gain credibility as reliable. 
-	This field intends to make such information transparent.</p>
       
-    <li><p><b>Cardinality:</b> Optional, zero to
-	many.</p>
-
-    <li><p><b>Tag:</b> &quot;ReviewedBy:&quot;</p>
-
-    <li><p><b>RDF:</b> /RDF/SPDXDoc/ReviewedBy</p>
-
-    <li><p><b>Data Format:</b> &quot;Person: person
-	name (with optional email) YYYY-MM-DDThh:mm:ssZ”.   Where YYYY
-	is year, MM is month with leading zero, DD is day with leading
-	zero, T is delimiter for time, hh is hours with leading zero in
-	24 hour time, mm is minutes with leading zero, ss is seconds with
-	leading zero, and Z is universal time indicator. If multiple
-	people participated in the analysis, then each should be
-	represented with separate instances.</p>
-
-    <li><p><b>Example:</b> ReviewedBy: Person: Jane
-	Doe (<FONT COLOR="#0000ff"><U><A HREF="mailto:jane@company.com">jane@company.com</A></U></FONT>)
-	2010-08-01T14:30:00Z</p>
-  </OL>
-</OL>
-</OL>
-
-</div>
+      <p><b>Intent:</b> Here, as time progresses
+        certain reviewers will begin to gain credibility as reliable. 
+        This field intends to make such information transparent.</p>
+      
+      <p>
+        <b>Domain:</b> <a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
+      
+      
+      <p><b>Data Format:</b> &quot;Person: person
+        name (with optional email) YYYY-MM-DDThh:mm:ssZ”.   Where YYYY
+        is year, MM is month with leading zero, DD is day with leading
+        zero, T is delimiter for time, hh is hours with leading zero in
+        24 hour time, mm is minutes with leading zero, ss is seconds with
+        leading zero, and Z is universal time indicator. If multiple
+        people participated in the analysis, then each should be
+        represented with separate instances.</p>
+      
+      <p><b>Example:</b> Person: Jane
+        Doe (<FONT COLOR="#0000ff"><U><A HREF="mailto:jane@company.com">jane@company.com</A></U></FONT>)
+        2010-08-01T14:30:00Z</p>
+    </div>
+    
+  </div>
 </body>
 </html>
