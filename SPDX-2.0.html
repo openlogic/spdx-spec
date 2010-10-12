@@ -69,7 +69,7 @@
 
         <li rel="rdfs:subClassOf"> 
           <p typeof="owl:Restriction">
-          <a href="#ReviewedBy" rel="owl:onProperty">Created</a>
+          <a href="#ReviewedBy" rel="owl:onProperty">ReviewedBy</a>
               <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>) or more.</p>
         </li>
 
@@ -172,7 +172,7 @@
         <b>Range:</b> <a href="http://www.w3.org/2000/10/XMLSchema-datatypes#dateTime" rel="rdfs:range">xsd:dateTime</a></p>
 
       <p>
-        <b>Refines:</b> <a rel="rdfs:subPropertyOf" href="dc:created"><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></span></p>
+        <b>Refines:</b> <a rel="rdfs:subPropertyOf" href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></p>
 
       <p><b>Data Format:</b> YYYY-MM-DDThh:mm:ssZ
 	where: YYYY is year, MM is month with leading zero, DD is day
@@ -185,7 +185,7 @@
     </div>
   
     <div class="rdf-property" about="#ReviewedBy" typeof="owl:DatatypeProperty">
-      <a name="ReviewBy"/>
+      <a name="ReviewedBy"/>
       <h2>2.1.4 <span property="rdfs:label">ReviewedBy</span></h2>
 
       <p property="rdfs:comment"><b>Purpose:</b> List of the people who
