@@ -4,7 +4,8 @@
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
       xmlns:owl="http://www.w3.org/2002/07/owl#"
       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-      xmlns:dc="http://purl.org/dc/terms/">
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
@@ -26,7 +27,8 @@
 	P { font-family: "Arial", sans-serif; font-size: 10pt; so-language: en-US; test-align: justify;}
 	H1 { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US }
 	H2 { font-family: "Arial", sans-serif; font-size: 12pt; so-language: en-US }
-        h4 { font-family: "Arial", sans-serif; font-size: 10pt; font-weight: bold; display: inline; }
+        h4 { font-family: "Arial", sans-serif; font-size: 10pt; font-weight: bold; }
+        h5 { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold; }
         .section { margin-left: 3em; }
 	A:link { color: #0000ff }
 	A:visited { color: #800080 }
@@ -83,7 +85,7 @@
       <h3>2.1.1 <span property="rdfs:label">SPDXVersion</span></h3>
        
       
-      <h4>Purpose:</h4>
+      <h5>Purpose</h5>
       <p property="rdfs:comment"> Provide a reference number
         that can be used to understand how to parse and interpret the
         rest of the file.  It will enable both future changes to the
@@ -94,25 +96,40 @@
         incremented when either only the fields within a section are
         modified or standard recognized licenses are added to appendix.</p>
 
-      <h4>Intent:</h4> 
+      <h5>Intent</h5> 
       <p>Here, parties exchanging Identification
         Information in accordance with SPDX specification need to
         provide 100% transparency as to which SPDX specification such
         Identification Information is conforming to.</p>
 
-      <h4>Domain:</h4> 
+      <h5>Domain</h5> 
       <p><a rel="rdfs:domain" href="#SPDXDoc">SPDXDoc</a></p>
 
-      <h4>Range:</h4> 
+      <h5>Range</h5> 
       <p>The value of this property is fixed.  The value of the
         SPDXVersion property for all datasets encoded in this verison
         must be:
         <code>SPDX-1.0</code></p>
 
-      <h4>Tag-Value syntax:</h4>
+      <h4>2.1.1.1 RDF/XML serialization</h4>
+
+      <h5>Example</h5>
       <pre><code>
+          &lt;SPDXVersion&gt;SPDX-1.0&lt;/SPDXVersion&gt;
+      </code></pre>
+
+      <h4>2.1.1.2 Tag-Value serialization</h4>
+
+      <p>The SPDX version is serialized as a single tag with a string value.  As noted above "SPDX-1.0" is the only allowed value at this time.</p>
+
+      <pre><code class="tag-value grammar">
           versiondecl = "SPDXVersion:" *WSP spdxversion
           spdxversion = "SPDX-1.0"
+      </code></pre>
+
+      <h5>Example</h5>
+      <pre><code>
+          SPDXVersion: SPDX-1.0
       </code></pre>
 
     </div>
@@ -122,7 +139,7 @@
       <a name="CreatedBy"/>
       <h2>2.1.2 <span property="rdfs:label">CreatedBy</span></h2>
 
-      <h4>Purpose:</h4> 
+      <h5>Purpose</h5> 
       <p property="rdfs:comment">Identify how the meta data information in the
 	SPDX file was generated. If it was generated manually, it
 	should indicate – who did the analysis.  If the information in
@@ -130,34 +147,50 @@
 	indicate an identifier and version for that tool.
       </p>
                 
-      <h4>Intent:</h4> 
+      <h5>Intent</h5> 
       <p>Here, the generation method
 	will assist the reader of the Identification Information in
-	self determining the general reliah4ility/accuracy of the
+	self determining the general reliability/accuracy of the
 	Identification Information.</p>
                 
-      <h4>Value Format:</h4>
-      <p> ”Person: person name”
-	(with optional email) or &quot;Company: company&quot;
-	(depending on which is accountable) or &quot;Tool: tool
-	identifier - version”.  If multiple participants in the
-	analysis, then they should be indicated with separate
-	instances.
-      </p>
+      <h5>Value Format</h5>
+      <p>The value of created by may indicate a person, tool or organization.</p>
 
-      <h4>Domain:</h4>
+      <pre><code class="grammar">
+          company    = "Company:" *WSP name *WSP ["(" email ")"]
+          tool       = "Tool:" *WSP name
+          person     = "Person:" *WSP name *WSP ["(" email ")"]
+          name       = *VUNICODECHAR
+          email      = 1*(ALPHA / DIGIT / "." / "-" / "_") "@" domainpart 1*("." domainpart)
+          domainpart = 1*(ALPHA / DIGIT / "-" / "_") 
+      </code></pre>
+
+      <p>For example, ”Person: John Doe” (john.doe@example.com)" or "Company: My Company, Inc" (depending on which is accountable) or "Tool: spdx-gen 1.0".</p>
+
+      <h5>Domain</h5>
       <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
-                
-      <h4>Tag-Value syntax:</h4>
+               
+      <h4>2.1.1.1 RDF/XML serialization</h4>
+
+      <h5>Example</h5>
+
       <pre><code>
-          createdby    = "CreatedBy:" 1*(*WSP (company / tool / person))
-          company      = "Company:" *WSP name *WSP ["(" email ")"]
-          tool         = "Tool:" *WSP name *WSP "-" *WSP version
-          person       = "Person:" *WSP name *WSP ["(" email ")"]
-          name         = *VUNICODECHAR
-          email        = 1*(ALPHA / DIGIT / "." / "-" / "_") "@" domainpart 1*("." domainpart)
-          domainpart   = 1*(ALPHA /DIGIT/ "-" / "_") 
-          version      = 1*DIGIT "." 1*DIGIT
+          &lt;CreatedBy&gt;Person: John Doe (john.doe@example.com)&lt;/CreatedBy&gt;
+      </code></pre>
+
+      <h4>2.1.1.2 Tag-Value serialization</h4>
+
+      <p>CreatedBy is serialized as a single tag with a string value.  If there are multiple participants in the analysis, each participant should be indicated with a separate entry.</p>
+
+      <pre><code class="tag-value grammar">
+          createdby = "CreatedBy:" 1*(*WSP (company / tool / person))
+      </code></pre>
+
+      <h5>Example</h5>
+      <pre><code>
+          CreatedBy: Person:  John Doe (john.doe@example.com)
+          CreatedBy: Company: My Company, Inc.
+          CreatedBy: Tool:    spdx-gen 1.0
       </code></pre>
     </div>
 
@@ -165,47 +198,62 @@
       <a name="Created"/>
       <h2>2.1.3 <span property="rdfs:label">Created</span></h2>
 
-      <h4>Purpose:</h4>
+      <h5>Purpose</h5>
       <p>Identify when the analysis was done and the SPDX file was
 	originally created.  This is to be specified according to
 	combined data and time in UTC format as specified in ISO 8601
 	standard.
       </p>
 
-      <h4>Intent:</h4>
+      <h5>Intent</h5>
       <p>Here, the Time Stamp can serve as a verification as to
 	whether the analysis needs to be updated.
       </p>
 
-      <h4>Domain:</h4>
+      <h5>Domain</h5>
       <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
 
-      <h4>Range:</h4>
-      <p><a href="http://www.w3.org/TR/xmlschema-2/#dateTime" property="rdfs:range">xsd:dateTime</a></p>
+      <h5>Range</h5>
+      <p><a href="http://www.w3.org/TR/xmlschema-2/#dateTime"><span about="#Created" rel="rdfs:range" href="xsd:dateTime"/>xsd:dateTime</a></p>
 
-      <h4>Refines:</h4>
+      <h5>Refines</h5>
       <p><a rel="rdfs:subPropertyOf" href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></p>
 
-      <h4>Tag-Value syntax:</h4>
+      <h4>RDF/XML serialization</h4>
+
+      <h5>Example</h5>
+
       <pre><code>
-          created    = "Created:" *WSP timestamp
-          timestamp  = year "-" month "-" day "T" hour ":" minute ":" second "Z"
-          year       = 4*4DIGIT
-          month      = 2*2DIGIT
-          day        = 2*2DIGIT
-          hour       = 2*2DIGIT
-          minute     = 2*2DIGIT
-          second     = 2*2DIGIT
+          &lt;Created&gt;2010-11-02T11:02:03-0600&lt;/Created&gt;
       </code></pre>
 
-      <p>In the tag-value format all times are in UTC.  Number should be zero padded to fit the expected field width.</p>
+      <h4>Tag-Value serialization</h4>
+
+      <p>The value of Created should be represented in <a href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time">UTC</a> for the tag-value format.  Number should be zero padded to fit the expected field width.</p>
+
+      <h4>Tag-Value syntax</h4>
+      <pre><code class="tag-value grammar">
+          created   = "Created:" *WSP timestamp
+          timestamp = year "-" month "-" day "T" hour ":" minute ":" second "Z"
+          year      = 4*4DIGIT
+          month     = 2*2DIGIT
+          day       = 2*2DIGIT
+          hour      = 2*2DIGIT
+          minute    = 2*2DIGIT
+          second    = 2*2DIGIT
+      </code></pre>
+
+      <h5>Example</h5>
+      <pre><code>
+          Created: 2010-11-02T17:02:03Z
+      </code></pre>
     </div>
   
     <div class="rdf-property" about="#ReviewedBy" typeof="owl:DatatypeProperty">
       <a name="ReviewedBy"/>
       <h2>2.1.4 <span property="rdfs:label">ReviewedBy</span></h2>
 
-      <h4>Purpose:</h4> 
+      <h5>Purpose</h5> 
       <p property="rdfs:comment">List of the people who
 	have reviewed the SPDX file and the date of that review.  Note
 	that there is no requirement for a particular reviewer to add
@@ -218,18 +266,34 @@
 	the original file. 
       </p>
       
-      <h4>Intent:</h4>
+      <h5>Intent</h5>
       <p>Here, as time progresses
         certain reviewers will begin to gain credibility as reliable. 
         This field intends to make such information transparent.</p>
       
-      <h4>Domain:</h4> 
+      <h5>Domain</h5> 
       <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
 
-      <h4>Tag-Value syntax:</h4>
+      <h4>2.1.1.1 RDF/XML serialization</h4>
+
+      <h5>Example</h5>
       <pre><code>
-          reviewedby  = "ReviewedBy:" person *WSP timestamp
+          &lt;ReviewedBy&gt;John Doe (john.doe@example.com) 2010-11-02T17:02:03Z&lt;/ReviewedBy&gt;
       </code></pre>
+
+      <h4>2.1.1.2 Tag-Value serialization</h4>
+
+      <p>ReviewedBuse uses the same person format as <a href="#CreatedBy">CreatedBy</a> but adds a timestamp, like the value of <a href="#Created">Created</a>, to indicate when the review occurred.</p>
+
+      <pre><code class="tag-value grammar">
+          reviewedby = "ReviewedBy:" person *WSP timestamp
+      </code></pre>
+
+      <h5>Example</h5>
+      <pre><code>
+          ReviewedBy: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z
+      </code></pre>
+
     </div>
     
   </div>
