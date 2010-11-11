@@ -1,0 +1,29 @@
+p { font-family: "Arial", sans-serif; 
+    font-size: 10pt; 
+    text-align: justify;}
+
+h1 { font-family: "Arial", sans-serif;
+     font-size: 14pt;
+     font-weight: bold;}
+
+h2 { font-family: "Arial", sans-serif; 
+     font-size: 14pt;}
+
+h3 { font-family: "Arial", sans-serif;
+     font-size: 12pt;
+     font-weight: bold; }
+
+h4 { font-family: "Arial", sans-serif;
+     font-size: 10pt;
+     font-weight: bold; }
+
+h5 { font-family: "Arial", sans-serif;
+     font-size: 8pt;
+     font-weight: bold; }
+
+.section { margin-left: 3em; }
+
+a:link { color: #0000ff }
+
+a:visited { color: #800080 }
+
