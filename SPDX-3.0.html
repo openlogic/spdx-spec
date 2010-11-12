@@ -47,7 +47,7 @@
       <li rel="rdfs:subClassOf">
         <p typeof="owl:Restriction">
           <a href="#DownloadURL" rel="owl:onProperty">DownloadURL</a>
-          <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+          <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
         </p>
       </li>
 
@@ -58,23 +58,23 @@
         </p>
       </li>
 
-      <li rel="rdfs:subClassOf">
-        <p typeof="owl:Restriction">
-          <a href="#DeclaredLicense" rel="owl:onProperty">DelcaredLicense</a>
+      <li>
+        <p>
+          <a href="#DeclaredLicense">DelcaredLicense</a>
           <br/>Cardinality: Optional, zero (0) or more.
         </p>
       </li>
 
-      <li rel="rdfs:subClassOf">
-        <p typeof="owl:Restriction">
-          <a href="#DetectedLicense" rel="owl:onProperty">DetectedLicense</a>
+      <li>
+        <p>
+          <a href="#DetectedLicense">DetectedLicense</a>
           <br/>Cardinality: Optional, zero (0) or more.
         </p>
       </li>
 
-      <li rel="rdfs:subClassOf">
-        <p typeof="owl:Restriction">
-          <a href="#DeclaredCopyright" rel="owl:onProperty">DeclaredCopyright</a>
+      <li>
+        <p>
+          <a href="#DeclaredCopyright">DeclaredCopyright</a>
           <br/>Cardinality: Optional, zero (0) or more.
         </p>
       </li>
@@ -82,14 +82,14 @@
       <li rel="rdfs:subClassOf">
         <p typeof="owl:Restriction">
           <a href="#ShortDesc" rel="owl:onProperty">ShortDesc</a>
-          <br/>Cardinality: Optional, one (<span property="owl:cardinality">1</span>).
+          <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
         </p>
       </li>
 
       <li rel="rdfs:subClassOf">
         <p typeof="owl:Restriction">
           <a href="#Description" rel="owl:onProperty">Description</a>
-          <br/>Cardinality: Optional, one (<span property="owl:cardinality">1</span>).
+          <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
         </p>
       </li>
 
@@ -342,7 +342,7 @@ DetectedLicense: FullLicense-1
       </code></pre>
     </div>
 
-    <div class="rdf-property" about="#DetectedLicense" typeof="owl:DatatypeProperty">
+    <div class="rdf-property" about="#DetectedLicense" typeof="owl:ObjectProperty">
       <h3 id="DetectedLicense">2.2.7 <span property="rdfs:label">DetectedLicense</span></h3>
 
       <h5>Purpose</h5>
