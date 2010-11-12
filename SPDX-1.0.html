@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
-<!doctype html PUBLIC "-//W3C//DTD Xhtml+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title> Software Package Data eXchange (SPDX&#8482;) Specification</title>
   <link rel="stylesheet" href="screen.css" media="screen" type="text/css" />
@@ -36,13 +36,13 @@ for their contributions and assistance.</p>
 <p>Licensed under the Creative Commons Attribution License 3.0
 (reproduced in Appendix III herein).</p>
 
-<h2><a name="section1">1. Rationale</a></h2>
+<h2 id="section1">1. Rationale</h2>
 
-<h3><a name="section1.1">1.1 Charter</a></h3>
+<h3 id="section1.1">1.1 Charter</h3>
 
 <p>To create a set of data exchange standards that enable companies and organizations to share + and component information (metadata) for software packages and related content with the aim of facilitating license and other policy compliance.</p>
 
-<h3><a name="section1.2"/>1.2 Definition</h3>
+<h3 id="section1.2">1.2 Definition</h3>
 
 <p>The Software Package Data Exchange(SPDX™) specification is a
   standard format for communicating the components, licenses and
@@ -50,7 +50,7 @@ for their contributions and assistance.</p>
   associated with a particular software package and contains
   information about that package in the SPDX format.</p>
 
-<h3><a name="section1.3"/>1.3. Why is a common format for data exchange needed?</h3>
+<h3 id="section1.3">1.3. Why is a common format for data exchange needed?</h3>
 
 <p>Companies and organizations (collectively "Organizations") are
   widely using and reusing open source and other software
@@ -68,38 +68,38 @@ for their contributions and assistance.</p>
   related content, may be collected and shared in a common format with
   the goal of saving time and improving data accuracy.</p>
     
-<h3><a name="section1.4">1.4. What does this specification cover?</h3>
+<h3 id="section1.4">1.4. What does this specification cover?</h3>
 
 
-<h4><a name="section1.4.1"/>1.4.1. Identification Information</h4>
+<h4 id="section1.4.1">1.4.1. Identification Information</h4>
 
 <p> Meta data to associate analysis results with a specific package.
   This includes a unique identifier that identifies a specific
   instance of a package and permits correlation to the corresponding
   SPDX file.</p>
 
-<h4><a name="section1.4.2"/>1.4.2. Overview Information</h4>
+<h4 id="section1.4.2">1.4.2. Overview Information</h4>
 
 <p>Facts that are common properties of the entire package.</p>
 
-<h4><a name="section1.4.3"/>1.4.3 File Specific Information</h4>
+<h4 id="section1.4.3">1.4.3 File Specific Information</h4>
 
 <p>Facts ( e.g. copyrights, licenses) that are specific to
 	each file included in the package.</p>
 
-<h4><a name="section1.4.4"/>1.4.4 Common Licenses</h4>
+<h4 id="section1.4.4">1.4.4 Common Licenses</h4>
 <p>list of common licenses likely to be encountered and a
   standardized naming convention for referring to these licenses
   within an SPDX document.  This naming convention will also be the
   basis for extending this set of common licenses over time.</p>
 
-<h4><a name="section1.4.5"/>1.4.5. Evolution Hooks</h4>
+<h4 id="section1.4.5">1.4.5. Evolution Hooks</h4>
 
 <p> A set of mechanisms that permit extending the specification in a
   structured manner under specific future versions of the
   specification.</p>
 
-<h3><a name="section1.5"/>1.5 What is not covered in the specification?</h3>
+<h3 id="section1.5">1.5 What is not covered in the specification?</h3>
 
 <p>Information that cannot be derived from an inspection (whether manual or
   using automated tools) of the package to be analyzed.</p>
@@ -111,7 +111,7 @@ for their contributions and assistance.</p>
 <p>Legal interpretation of the licenses or any compliance actions
   that might need to be taken.</p>
 
-<h3><a name="section1.6"/>1.6 Format Requirements:</h3>
+<h3 id="section1.6">1.6 Format Requirements:</h3>
 
 <ul>
   <li><p> Must be in a human readable form.</p></li>
