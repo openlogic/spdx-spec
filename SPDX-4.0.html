@@ -1,102 +1,116 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
-	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-	<TITLE> </TITLE>
-	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Unix)">
-	<META NAME="AUTHOR" CONTENT=" ">
-	<META NAME="CREATED" CONTENT="20100806;16220000">
-	<META NAME="CHANGEDBY" CONTENT="mgisi">
-	<META NAME="CHANGED" CONTENT="20100806;17580000">
-	<META NAME="CLASSIFICATION" CONTENT=" ">
-	<META NAME="DESCRIPTION" CONTENT=" ">
-	<META NAME="DocXDocID" CONTENT="4707919v2">
-	<META NAME="Info 2" CONTENT="">
-	<META NAME="Info 3" CONTENT="">
-	<META NAME="Info 4" CONTENT="">
-	<STYLE TYPE="text/css">
-	<!--
-		@page { margin-right: 1in; margin-top: 0.5in; margin-bottom: 0.5in }
-		@page:first { }
-		P { margin-bottom: 0in; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
-		P.western { font-family: "Arial", sans-serif; font-size: 10pt; so-language: en-US }
-		H1 { margin-left: 0.25in; margin-top: 0in; margin-bottom: 0in; direction: ltr; color: #000000; text-align: justify; widows: 0; orphans: 0 }
-		H1.western { font-family: "Arial", sans-serif; font-size: 14pt; so-language: en-US }
-		A:link { color: #0000ff }
-		A:visited { color: #800080 }
-		A.western:visited { so-language: en-US }
-	-->
-	</STYLE>
-</HEAD>
-<BODY LANG="en-US" TEXT="#000000" LINK="#0000ff" VLINK="#800080" DIR="LTR">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<head>
+  <title> Software Package Data eXchange (SPDX&#8482;) Specification: Section 2.3</title>
+  <link rel="stylesheet" href="screen.css" media="screen" type="text/css" />
+</head>
 
-	<H1 CLASS="western"> 4. Index of Non Standard License(s) Detected</H1>
+<body>
+  <div class="rdf-class" about="#License" typeof="owl:Class">
+    <h2 id="License">2.3 <span property="rdfs:label">License</span></h2>
 
-	<P CLASS="western">This section is used for any detected or declared
-	licenses that are NOT one of the standard licenses.  One instance
-	should be created for every unique license detected in package that
-	does not match one of the standard license short forms from Appendix
-	I.   Each license instance should have the following fields.</P>
+    <p property="rdfs:comment">This section is used for any detected
+      or declared licenses that are NOT one of the standard licenses.
+      One instance should be created for every unique license detected
+      in package that does not match one of the standard license short
+      forms from Appendix I.  Each license instance should have the
+      following fields.</p>
 
-	<P CLASS="western">Fields:</P>
+    <h3>Properties</h3>
+    <ul>
+      <li rel="rdfs:subClassOf">
+        <p typeof="owl:Restriction">
+          <a href="#LicenseID" rel="owl:onProperty">LicenseID</a>
+          <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+        </p>
+      </li>
 
-	<OL START=4>
-		<OL>
-			<LI><P CLASS="western"><B>Identifier</B></P>
+      <li rel="rdfs:subClassOf">
+        <p typeof="owl:Restriction">
+          <a href="#LicenseText" rel="owl:onProperty">LicenseText</a>
+          <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+        </p>
+      </li>
+    </ul>
+    
+    <div class="rdf-property" about="#LicenseID" typeof="owl:DatatypeProperty">
+      <h3 id="LicenseID">2.3.1 <span property="rdfs:label">LicenseID</span></h3>
 
-			<OL>
-				<LI><P CLASS="western"><B>Purpose:</B> Provide a unique
-				identifier for the packages and files sections to refer to non
-				standard license text detected in the package and reproduced here
-				to aid analysis.</P>
+      <h5>Purpose</h5>
+      <p> Provide a unique identifier for the packages and files
+        sections to refer to non standard license text detected in the
+        package and reproduced here to aid analysis.</p>
 
-				<LI><P CLASS="western"><B>Intent:</B>  Here, we seek to identify
-				in whole or in part portions of the package which are licensed
-				under unfamiliar and/or uncommon licenses.</P>
+      <h5>Intent</h5>
+      <p> Here, we seek to identify in whole or in part portions of
+	the package which are licensed under unfamiliar and/or
+	uncommon licenses.</p>
 
-				<LI><P CLASS="western"><B>Cardinality:</B> mandatory single
-				instance</P>
+      <h5>Domain</h5>
+      <p><a rel="rdfs:domain" href="#License">Package</a></p>
+      
+      <h5>Range</h5>
+      <p>The value is
+        an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#LicenseID"
+        rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
+      
+      <h4>2.2.1.1 RDF/XML serialization</h4>
+      
+      <h5>Example</h5>
+      <pre><code>
+&lt;LicenseID&gt;FullLicense-1&lt;/LicenseID&gt;
+      </code></pre>
 
-				<LI><P CLASS="western"><B>Tag:</B> &quot;LicenseID&quot;</P>
+      <h4>2.2.1.2 Tag-Value serialization</h4>
 
-				<LI><P CLASS="western"><B>RDF:</B>
-				/RDF/SPDXDoc/Describes/License/LicenseID</P>
+      <h5>Example</h5>
+      <pre><code>
+LicenseID: FullLicense-1
+      </code></pre>
+    </div>
 
-				<LI><P CLASS="western"><B>Data Format:</B> &quot;FullLicense-&quot;N
-				where N is a unique ascending numeric value.</P>
+    <div class="rdf-property" about="#LicenseText" typeof="owl:DatatypeProperty">
+      <h3 id="LicenseText">2.3.2 <span property="rdfs:label">LicenseText</span></h3>
+      
+      <h5>Purpose</h5>
+      <p> Provide a copy of the actual text of the license extracted
+	from the package that is associated with the License ID to aid
+	in analysis.</p>
 
-				<LI><P CLASS="western"><B>Example:</B>  LicenseID: FullLicense-1</P>
+      <h5>Intent</h5>
+      <p> Here, the actual license text included in the package serves
+	as confirmation that the license, and version, named in the
+	header files of the package is correct.</p>
 
-                        </OL>
+      <h5>Domain</h5>
+      <p><a rel="rdfs:domain" href="#License">Package</a></p>
+      
+      <h5>Range</h5>
+      <p>The value is
+      an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#LicenseID"
+      rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
+      
+      <h4>2.2.1.1 RDF/XML serialization</h4>
+      
+      <h5>Example</h5>
+      <pre><code>
+&lt;LicenseText&gt;...&lt;/LicenseText&gt;
+      </code></pre>
 
-			<LI><P CLASS="western"><B>Extracted Text</B></P>
+      <h4>2.2.1.2 Tag-Value serialization</h4>
 
-			<OL>
-				<LI><P CLASS="western"><B>Purpose:</B> Provide a copy of the
-				actual text of the license extracted from the package that is
-				associated with the License ID to aid in analysis.</P>
+      <h5>Example</h5>
+      <pre><code>
+LicenseText: ...
+      </code></pre>
 
-				<LI><P CLASS="western"><B>Intent:</B>  Here, the actual license
-				text included in the package serves as confirmation that the
-				license, and version, named in the header files of the package is
-				correct.</P>
-
-				<LI><P CLASS="western"><B>Cardinality:</B> Mandatory single
-				instance</P>
-
-				<LI><P CLASS="western"><B>Tag:</B> &quot;LicenseText:&quot;</P>
-
-				<LI><P CLASS="western"><B>RDF</B>:
-				/RDF/SPDXDoc/Describes/License/LicenseText</P>
-
-				<LI><P CLASS="western"><B>Data Format</B>: free form text field
-				that may span multiple lines.</P>
-
-				<LI><P CLASS="western"><B>Example:</B>  LicenseText: .....</P>
-			</OL>
-		</OL>
-	</OL>
-
-</DIV>
-</BODY>
-</HTML>
+    </div>
+  </div>
+</body>
+</html>
