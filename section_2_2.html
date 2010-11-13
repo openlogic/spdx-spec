@@ -1,0 +1,490 @@
+<div class="rdf-class" about="#Package" typeof="owl:Class">
+  <h2 id="Package">2.2 <span property="rdfs:label">Package</span></h2>
+  
+  <p property="rdfs:comment">A package is an artifact of a software development effort.  It
+    is generally a snapshot of the source code at a particular point
+    in time or an mechanism to be used to install the software. A
+    package can contain sub-packages, but the overview is a
+    reference to the entire contents of the package listed.</p>
+
+  <h3>Properties</h3>
+  <ul>
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#DeclaredName" rel="owl:onProperty">DelcaredName</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#MachineName" rel="owl:onProperty">MachineName</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#SHA1" rel="owl:onProperty">SHA1</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#DownloadURL" rel="owl:onProperty">DownloadURL</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#SourceInfo" rel="owl:onProperty">SourceInfo</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <a href="#DeclaredLicense">DelcaredLicense</a>
+        <br/>Cardinality: Optional, zero (0) or more.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <a href="#DetectedLicense">DetectedLicense</a>
+        <br/>Cardinality: Optional, zero (0) or more.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <a href="#DeclaredCopyright">DeclaredCopyright</a>
+        <br/>Cardinality: Optional, zero (0) or more.
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#ShortDesc" rel="owl:onProperty">ShortDesc</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Description" rel="owl:onProperty">Description</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+  </ul>
+</div>
+
+<div class="rdf-property" about="#DeclaredName" typeof="owl:DatatypeProperty">
+  <h3 id="DeclaredName">2.2.1 <span property="rdfs:label">DeclaredName</span></h3>
+
+  <h5>Purpose</h5>
+  <p> Full name of the package as given by originator with
+    information if available.</p>
+
+  <h5>Intent</h5>
+  <p> Here, the formal name of each package is an important
+    conventional technical identifier to be maintained for each
+    package.</p>
+  
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredName"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a> that contains
+    the full name, including version information if known, of the
+    package.</p>
+  
+  <h4>2.2.1.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;DeclaredName&gt;glibc 2.11.1lt;/DeclaredName&gt;
+  </code></pre>
+
+  <h4>2.2.1.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      DeclaredName: glibc 2.11.1
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#MachineName" typeof="owl:DatatypeProperty">
+  <h3 id="MachineName">2.2.2 <span property="rdfs:label">MachineName</span></h3>
+  
+  <h5>Purpose</h5>
+  <p> File name of package instance.</p>
+  
+  <h5>Intent</h5>
+  <p> Here, the actual filename of the compressed file (containing the
+    package) is a significant technical element that needs to be carried
+    with each package's Identification Information.</p>
+  
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#MachineName"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
+    machine generated file name and version typically includes the
+    packaging and compression methods used.</p>
+  
+
+  <h4>2.2.2.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;MachineName&gt;glibc-2.11.1.tar.gz&lt;/MachineName&gt;
+  </code></pre>
+
+  <h4>2.2.2.2 Tag-Value serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      MachineName: glibc-2.11.1.tar.gz
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#SHA1" typeof="owl:DatatypeProperty">
+  <h3 id="SHA1">2.2.3 <span property="rdfs:label">SHA1</span></h3>
+  
+  <h5>Purpose</h5>
+  <p> This field provides an
+    independently reproducible mechanism that permits unique
+    identification of a specific package that correlates to the data
+    in this SPDX file. This identifier enables a recipient to
+    determine if any file in the original package has been changed. 
+    The SHA1 unique identifier mechanism will be used.</p>
+
+  <h5>Intent</h5>
+  <p> Here, by providing an
+    unique identifier of each package, confusion over which
+    version/modification of a specific package the Identification
+    Information references should be eliminated.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SHA1"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
+    hexadecimal encoded SHA1 hash of the package file.  The length
+    of this values is 40 characters</p>
+
+  <h4>2.2.3.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;SHA1&gt;d6a770ba38583ed4bb4525bd96e50461655d2758&lt;/SHA1&gt;
+  </code></pre>
+
+  <h4>2.2.3.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
+  </code></pre>
+
+</div>
+
+<div class="rdf-property" about="#DownloadURL" typeof="owl:DatatypeProperty">
+  <h3 id="DownloadURL">2.2.4 <span property="rdfs:label">DownloadURL</span></h3>
+  
+  <h5>Purpose</h5>
+  <p> This field identifies the download Universal Resource
+    Locator (URL) for this package at the time that the SPDX file
+    was initially created and the analysis was done.  If there is
+    no public URL, then it is explicitly marked as “unknown”.
+  </p>
+  
+  <h5>Intent</h5>
+  <p> Here, where to download the exact package being referenced
+    is a critical verification and tracking datum.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#anyURI"><span about="#DownloadURL"
+                                                                rel="rdfs:range" href="xsd:anURI"/>xsd:anyURI</a>.  This URI
+    should be the publicly reachable location from which the package
+    was acquired.</p>
+
+  <h4>2.2.4.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;DownloadURL&gt;http://ftp.gnu.org/gnu/glibc/&lt;/DownloadURL&gt;
+  </code></pre>
+
+  <h4>2.2.4.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      URL: http://ftp.gnu.org/gnu/glibc/
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#SourceInfo" typeof="owl:DatatypeProperty">
+  <h3 id="SourceInfo">2.2.5 <span property="rdfs:label">SourceInfo</span></h3>
+
+  <h5>Purpose</h5>
+  <p> This is a free form text field that contains additional
+    comments about the origin of the package. For instance, this
+    field might include comments indicating whether the package
+    been pulled from a source code management system or has been
+    repackaged.</p>
+  
+  <h5>Intent</h5>
+  <p> Here, by providing a freeform field, reviewers can provide
+    any additional information to describe any anomalies, or
+    discoveries, in the determination of the origin of the
+    package.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SourceInfo"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
+
+  <h4>2.2.5.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;SourceInfo&gt;This package was acquired from the standard location for glibc.&lt;/SourceInfo&gt;
+  </code></pre>
+
+  <h4>2.2.5.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      SourceInfo: This package was acquired from the standard location for glibc. 
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#DeclaredLicense" typeof="owl:ObjectProperty">
+  <h3 id="DeclaredLicense">2.2.6 <span property="rdfs:label">DeclaredLicense</span></h3>
+
+  <h5>Purpose</h5>
+  <p> This field lists the licenses that have been declared by the
+    creators of the package.  The licenses are listed using a
+    standard short form name. See Appendix I for standardized
+    license short forms. If a Declared License is not one of the
+    standardized license short forms, this field must contain a
+    reference to the full license text included in this SPDX
+    file. If no license is declared, the “NotSpecified” short form
+    in Appendix I should be used.  If it is unclear if there is a
+    license reference or not, use “Unknown” short form from
+    Appendix I.  If more than one license is formally declared for
+    package, then each should be listed.  If the creators of the
+    package offer the recipent a choice of licenses, then each of
+    the choices will be declared as a “disjunctive” license.</p>
+
+  <h5>Intent</h5>
+  <p> This is simply the license identified in text in the actual
+    package source code files (typically in the header of each
+    package file.)  This field may have multiple declared
+    licenses, if multiple licenses are declared at the package
+    level.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="#License"><span about="#DeclaredLicense"
+                                rel="rdfs:range" href="#License"/>License</a>.</p>
+
+  <h4>2.2.6.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;DeclaredLicense rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
+  </code></pre>
+
+  <h4>2.2.6.2 Tag-Value serialization</h4>
+
+  <p>&lt;short form identifier in Appendix I&gt; |
+    &quot;FullLicense&quot;-N</p>
+
+  <h5>Example</h5>
+  <pre><code>
+      DeclaredLicense: LGPL-2.0
+      DetectedLicense: FullLicense-1
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#DetectedLicense" typeof="owl:ObjectProperty">
+  <h3 id="DetectedLicense">2.2.7 <span property="rdfs:label">DetectedLicense</span></h3>
+
+  <h5>Purpose</h5>
+  <p> This field list of all licenses found in the package by
+    scanning the files, manually or using automated tools.  The
+    licenses should use the standard short form names.  See
+    Appendix I for standardized license short forms.  If a
+    Detected License is not one of the standardized license short
+    forms, this field must contain a reference to the full
+    licenses text included in this SPDX file.  If no licenses are
+    detected then the “NotSpecified” short form in Appendix I
+    should be used. If it is unclear if there is a license
+    reference or not, use “Unknown” short form from Appendix
+    I.</p>
+
+  <h5>Intent</h5>
+  <p> Here, we intend to capture all licenses within the package
+    detected by any scanning tools used by the package
+    reviewer.</p>
+  
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="#License"><span about="#DetectedLicense"
+                                rel="rdfs:range" href="#License"/>License</a>.</p>
+
+  <h4>2.2.7.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;DetectedLicense rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
+  </code></pre>
+
+  <h4>2.2.7.2 Tag-Value serialization</h4>
+
+  <p>&lt;short form identifier in Appendix I&gt; |
+    &quot;FullLicense&quot;-N</p>
+
+  <h5>Example</h5>
+  <pre><code>
+      DetectedLicense: LGPL-2.0
+      DetectedLicense: FullLicense-1
+  </code></pre>
+
+</div>
+
+<div class="rdf-property" about="#DeclaredCopyright" typeof="owl:DatatypeProperty">
+  <h3 id="DeclaredCopyright">2.2.8 <span property="rdfs:label">DeclaredCopyright</span></h3>
+  
+  <h5>Purpose</h5>
+  <p> Identify the author(s) and licensor(s) of package, as well
+    as any dates present.  This will be a free form text field
+    extracted from the package information files.</p>
+
+  <h5>Intent</h5>
+  <p> Here, by identifying the actual author(s), some ambiguities,
+    e.g., under which license the author(s) were intending to
+    license the package, may be resolvable by knowing who to
+    contact for clarity.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
+
+  <h4>2.2.8.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;DeclaredCopyright&gt;Copyright 2008-2010 John Smith&lt;/DeclaredCopyright&gt;
+  </code></pre>
+
+  <h4>2.2.8.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      DeclaredCopyright: Copyright 2008-2010 John Smith
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#ShortDesc" typeof="owl:DatatypeProperty">
+  <h3 id="ShortDesc">2.2.9 <span property="rdfs:label">ShortDesc</span></h3>
+  
+  <h5>Purpose</h5>
+  <p> This field is a short description of the package</p>
+
+  <h5>Intent</h5>
+  <p> Here, the intent is to allow a reader/reviewer of this field
+    to quickly understand the function/use of the package, at a
+    high level, without having to parse the source code of the
+    actual package.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
+
+  <h4>2.2.9.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;ShortDesc&gt;gnu c library&lt;/ShortDesc&gt;
+  </code></pre>
+
+  <h4>2.2.9.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      ShortDesc: gnu c library 
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#Description" typeof="owl:DatatypeProperty">
+  <h3 id="Description">2.2.10 <span property="rdfs:label">Description</span></h3>
+
+  <h5>Purpose</h5>
+  <p> This field is a more detailed description of the package.
+    It may be extracted from the packages itself.
+  </p>
+
+  <h5>Intent</h5>
+  <p>Here, the intent is to provide technical readers/reviewers
+    with a detailed technical explanation of the functionality,
+    anticipated use, and anticipated implementation of the
+    package.  This field may also include a description of
+    improvements over prior version of the package, where
+    applicable.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
+
+  <h4>2.2.10.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;Description&gt;…&lt;/Description&gt;
+  </code></pre>
+
+  <h4>2.2.10.2 Tag-Value serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      Description: …
+  </code></pre>
+</div>

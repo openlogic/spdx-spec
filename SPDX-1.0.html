@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <head>
   <title> Software Package Data eXchange (SPDX&#8482;) Specification</title>
   <link rel="stylesheet" href="screen.css" media="screen" type="text/css" />
@@ -134,5 +139,18 @@ for their contributions and assistance.</p>
       represent certain semantic information.</p></li>
   
 </ul>
+
+<div id="Section2" typeof="owl:Ontology">
+  <h1>2. RDF Vocabulary</h1>
+  
+  <p><span property="rdfs:label">Software Package Data Exchange</span> format is based on RDF.  This section defines the vocabulary to descirbe the rights and obligations associated with a software package.</p>
+
+  {{> section_2_1}}
+
+  {{> section_2_2}}
+
+  {{> section_2_3}}
+</div>
+
 </body>
 </html>
