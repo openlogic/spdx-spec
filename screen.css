@@ -1,25 +1,27 @@
-p { font-family: "Arial", sans-serif; 
-    font-size: 10pt; 
-    text-align: justify;}
+p { font-size: 10pt; 
+    text-align: justify; }
 
-h1 { font-family: "Arial", sans-serif;
-     font-size: 14pt;
-     font-weight: bold;}
+h1 { font-size: 14pt;
+     font-weight: bold;, }
 
-h2 { font-family: "Arial", sans-serif; 
-     font-size: 14pt;}
+h2 { font-size: 14pt;}
 
-h3 { font-family: "Arial", sans-serif;
-     font-size: 12pt;
+h3 { font-size: 12pt;
+     font-weight: bold; }
+     
+h4 { font-size: 10pt;
      font-weight: bold; }
 
-h4 { font-family: "Arial", sans-serif;
-     font-size: 10pt;
+h5 { font-size: 8pt;
      font-weight: bold; }
 
-h5 { font-family: "Arial", sans-serif;
-     font-size: 8pt;
-     font-weight: bold; }
+h1, h2, h3 ,h4, h5  { font-family: "Arial", sans-serif;
+                      margin-bottom: 0.4em; }
+
+pre, p, ul { font-family: "Arial", sans-serif;
+             margin-bottom: 0.4em; 
+             margin-top: 0.4em; }
+
 
 .section { margin-left: 3em; }
 
