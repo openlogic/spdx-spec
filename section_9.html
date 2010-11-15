@@ -1,0 +1,65 @@
+<div class="rdf-class" about="#LicenseOrLaterVersion" typeof="owl:Class">
+  <h2 id="LicenseOrLaterVersion">9 <span property="rdfs:label">LicenseOrLaterVersion</span></h2>
+
+  <p>Subclass of <span href="#LicensingInfo"
+    rel="rdfs:subClassOf"><a href="#LicensingInfo">LicensingInfo</a></span></p>
+
+  <p property="rdfs:comment">A LicenseOrLaterVersion is a disjunctive
+  set <a href="#License">Licenses</a>.  It's members are the
+  specified <a href="#BaseLicense">BaseLicense</a>, as well an any
+  future versions of that License.</p>
+
+  <h3>Properties</h3>
+  <ul>
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#BaseLicense" rel="owl:onProperty">BaseLicense</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+  </ul>
+</div>
+
+<div class="rdf-property" about="#BaseLicense" typeof="owl:ObjectProperty">
+  <h3 id="BaseLicense">9.1 <span property="rdfs:label">BaseLicense</span></h3>
+
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">This is a the base license of this set.
+    The full set of members is calculated to include the BaseLicense
+    plus any other licenses which are later versions of this license.</p>
+  
+  <h5>Intent</h5>
+  <p>To provide a set of licenses whose members can change over time
+    as new versions of existing licenses are released.</p>
+
+  <h5>Domain</h5> 
+  <p><a rel="rdfs:domain" href="#LicenseOrLaterVersion">LicenseOrLaterVersion</a></p>
+
+  <h5>Range</h5> 
+  <p>The value is <span rel="rdfs:range"
+    href="#License"/><a href="#License">License</a>.</p>
+
+  <h4>2.1.1.1 RDF/XML serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+&lt;LicenseOrLaterVersion&gt;
+  &lt;BaseLicense rdf:about="License:GPLv2"&gt;
+&lt;/LicenseOrLaterVersion&gt;
+  </code></pre>
+
+  <h4>2.1.1.2 Tag-Value serialization</h4>
+
+  <p></p>
+
+  <pre><code class="tag-value grammar">
+licenseorlaterversion = "LicenseOrLaterVersion(" *WSP licensinginfoid *WSP ")"
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+LicenseOrLaterVersion(GPLv2)
+  </code></pre>
+</div>
+
+

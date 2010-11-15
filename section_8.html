@@ -1,0 +1,71 @@
+<div class="rdf-class" about="#ConjunctiveLicenseSet" typeof="owl:Class">
+  <h2 id="ConjunctiveLicenseSet">8 <span property="rdfs:label">ConjunctiveLicenseSet</span></h2>
+
+  <p>Subclass of <span href="#LicensingInfo"
+    rel="rdfs:subClassOf"><a href="#LicensingInfo">LicensingInfo</a></span></p>
+
+  <p property="rdfs:comment">A ConjunctiveLicenseSet is a
+  set <a href="#License">Licenses</a>,
+  or <a href="#LicensingInfo">LicensingInfo</a>, that any one of which
+  constitues the complete terms and conditions of coping
+  a <a href="#File">File</a> or <a href="#Package">Package</a>.  The
+  copier/user of a File or Package may choose, at their disgression,
+  which License in a disjuntive set.</p>
+  
+  <h3>Properties</h3>
+  <ul>
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Licenses" rel="owl:onProperty">Licenses</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+  </ul>
+</div>
+
+<div class="rdf-property" about="#Licenses" typeof="owl:DatatypeProperty">
+  <h3 id="Licenses">8.1 <span property="rdfs:label">Licenses</span></h3>
+
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">This is a list of members of this set.</p>
+  
+  <h5>Intent</h5>
+  <p>To provide a list of the members of this conjunctive set.</p>
+
+  <h5>Domain</h5> 
+  <p><a rel="rdfs:domain" href="#ConjunctiveLicenseSet">ConjunctiveLicenseSet</a></p>
+
+  <h5>Range</h5> 
+  <p>The value is <span rel="rdfs:range"
+    href="rdf:List"/><a href="http://www.w3.org/TR/rdf-schema/#ch_list">rdf:List</a>
+    of <a href="#LicensingInfo">LicenseInfo</a> resources.</p>
+
+  <h4>2.1.1.1 RDF/XML serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+&lt;ConjunctiveLicenseSet&gt;
+  &lt;Licenses rdf:parseType="Collection"&gt;
+    &lt;rdf:Description rdf:about="license:GPL" /&gt;
+    &lt;rdf:Description rdf:about="license:BSD" /&gt;
+  &lt;/Licenses&gt;
+&lt;/ConjunctiveLicenseSet&gt;
+  </code></pre>
+
+  <h4>2.1.1.2 Tag-Value serialization</h4>
+
+  <p></p>
+
+  <pre><code class="tag-value grammar">
+conjunctivelicenseset = "ConjunctiveLicenseSet(" *WSP [setmembership] *WSP ")"
+setmembership         = licensinginfoid *[*WSP "," *WSP licensinginfoid]
+licensinginfoid       = 1*(ALPHA / DIGIT / "-" / "_" / ".")
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+ConjunctiveLicenseSet(GPLv2, BSD)
+  </code></pre>
+</div>
+
+
