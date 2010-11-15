@@ -6,8 +6,8 @@ require 'mustache'
 CLEAN.include 'ontology.rdf'
 
 desc "Translate SPDX ontology from N3 into RDF/XML"
-file 'spdx-1.0-ont.rdf' => 'spdx-complete-1.0.html' do |t|
-  graph = File.open('spdx-complete-1.0.html'){|f| RdfContext::RdfaParser.new.parse(f, 'http://spdx.org/spec')}
+file 'spdx-1.0-ont.rdf' => 'spdx-1.0.html' do |t|
+  graph = File.open('spdx-1.0.html'){|f| RdfContext::RdfaParser.new.parse(f, 'http://spdx.org/spec')}
 
   File.open(t.name, 'w'){|f| graph.serialize(:format => :rdfxml, :io => f)}
 end
