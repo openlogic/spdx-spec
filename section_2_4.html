@@ -1,0 +1,282 @@
+<div class="rdf-class" about="#File" typeof="owl:Class">
+  <h2 id="File">2.4 <span property="rdfs:label">File</span></h2>
+
+  <p property="rdfs:comment">A file is a series of related octets that
+  will be placed in a single file when the package is installed or
+  unpacked.  One File resources should be created for each file in a
+  Package</p>
+
+  <h3>Properties</h3>
+  <ul>
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Name" rel="owl:onProperty">Name</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Type" rel="owl:onProperty">Type</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#License" rel="owl:onProperty">License</a>
+        <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Copyright" rel="owl:onProperty">Copyright</a>
+        <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#SHA1" rel="owl:onProperty">SHA1</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+  </ul>
+</div>
+
+<div class="rdf-property" about="#Name" typeof="owl:DatatypeProperty">
+  <h3 id="Name">2.4.1 <span property="rdfs:label">Name</span></h3>
+  
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">Identify path to file that corresponds to this information.</p>
+  
+  <h5>Intent</h5>
+  <p>Here, any confusion over where a file needs to hierarchically be placed for proper functionality is mitigated.</p>
+  
+
+  <h5>Domain</h5> 
+  <p><a rel="rdfs:domain" href="#File">File</a></p>
+
+  <h5>Range</h5> 
+  <p>The value is a
+    relative <a href="http://www.w3.org/TR/xmlschema-2/#anyURI"><span about="#Name"
+                                                                      rel="rdfs:range" href="xsd:anURI"/>file URL</a>.  The package
+    should be treated the root directory.  This means all file Names
+    start with a "/" character.</p>
+
+  <h4>2.1.1.1 RDF/XML serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      &lt;Name&gt;/var/foo.c&lt;/Name&gt;
+  </code></pre>
+
+  <h4>2.1.1.2 Tag-Value serialization</h4>
+
+  <p></p>
+
+  <pre><code class="tag-value grammar">
+      filename = "name:" *WSP "/" *VUNICODECHAR
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+      name: /bar/foo.c
+  </code></pre>
+</div>
+
+
+<div class="rdf-property" about="#Type" typeof="owl:DatatypeProperty">
+  <h3 id="Name">2.4.2 <span property="rdfs:label">Type</span></h3>
+  
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">This field Identifies common types of
+    files where there may be different treatment of copyright and
+    license information: source, binary, machine generated, etc.</p>
+
+  <h5>Intent</h5>
+  <p>Here, this field is basically the "best available" format field,
+    from a developer perspective.</p>
+
+  <h5>Domain</h5> 
+  <p><a rel="rdfs:domain" href="#File">File</a></p>
+
+  <h5>Range</h5> 
+  <p>The value is on of the
+    following <a href="http://www.w3.org/TR/xmlschema-2/#string">
+    <span about="#Type" rel="rdfs:range"
+    href="xsd:string"/>strings</a>.  Values of this property are case
+    insensitive.</p>
+
+  <ul>
+    <li>source</li>
+    <li>binary</li>
+    <li>archive</li>
+    <li>other</li>
+  </ul>
+
+  <h4>2.1.1.1 RDF/XML serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+      &lt;Type&gt;source&lt;/Type&gt;
+  </code></pre>
+
+  <h4>2.1.1.2 Tag-Value serialization</h4>
+
+  <pre><code class="tag-value grammar">
+      filetype = "type:" *WSP ( "source" / "binary" / "archive" / "other" )
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+      type: source
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#License" typeof="owl:DatatypeProperty">
+  <h3 id="Name">2.4.3 <span property="rdfs:label">License</span></h3>
+  
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">This field contains the license governing
+    the file if it is known. It will either be explicit from the file
+    header or other information found in the file’s source code or the
+    default from the package. If no license information is found it
+    should be denoted as “NotSpecified”. If no license information can
+    be determined, the license is denoted as “Unknown”. The licenses
+    should use the standard short form names. See Appendix I for
+    standardized license short forms. If a Detected License is not one
+    of the standardized license short forms, this field must contain a
+    reference to the full licenses text included in this SPDX file in
+    section 4. If more than one license is detected in the file, then
+    each should be listed. If any of the detected licenses offer the
+    recipient a choice of licenses, then each of the choices will be
+    declared as a “disjunctive” license.</p>
+
+  <h5>Intent</h5>
+  <p>Here, the intent is to have a uniform method to refer to
+    each license with specificity to eliminate any license
+    confusion. For example, the 3 clause BSD would have a different
+    license identifier then the 4 clause BSD.</p>
+  
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#File">File</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="#License"><span about="#License"
+                                rel="rdfs:range" href="#License"/>License</a>.</p>
+
+  <h4>2.2.6.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;License rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
+  </code></pre>
+
+  <h4>2.2.6.2 Tag-Value serialization</h4>
+
+  <p>&lt;short form identifier in Appendix I&gt; |
+    &quot;FullLicense&quot;-N</p>
+
+  <pre><code class="tag-value grammar">
+      filelicense    = "License:" *WSP ( anyURI / spdxlicenseid / locallicenseid )
+      spdxlicenseid  = *VCHAR
+      locallicenseid = *locallicenseid
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+      License: LGPL-2.0
+      License: FullLicense-1
+  </code></pre>
+</div>
+
+<div class="rdf-property" about="#Copyright" typeof="owl:DatatypeProperty">
+  <h3 id="Name">2.4.4 <span property="rdfs:label">Copyright</span></h3>
+  
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">This field identifies the copyright
+    holders and associated dates of their copyright that are in this
+    specific file if known. Note: Copyright holder identifier may have
+    developer names, companies, email addresses, and may be specified
+    in international character sets. This will be a freeform text
+    field extracted from the package information files.</p>
+
+  <h5>Intent</h5>
+  <p>Here, similar to identifying the actual author(s) (above), by
+    identifying the copyright holder(s), the copyright holder(s) may
+    be contacted if licensing issues exist with the package, or to
+    request distribution under another license more compatible with a
+    
+    <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#File">File</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#Type"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a>.
+
+    <h4>2.2.6.1 RDF/XML serialization</h4>
+    
+    <h5>Example</h5>
+    <pre><code>
+        &lt;Copyright&gt;Copyright: Copyright 2008-2010 John Smith&lt;/Copyright&gt;
+    </code></pre>
+
+    <h4>2.2.6.2 Tag-Value serialization</h4>
+
+    <pre><code class="tag-value grammar">
+        filecopyright    = "Copyright:" *WSP *VUNICODECHAR
+    </code></pre>
+
+    <h5>Example</h5>
+    <pre><code>
+        Copyright: Copyright 2008-2010 John Smith
+    </code></pre>
+</div>
+
+<div class="rdf-property" about="#SHA1" typeof="owl:DatatypeProperty">
+  <h3 id="SHA1">2.4.5 <span property="rdfs:label">SHA1</span></h3>
+
+  <h5>Purpose</h5>
+  <p property="rdfs:comment">Provide a unique identifier to match
+    analysis information on specific files between packages.</p>
+
+  <h5>Intent</h5>
+  <p>Here, by providing an unique identifier of each file, confusion
+    over which version/modification of a specific file the
+    Identification Information references should be eliminated.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#File">File</a></p>
+
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SHA1"
+                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
+    hexadecimal encoded SHA1 hash of the package file.  The length
+    of this values is 40 characters</p>
+
+  <h4>2.2.3.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+      &lt;SHA1&gt;d6a770ba38583ed4bb4525bd96e50461655d2758&lt;/SHA1&gt;
+  </code></pre>
+
+  <h4>2.2.3.2 Tag-Value serialization</h4>
+
+  <pre><code class="tag-value grammar">
+      sha1    = "SHA1:" *WSP 40 * HEXDIG
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+      SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
+  </code></pre>
+</div>
+
+
+
