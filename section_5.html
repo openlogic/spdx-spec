@@ -1,5 +1,5 @@
 <div class="rdf-class" about="#File" typeof="owl:Class">
-  <h2 id="File">2.4 <span property="rdfs:label">File</span></h2>
+  <h2 id="File">5 <span property="rdfs:label">File</span></h2>
 
   <p property="rdfs:comment">A file is a series of related octets that
   will be placed in a single file when the package is installed or
@@ -46,7 +46,7 @@
 </div>
 
 <div class="rdf-property" about="#Name" typeof="owl:DatatypeProperty">
-  <h3 id="Name">2.4.1 <span property="rdfs:label">Name</span></h3>
+  <h3 id="Name">5.1 <span property="rdfs:label">Name</span></h3>
   
   <h5>Purpose</h5>
   <p property="rdfs:comment">Identify path to file that corresponds to this information.</p>
@@ -88,7 +88,7 @@
 
 
 <div class="rdf-property" about="#Type" typeof="owl:DatatypeProperty">
-  <h3 id="Name">2.4.2 <span property="rdfs:label">Type</span></h3>
+  <h3 id="Name">5.2 <span property="rdfs:label">Type</span></h3>
   
   <h5>Purpose</h5>
   <p property="rdfs:comment">This field Identifies common types of
@@ -136,7 +136,7 @@
 </div>
 
 <div class="rdf-property" about="#License" typeof="owl:DatatypeProperty">
-  <h3 id="Name">2.4.3 <span property="rdfs:label">License</span></h3>
+  <h3 id="Name">5.3 <span property="rdfs:label">License</span></h3>
   
   <h5>Purpose</h5>
   <p property="rdfs:comment">This field contains the license governing
@@ -168,14 +168,14 @@
     an <a href="#License"><span about="#License"
                                 rel="rdfs:range" href="#License"/>License</a>.</p>
 
-  <h4>2.2.6.1 RDF/XML serialization</h4>
+  <h4>5.6.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;License rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
   </code></pre>
 
-  <h4>2.2.6.2 Tag-Value serialization</h4>
+  <h4>5.6.2 Tag-Value serialization</h4>
 
   <p>&lt;short form identifier in Appendix I&gt; |
     &quot;FullLicense&quot;-N</p>
@@ -194,7 +194,7 @@
 </div>
 
 <div class="rdf-property" about="#Copyright" typeof="owl:DatatypeProperty">
-  <h3 id="Name">2.4.4 <span property="rdfs:label">Copyright</span></h3>
+  <h3 id="Name">5.4 <span property="rdfs:label">Copyright</span></h3>
   
   <h5>Purpose</h5>
   <p property="rdfs:comment">This field identifies the copyright
@@ -218,14 +218,14 @@
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#Type"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.
 
-    <h4>2.2.6.1 RDF/XML serialization</h4>
+    <h4>5.6.1 RDF/XML serialization</h4>
     
     <h5>Example</h5>
     <pre><code>
         &lt;Copyright&gt;Copyright: Copyright 2008-2010 John Smith&lt;/Copyright&gt;
     </code></pre>
 
-    <h4>2.2.6.2 Tag-Value serialization</h4>
+    <h4>5.6.2 Tag-Value serialization</h4>
 
     <pre><code class="tag-value grammar">
         filecopyright    = "Copyright:" *WSP *VUNICODECHAR
@@ -238,7 +238,7 @@
 </div>
 
 <div class="rdf-property" about="#SHA1" typeof="owl:DatatypeProperty">
-  <h3 id="SHA1">2.4.5 <span property="rdfs:label">SHA1</span></h3>
+  <h3 id="SHA1">5.5 <span property="rdfs:label">SHA1</span></h3>
 
   <h5>Purpose</h5>
   <p property="rdfs:comment">Provide a unique identifier to match
@@ -259,14 +259,14 @@
     hexadecimal encoded SHA1 hash of the package file.  The length
     of this values is 40 characters</p>
 
-  <h4>2.2.3.1 RDF/XML serialization</h4>
+  <h4>5.3.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;SHA1&gt;d6a770ba38583ed4bb4525bd96e50461655d2758&lt;/SHA1&gt;
   </code></pre>
 
-  <h4>2.2.3.2 Tag-Value serialization</h4>
+  <h4>5.3.2 Tag-Value serialization</h4>
 
   <pre><code class="tag-value grammar">
       sha1    = "SHA1:" *WSP 40 * HEXDIG

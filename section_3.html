@@ -1,5 +1,5 @@
 <div class="rdf-class" about="#Package" typeof="owl:Class">
-  <h2 id="Package">2.2 <span property="rdfs:label">Package</span></h2>
+  <h2 id="Package">3 <span property="rdfs:label">Package</span></h2>
   
   <p property="rdfs:comment">A package is an artifact of a software development effort.  It
     is generally a snapshot of the source code at a particular point
@@ -83,7 +83,7 @@
 </div>
 
 <div class="rdf-property" about="#DeclaredName" typeof="owl:DatatypeProperty">
-  <h3 id="DeclaredName">2.2.1 <span property="rdfs:label">DeclaredName</span></h3>
+  <h3 id="DeclaredName">3.1 <span property="rdfs:label">DeclaredName</span></h3>
 
   <h5>Purpose</h5>
   <p> Full name of the package as given by originator with
@@ -104,14 +104,14 @@
     the full name, including version information if known, of the
     package.</p>
   
-  <h4>2.2.1.1 RDF/XML serialization</h4>
+  <h4>3.1.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;DeclaredName&gt;glibc 2.11.1lt;/DeclaredName&gt;
   </code></pre>
 
-  <h4>2.2.1.2 Tag-Value serialization</h4>
+  <h4>3.1.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
@@ -120,7 +120,7 @@
 </div>
 
 <div class="rdf-property" about="#MachineName" typeof="owl:DatatypeProperty">
-  <h3 id="MachineName">2.2.2 <span property="rdfs:label">MachineName</span></h3>
+  <h3 id="MachineName">3.2 <span property="rdfs:label">MachineName</span></h3>
   
   <h5>Purpose</h5>
   <p> File name of package instance.</p>
@@ -141,14 +141,14 @@
     packaging and compression methods used.</p>
   
 
-  <h4>2.2.2.1 RDF/XML serialization</h4>
+  <h4>3.2.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;MachineName&gt;glibc-2.11.1.tar.gz&lt;/MachineName&gt;
   </code></pre>
 
-  <h4>2.2.2.2 Tag-Value serialization</h4>
+  <h4>3.2.2 Tag-Value serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
@@ -157,7 +157,7 @@
 </div>
 
 <div class="rdf-property" about="#SHA1" typeof="owl:DatatypeProperty">
-  <h3 id="SHA1">2.2.3 <span property="rdfs:label">SHA1</span></h3>
+  <h3 id="SHA1">3.3 <span property="rdfs:label">SHA1</span></h3>
   
   <h5>Purpose</h5>
   <p> This field provides an
@@ -183,14 +183,14 @@
     hexadecimal encoded SHA1 hash of the package file.  The length
     of this values is 40 characters</p>
 
-  <h4>2.2.3.1 RDF/XML serialization</h4>
+  <h4>3.3.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;SHA1&gt;d6a770ba38583ed4bb4525bd96e50461655d2758&lt;/SHA1&gt;
   </code></pre>
 
-  <h4>2.2.3.2 Tag-Value serialization</h4>
+  <h4>3.3.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
@@ -200,7 +200,7 @@
 </div>
 
 <div class="rdf-property" about="#DownloadURL" typeof="owl:DatatypeProperty">
-  <h3 id="DownloadURL">2.2.4 <span property="rdfs:label">DownloadURL</span></h3>
+  <h3 id="DownloadURL">3.4 <span property="rdfs:label">DownloadURL</span></h3>
   
   <h5>Purpose</h5>
   <p> This field identifies the download Universal Resource
@@ -223,14 +223,14 @@
     should be the publicly reachable location from which the package
     was acquired.</p>
 
-  <h4>2.2.4.1 RDF/XML serialization</h4>
+  <h4>3.4.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;DownloadURL&gt;http://ftp.gnu.org/gnu/glibc/&lt;/DownloadURL&gt;
   </code></pre>
 
-  <h4>2.2.4.2 Tag-Value serialization</h4>
+  <h4>3.4.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
@@ -239,7 +239,7 @@
 </div>
 
 <div class="rdf-property" about="#SourceInfo" typeof="owl:DatatypeProperty">
-  <h3 id="SourceInfo">2.2.5 <span property="rdfs:label">SourceInfo</span></h3>
+  <h3 id="SourceInfo">3.5 <span property="rdfs:label">SourceInfo</span></h3>
 
   <h5>Purpose</h5>
   <p> This is a free form text field that contains additional
@@ -262,14 +262,14 @@
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SourceInfo"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
 
-  <h4>2.2.5.1 RDF/XML serialization</h4>
+  <h4>3.5.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;SourceInfo&gt;This package was acquired from the standard location for glibc.&lt;/SourceInfo&gt;
   </code></pre>
 
-  <h4>2.2.5.2 Tag-Value serialization</h4>
+  <h4>3.5.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
@@ -278,7 +278,7 @@
 </div>
 
 <div class="rdf-property" about="#DeclaredLicense" typeof="owl:ObjectProperty">
-  <h3 id="DeclaredLicense">2.2.6 <span property="rdfs:label">DeclaredLicense</span></h3>
+  <h3 id="DeclaredLicense">3.6 <span property="rdfs:label">DeclaredLicense</span></h3>
 
   <h5>Purpose</h5>
   <p> This field lists the licenses that have been declared by the
@@ -310,14 +310,14 @@
     an <a href="#License"><span about="#DeclaredLicense"
                                 rel="rdfs:range" href="#License"/>License</a>.</p>
 
-  <h4>2.2.6.1 RDF/XML serialization</h4>
+  <h4>3.6.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;DeclaredLicense rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
   </code></pre>
 
-  <h4>2.2.6.2 Tag-Value serialization</h4>
+  <h4>3.6.2 Tag-Value serialization</h4>
 
   <p>&lt;short form identifier in Appendix I&gt; |
     &quot;FullLicense&quot;-N</p>
@@ -330,7 +330,7 @@
 </div>
 
 <div class="rdf-property" about="#DetectedLicense" typeof="owl:ObjectProperty">
-  <h3 id="DetectedLicense">2.2.7 <span property="rdfs:label">DetectedLicense</span></h3>
+  <h3 id="DetectedLicense">3.7 <span property="rdfs:label">DetectedLicense</span></h3>
 
   <h5>Purpose</h5>
   <p> This field list of all licenses found in the package by
@@ -358,14 +358,14 @@
     an <a href="#License"><span about="#DetectedLicense"
                                 rel="rdfs:range" href="#License"/>License</a>.</p>
 
-  <h4>2.2.7.1 RDF/XML serialization</h4>
+  <h4>3.7.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;DetectedLicense rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
   </code></pre>
 
-  <h4>2.2.7.2 Tag-Value serialization</h4>
+  <h4>3.7.2 Tag-Value serialization</h4>
 
   <p>&lt;short form identifier in Appendix I&gt; |
     &quot;FullLicense&quot;-N</p>
@@ -379,7 +379,7 @@
 </div>
 
 <div class="rdf-property" about="#DeclaredCopyright" typeof="owl:DatatypeProperty">
-  <h3 id="DeclaredCopyright">2.2.8 <span property="rdfs:label">DeclaredCopyright</span></h3>
+  <h3 id="DeclaredCopyright">3.8 <span property="rdfs:label">DeclaredCopyright</span></h3>
   
   <h5>Purpose</h5>
   <p> Identify the author(s) and licensor(s) of package, as well
@@ -400,14 +400,14 @@
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
 
-  <h4>2.2.8.1 RDF/XML serialization</h4>
+  <h4>3.8.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;DeclaredCopyright&gt;Copyright 2008-2010 John Smith&lt;/DeclaredCopyright&gt;
   </code></pre>
 
-  <h4>2.2.8.2 Tag-Value serialization</h4>
+  <h4>3.8.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
@@ -416,7 +416,7 @@
 </div>
 
 <div class="rdf-property" about="#ShortDesc" typeof="owl:DatatypeProperty">
-  <h3 id="ShortDesc">2.2.9 <span property="rdfs:label">ShortDesc</span></h3>
+  <h3 id="ShortDesc">3.9 <span property="rdfs:label">ShortDesc</span></h3>
   
   <h5>Purpose</h5>
   <p> This field is a short description of the package</p>
@@ -435,14 +435,14 @@
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
 
-  <h4>2.2.9.1 RDF/XML serialization</h4>
+  <h4>3.9.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;ShortDesc&gt;gnu c library&lt;/ShortDesc&gt;
   </code></pre>
 
-  <h4>2.2.9.2 Tag-Value serialization</h4>
+  <h4>3.9.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
@@ -451,7 +451,7 @@
 </div>
 
 <div class="rdf-property" about="#Description" typeof="owl:DatatypeProperty">
-  <h3 id="Description">2.2.10 <span property="rdfs:label">Description</span></h3>
+  <h3 id="Description">3.10 <span property="rdfs:label">Description</span></h3>
 
   <h5>Purpose</h5>
   <p> This field is a more detailed description of the package.
@@ -474,14 +474,14 @@
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
 
-  <h4>2.2.10.1 RDF/XML serialization</h4>
+  <h4>3.10.1 RDF/XML serialization</h4>
   
   <h5>Example</h5>
   <pre><code>
       &lt;Description&gt;…&lt;/Description&gt;
   </code></pre>
 
-  <h4>2.2.10.2 Tag-Value serialization</h4>
+  <h4>3.10.2 Tag-Value serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
