@@ -15,13 +15,12 @@ h4 { font-size: 10pt;
 h5 { font-size: 8pt;
      font-weight: bold; }
 
-h1, h2, h3 ,h4, h5  { font-family: "Arial", sans-serif;
-                      margin-bottom: 0.4em; }
+h1, h2, h3 ,h4, h5  { margin-bottom: 0.4em; }
 
-pre, p, ul { font-family: "Arial", sans-serif;
-             margin-bottom: 0.4em; 
+pre, p, ul { margin-bottom: 0.4em; 
              margin-top: 0.4em; }
 
+body { font-family: "Arial", sans-serif; }
 
 .section { margin-left: 3em; }
 
