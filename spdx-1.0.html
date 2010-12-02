@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<head>
+  <title> Software Package Data eXchange (SPDX&#8482;) Specification</title>
+  <link rel="stylesheet" href="screen.css" media="screen" type="text/css" />
+</head>
+<body typeof="owl:Ontology">
+<h1 property="rdfs:label">Software Package Data eXchange (SPDX&#8482;)</h1>
+<h3>Specification</h3>
+<h3>Version: DRAFT</h3>
+
+<h4>Disclaimer</h4>
+<p>The following is a draft of the Software Package Data eXchange
+(SDPX) Specification.  This draft is provided as a public courtesy to
+illustrate the progress of the project.  Please be advised that in
+addition to the licensing terms recited below, no reliance should be
+made regarding this draft, including any reliance that this draft
+represents any particular standard for any particular purpose.  When
+the official SPDX specification is released, it will be clearly be
+labeled &quot;official&quot;, and its purpose and recommended use will
+be clearly stated at that time.</p>
+
+<p>Copyright © 2010 Linux Foundation and its Contributors. All other
+rights are expressly reserved.</p>
+
+<p>With thanks to Andrew Back, Bill Schineller, Bruno Cornec, Ciaran
+Farrell, Daniel German, Debra McGlade, Eran Strod, Eric Thomas,
+Esteban Rockett, Gary O'Neall, Guillaume Rousseau, Jack Manbeck, Jeff
+Luszcz, John Ellis, Kate Stewart, Kim Weins, Mark Gisi, Marshall Clow,
+Martin Michlmayr , Martin von Willebrand, Michael J. Herzog, Michel
+Ruffin, Phil Robb, Philip Odence, Philip Koltun, Scott K Peterson,
+Shane Coughlan, Stuart Hughes, Tom Callaway, and Thomas F. Incorvia
+for their contributions and assistance.</p>
+
+<p>Licensed under the Creative Commons Attribution License 3.0
+(reproduced in Appendix III herein).</p>
+s
+<h2 id="section1">1 Introduction</h2>
+
+<p>This document defines
+  an <a href="http://www.w3.org/standards/techs/rdf#w3c_all">RDF</a>
+  vocabulary and related file formats to allow copyright, licensing
+  and component information related to software packages.  The aim of
+  this abstract model and the related interchange formats is to
+  facilitate license and other policy compliance.
+
+<p>Companies and organizations are widely using and reusing open
+  source and other software packages. Compliance with the associated
+  licenses requires a set of analysis activities and due diligence
+  that each Organization performs independently.  These activities
+  include a manual and/or automated scan of software and
+  identification of associated licenses followed by manual
+  verification.</p>
+
+<p>Software development teams across the globe use the same open
+  source packages, but little infrastructure exists to facilitate
+  collaboration on the analysis or share the results of these analysis
+  activities.  As a result, many groups are performing the same work
+  leading to duplicated efforts and redundant information being
+  created.  This data description and exchange mechanism will allow
+  information about software packages and related content to be
+  collected and shared in a common format with the goal of saving time
+  and improving data accuracy.</p>
+    
+<h3 id="section1.1">1.1 Structure of this document</h3>
+
+<p>This document divided into 4 major sections.  The first describes
+  an abstract model for describing packages (including the files a
+  package contains) and the copyright ownership and licensing of those
+  packages and files.  The second section describes a simple text
+  based format for representing instances the abstract model described
+  above for particular packages.  The third section describes an
+  RDF/XML format for representing instances the abstract model
+  described above for particular packages.  The forth section
+  describes the a registry of licenses maintained by the SPDX group
+  which contains many of the common open source licenses in use today.</p>
+
+<h2 id="section2">2 Ontology</h2>
+
+<p>This section defines the abstract model underlying SPDX in terms of
+  RDF.</p.
+
+<h3>2.1 Classes</h3>
+
+<div class="rdf-class" about="#SPDXDoc" typeof="owl:Class">
+  <h4 id="SPDXDoc">2.1.1 <span property="rdfs:label">SPDXDoc</span></h4>
+  
+  <p property="rdfs:comment">An SpdxDoc is a collection of license and
+    copyright information regarding one or more packages and the files
+    contained in those packages.</p>
+  
+  <h3>Properties</h3>
+  <ul>
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#SPDXVersion" rel="owl:onProperty">SPDXVersion</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+    
+    <li rel="rdfs:subClassOf"> 
+      <p typeof="owl:Restriction">
+        <a href="#CreatedBy" rel="owl:onProperty">CreatedBy</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:minCardinality">1</span>) or more.</p>
+    </li>
+
+    <li rel="rdfs:subClassOf"> 
+      <p typeof="owl:Restriction">
+        <a href="#Created" rel="owl:onProperty">Created</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).</p>
+    </li>
+
+    <li rel="rdfs:subClassOf"> 
+      <p typeof="owl:Restriction">
+        <a href="#ReviewedBy" rel="owl:onProperty">ReviewedBy</a>
+        <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>) or more.</p>
+    </li>
+
+  </ul>
+
+</div> <!-- SPDXDoc -->
+
+<div class="rdf-class" about="#Package" typeof="owl:Class">
+  <h4 id="Package">2.1.2 <span property="rdfs:label">Package</span></h4>
+  
+  <p property="rdfs:comment">A package is an artifact of a software
+    development effort.  It is generally a snapshot of the source code
+    at a particular point in time or an mechanism to be used to
+    install the software. A package can contain sub-packages, but the
+    overview is a reference to the entire contents of the package
+    listed.</p>
+
+  <h3>Properties</h3>
+  <ul>
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#DeclaredName" rel="owl:onProperty">DelcaredName</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#MachineName" rel="owl:onProperty">MachineName</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#SHA1" rel="owl:onProperty">SHA1</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#DownloadURL" rel="owl:onProperty">DownloadURL</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#SourceInfo" rel="owl:onProperty">SourceInfo</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <a href="#DeclaredLicense">DelcaredLicense</a>
+        <br/>Cardinality: Optional, zero (0) or more.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <a href="#DetectedLicense">DetectedLicense</a>
+        <br/>Cardinality: Optional, zero (0) or more.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <a href="#DeclaredCopyright">DeclaredCopyright</a>
+        <br/>Cardinality: Optional, zero (0) or more.
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#ShortDesc" rel="owl:onProperty">ShortDesc</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Description" rel="owl:onProperty">Description</a>
+        <br/>Cardinality: Optional, one (<span property="owl:maxCardinality">1</span>).
+      </p>
+    </li>
+
+  </ul>
+</div> <!-- Package -->
+
+<h3>2.2 Properties</h3>
+
+<div class="rdf-property" about="#SPDXVersion" typeof="owl:DatatypeProperty">
+  <h4 id="SPDXVersion">2.2.1 <span property="rdfs:label">SPDXVersion</span></h4>
+  <p property="rdfs:comment"> Provide a reference number that can be
+    used to understand how to parse and interpret the rest of the
+    file.  It will enable both future changes to the specification and
+    to support backward compatibility.</p>
+
+  <p>The version number consists of a Major and Minor version
+    indicator.  The Major field will be incremented when potentially
+    incompatible changes are made to the specification.  The Minor
+    field will be incremented when any change is made that does not
+    effect backwards compatiabiliy.</p>
+
+  <h5>Domain</h5> 
+  <p><a rel="rdfs:domain" href="#SPDXDoc">SPDXDoc</a></p>
+
+  <h5>Range</h5> 
+  <p>The value of this property is fixed.  The value of the
+    SPDXVersion property for all datasets encoded in this verison
+    must be:
+    <code>SPDX-1.0</code></p>
+</div> <!-- SPDXVersion -->
+
+
+<div class="rdf-property" about="#CreatedBy" typeof="owl:DatatypeProperty">
+  <h4 id="CreatedBy">2.2.2 <span property="rdfs:label">CreatedBy</span></h4>
+
+  <p property="rdfs:comment">Identify how the meta data information in the
+    SPDX file was generated. If it was generated manually, it
+    should indicate – who did the analysis.  If the information in
+    the file was generated with a software tool, the file should
+    indicate an identifier and version for that tool.
+  </p>
+  
+  <h5>Domain</h5>
+  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>  
+
+  <h5>Range</h5>
+  
+  <p>The value of created is an <span about="#Created"
+  rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  The format of
+  this string may indicate a person, tool or organization.</p>
+
+  <pre><code class="grammar">
+      company    = "Company:" *WSP name *WSP ["(" email ")"]
+      tool       = "Tool:" *WSP name
+      person     = "Person:" *WSP name *WSP ["(" email ")"]
+      name       = *VUNICODECHAR
+      email      = 1*(ALPHA / DIGIT / "." / "-" / "_") "@" domainpart 1*("." domainpart)
+      domainpart = 1*(ALPHA / DIGIT / "-" / "_") 
+  </code></pre>
+
+  <p>For example, "Person: John Doe (john.doe@example.com)" or "Company: My Company, Inc" (depending on which is accountable) or "Tool: spdx-gen 1.0".</p>
+</div> <!-- CreatedBy -->
+
+<div class="rdf-property" about="#Created" typeof="owl:DatatypeProperty">
+  <h4 id="Created">2.2.3 <span property="rdfs:label">Created</span></h4>
+
+  <p>Identify when the analysis was done and the SPDX file was
+    originally created.  This is to be specified according to combined
+    data and time in UTC format as specified in ISO 8601 standard.</p>
+
+  <h5>Domain</h5>
+  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
+
+  <h5>Range</h5>
+  <p><a href="http://www.w3.org/TR/xmlschema-2/#dateTime"><span about="#Created" rel="rdfs:range" href="xsd:dateTime"/>xsd:dateTime</a></p>
+
+  <h5>Refines</h5>
+  <p><a rel="rdfs:subPropertyOf" href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></p>
+</div> <!-- Created -->
+
+<div class="rdf-property" about="#ReviewedBy" typeof="owl:DatatypeProperty">
+  <h4 id="ReviewedBy">2.2.4 <span property="rdfs:label">ReviewedBy</span></h4>
+
+  <p property="rdfs:comment">A person who has reviewed the SPDX file
+    and the date of that review.  Note that there is no requirement
+    for a particular reviewer to add their name to the file, however
+    it may be important for participants in the software supply chain
+    to validate whether upstream providers have reviewed the SPDX
+    file.  This can be considered as an equivalent to "signed off" or
+    "reviewed by".  Additional reviewers can be added after the
+    original version of the SPDX file is created and can occur as an
+    append to the original file.
+  </p>
+  
+  <h5>Domain</h5> 
+  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
+
+  <h5>Range</h5>
+  
+  <p>The value of created is an <span about="#Created"
+  rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  The format of
+  this string indicates a person and a timestamp</p>
+
+  <pre><code class="grammar">
+      review = "person *WSP timestamp"
+  </code></pre>
+
+  <p>For example, "Person: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z"</p>
+</div> <!-- ReviewedBy -->
+
+<div class="rdf-property" about="#DeclaredName" typeof="owl:DatatypeProperty">
+  <h4 id="DeclaredName">2.2.5 <span property="rdfs:label">DeclaredName</span></h4>
+
+  <p> Full name of the package as given by originator with version information
+    if available.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredName"
+    rel="rdfs:range" href="xsd:string"/>xsd:string</a> that contains
+    the full name, including version information if known, of the
+    package.</p>
+</div> <!-- DeclaredName -->
+
+<div class="rdf-property" about="#MachineName" typeof="owl:DatatypeProperty">
+  <h4 id="MachineName">2.2.6 <span property="rdfs:label">MachineName</span></h4>
+  
+  <p> File name of package instance.</p>
+  
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#MachineName"
+    rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
+    machine generated file name and version typically includes the
+    packaging and compression methods used.</p>
+</div> <!-- MachineName -->
+
+<div class="rdf-property" about="#SHA1" typeof="owl:DatatypeProperty">
+  <h4 id="SHA1">2.2.7 <span property="rdfs:label">SHA1</span></h4>
+  
+  <p> This field provides an independently reproducible mechanism that
+    permits unique identification of a specific package that
+    correlates to the data in this SPDX file. This identifier enables
+    a recipient to determine if any file in the original package has
+    been changed.  The SHA1 unique identifier mechanism will be
+    used.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a>
+  or <a rel="rdfs:domain" href="#File">File</a></p>
+
+  <h5>Range</h5>
+  <p>The value is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SHA1"
+    rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
+    hexadecimal encoded SHA1 hash of the package file.  The length of
+    this values is 40 characters</p>
+</div> <!-- SHA1 -->
+
+
+<h2 id="section3">3 Tag-Value Format</h2>
+
+<p>This section describes a simple, text based, format for
+  representing the instances of the SPDX abstract model.</p>
+
+<p>The SPDX tag-value format is a simple name-value pair format.
+  Tag-value pairs are grouped into sections based onto what entity the
+  tag relates.</p>
+
+<p>A tag-value is represented as a line starting with a tag name
+  followed by a ":" character.  The value of the tag is either the
+  remainder of the line after the ":" or it is a multi-line value.
+  Multi-line values are supported by the use of a triple quote
+  mechanism.  If the sequences <code>"""</code> is first
+  non-whitespace characters of a value, the value is consider to be
+  the remainder of that line and any further lines until a
+  the <code>"""</code> sequence is encountered again.</p>
+
+<p>Sections are delineated by a line that identifies the type of the
+  section and an identification of the entity being described.  The
+  identification is either a URI that is enclosed in angle brackets
+  ("&lt;" and "&gt;") or it is an node id.  A node id is a unique id that is
+  scoped to the current file.  A node id may not contain spaces.</p>
+
+<h5>Example 1</h5>
+
+<pre><code>
+SPDXVersion: SPDX-1.0
+CreatedBy: Tool: spdx-gen 1.0
+
+[Package &lt;http://oss.net/foo-1.0.tar.gz&gt;]
+DeclaredLicense: FullLicense-1
+DeclaredLicense: GPL2
+Description: """This
+is along
+multiline value"""
+
+[License FullLicnse-1]
+LicenseText: """
+Some terms and conditions
+"""
+</code></pre>
+
+<h3>3.1 Grammar</h3>
+
+<p>The syntax of SPDX files described formally is:</p>
+
+  <pre><code class="tag-value grammar">
+      tagvaluefile   = *(tagandvalue / sectionheader)
+      tagandvalue    = tag *WSP ":" *WSP value
+      tag            = *tagchar
+      tagchar        = ALPHA / DIGIT / "-" / "_" / "."
+      value          = multilinevalue / *UNICODEVCHAR *WSP CRLF
+      multilinevalue = 3DQUOTE *UNICODEVCHAR 3DQUOTE *WSP CRLF
+      sectionheader  = "[" *WSP resourcetype *WSP entityid *WSP "]"
+      resourcetype   = *tagchar  ; RDF class name with an implied prefix &lt;http://spdx.org/vocab#&gt;
+      entityid       = uriref / nodeid
+      uriref         = "&lt;" xsd:anyURI "&gt;"
+      nodeid         = *tagchar
+  </code></pre>
+
+<h3>3.2 Mapping to RDF</h3>
+ 
+<p>Each tag-value pair maps to an RDF statement.  The subject of the
+  pair is the entity of the section in which it occurs or the SPDXDoc
+  entity if it occurs before the first section header.  The predicate
+  is tag name prefixed with <code>http://spdx.org/vocab#</code>.</p>
+
+
+
+
+
+</body>
+</html>
