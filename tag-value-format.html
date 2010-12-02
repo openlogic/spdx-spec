@@ -3,29 +3,42 @@
 <p>This section describes a simple, text based, format for
   representing the instances of the SPDX abstract model.</p>
 
-<p>The SPDX tag-value format is a line based format.  Each line starts
-  with a "tag".  The tag portion of the line is terminated by a ":".
-  The value of the tag is remainder of the line after the ":".
+<p>The SPDX tag-value format is a simple name-value pair format.
+  Tag-value pairs are grouped into sections based onto what entity the
+  tag relates.</p>
+
+<p>A tag-value is represented as a line starting with a tag name
+  followed by a ":" character.  The value of the tag is either the
+  remainder of the line after the ":" or it is a multi-line value.
   Multi-line values are supported by the use of a triple quote
   mechanism.  If the sequences <code>"""</code> is first
   non-whitespace characters of a value, the value is consider to be
   the remainder of that line and any further lines until a
   the <code>"""</code> sequence is encountered again.</p>
 
+<p>Sections are delineated by a line that identifies the type of the
+  section and an identification of the entity being described.  The
+  identification is either a URI that is enclosed in angle brackets
+  ("&lt;" and "&gt;") or it is an node id.  A node id is a unique id that is
+  scoped to the current file.  A node id may not contain spaces.</p>
+
 <h5>Example 1</h5>
 
 <pre><code>
 SPDXVersion: SPDX-1.0
 CreatedBy: Tool: spdx-gen 1.0
-</code></pre>
 
-<h5>Example 2</h5>
-
-<pre><code>
-SPDXVersion: SPDX-1.0
+[Package &lt;http://oss.net/foo-1.0.tar.gz&gt;]
+DeclaredLicense: FullLicense-1
+DeclaredLicense: GPL2
 Description: """This
 is along
 multiline value"""
+
+[License FullLicnse-1]
+LicenseText: """
+Some terms and conditions
+"""
 </code></pre>
 
 <h3>3.1 Grammar</h3>
@@ -33,18 +46,23 @@ multiline value"""
 <p>The syntax of SPDX files described formally is:</p>
 
   <pre><code class="tag-value grammar">
-      tagvaluefile   = *tagandvalue
+      tagvaluefile   = *(tagandvalue / sectionheader)
       tagandvalue    = tag *WSP ":" *WSP value
       tag            = *tagchar
       tagchar        = ALPHA / DIGIT / "-" / "_" / "."
       value          = multilinevalue / *UNICODEVCHAR *WSP CRLF
       multilinevalue = 3DQUOTE *UNICODEVCHAR 3DQUOTE *WSP CRLF
+      sectionheader  = "[" *WSP resourcetype *WSP entityid *WSP "]"
+      resourcetype   = *tagchar  ; RDF class name with an implied prefix &lt;http://spdx.org/vocab#&gt;
+      entityid       = uriref / nodeid
+      uriref         = "&lt;" xsd:anyURI "&gt;"
+      nodeid         = *tagchar
   </code></pre>
 
 <h3>3.2 Mapping to RDF</h3>
  
-<p>Tags map to RDF properies.  For example, the line <code>CreatedBy:
-Tool: spdx-gen 1.0</code> represents an RDF propery whose subject is
-the SDPX document of the file being parsed, with the
-predicate <code>http://spdx.org/vocab#CreatedBy</code> and the value <code>"Tool: spdx-gen 1.0"</code>.</p>
+<p>Each tag-value pair maps to an RDF statement.  The subject of the
+  pair is the entity of the section in which it occurs or the SPDXDoc
+  entity if it occurs before the first section header.  The predicate
+  is tag name prefixed with <code>http://spdx.org/vocab#</code>.</p>
 
