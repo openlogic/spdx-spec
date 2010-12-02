@@ -1,0 +1,50 @@
+<h2 id="section3">3 Tag-Value Format</h2>
+
+<p>This section describes a simple, text based, format for
+  representing the instances of the SPDX abstract model.</p>
+
+<p>The SPDX tag-value format is a line based format.  Each line starts
+  with a "tag".  The tag portion of the line is terminated by a ":".
+  The value of the tag is remainder of the line after the ":".
+  Multi-line values are supported by the use of a triple quote
+  mechanism.  If the sequences <code>"""</code> is first
+  non-whitespace characters of a value, the value is consider to be
+  the remainder of that line and any further lines until a
+  the <code>"""</code> sequence is encountered again.</p>
+
+<h5>Example 1</h5>
+
+<pre><code>
+SPDXVersion: SPDX-1.0
+CreatedBy: Tool: spdx-gen 1.0
+</code></pre>
+
+<h5>Example 2</h5>
+
+<pre><code>
+SPDXVersion: SPDX-1.0
+Description: """This
+is along
+multiline value"""
+</code></pre>
+
+<h3>3.1 Grammar</h3>
+
+<p>The syntax of SPDX files described formally is:</p>
+
+  <pre><code class="tag-value grammar">
+      tagvaluefile   = *tagandvalue
+      tagandvalue    = tag *WSP ":" *WSP value
+      tag            = *tagchar
+      tagchar        = ALPHA / DIGIT / "-" / "_" / "."
+      value          = multilinevalue / *UNICODEVCHAR *WSP CRLF
+      multilinevalue = 3DQUOTE *UNICODEVCHAR 3DQUOTE *WSP CRLF
+  </code></pre>
+
+<h3>3.2 Mapping to RDF</h3>
+ 
+<p>Tags map to RDF properies.  For example, the line <code>CreatedBy:
+Tool: spdx-gen 1.0</code> represents an RDF propery whose subject is
+the SDPX document of the file being parsed, with the
+predicate <code>http://spdx.org/vocab#CreatedBy</code> and the value <code>"Tool: spdx-gen 1.0"</code>.</p>
+
