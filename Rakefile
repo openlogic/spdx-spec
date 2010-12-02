@@ -3,7 +3,7 @@ require 'rdf_context'
 require 'net/http'
 require 'mustache'
 
-CLEAN.include 'ontology.rdf'
+CLEAN.include 'ontology.rdf', 'spdx-1.0.html', 'spdx-1.0.-ont.rdf'
 
 desc "Translate SPDX ontology from N3 into RDF/XML"
 file 'spdx-1.0-ont.rdf' => 'spdx-1.0.html' do |t|
@@ -41,3 +41,4 @@ file SPDX_SPEC_FILE_NAME => (FileList['*.html'] - FileList[SPDX_SPEC_FILE_NAME])
   File.open(t.name, 'w'){|f| f.write compiler.render}
 end
 
+task :default => ['spdx-1.0-ont.rdf']
