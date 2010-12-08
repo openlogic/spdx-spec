@@ -67,19 +67,65 @@ for their contributions and assistance.</p>
   information about software packages and related content to be
   collected and shared in a common format with the goal of saving time
   and improving data accuracy.</p>
-    
-<h3 id="section1.1">1.1 Structure of this document</h3>
 
-<p>This document divided into 4 major sections.  The first describes
-  an abstract model for describing packages (including the files a
-  package contains) and the copyright ownership and licensing of those
-  packages and files.  The second section describes a simple text
-  based format for representing instances the abstract model described
-  above for particular packages.  The third section describes an
-  RDF/XML format for representing instances the abstract model
-  described above for particular packages.  The forth section
-  describes the a registry of licenses maintained by the SPDX group
-  which contains many of the common open source licenses in use today.</p>
+<h3 id="section1.1">1.1 Overview</h3>
+
+<p>And SDPX document can take the form of a simple text format
+  (refered to as the tag-value format) or any RDF serialization
+  format.  The tag-value format is intended to be easy for humans
+  create and undertand.  The following is an example of an SPDX
+  document rendered in the tag-value format.</p>
+    
+<pre><code>
+SPDXVersion: SPDX-1.0
+CreatedBy: Tool: spdx-gen 1.0
+
+[Package &lt;http://oss.net/foo-1.0.tar.gz&gt;]
+DeclaredLicense: &lt;license:GPL2&gt;
+DeclaredLicense: @FullLicense-1
+Description: "This
+is along
+multiline value"
+Files: &lt;http://oss.net/foo-1.0.tar.gz#foo.c&gt;, &lt;http://oss.net/foo-1.0.tar.gz#bar.c&gt;
+
+[File &lt;http://oss.net/foo-1.0.tar.gz#foo.c&gt;]
+Type: source
+DetectedLicense: &lt;license:GPL2&gt;
+
+[File &lt;http://oss.net/foo-1.0.tar.gz#bar.c&gt;]
+Type: source
+DetectedLicense: @FullLicense-1
+ArtifactOf: @JRandomProject
+
+[License FullLicense-1]
+LicenseText: "
+Some terms and conditions
+"
+[&lt;doap:Project&gt; JRandomProject]
+&lt;doap:name&gt;: J Random Project
+&lt;doap:homepage&gt;: http://oss.org/j-random-project
+</code></pre>
+
+<p>The conceptual model of SPDX is defined in RDF.  RDF is a standard
+model for data interchange on the Web.  The tag-value format is a
+serialization of RDF with some assumptions built in to make SPDX files
+more understandable and easier to produce.</p>
+
+<p>SPDX documents are innately RDF.  This means that any RDF document
+may also be rendered in any file format that support RDF.  This
+includes RDF/XML, XHTML+RDFa, Turtle, etc.  Tools may, at their
+discretion, choose to use any or all of these formats (including the
+tag-value format) to encode SPDX information.</p>
+
+<h3 id="section1.2">1.2 Structure of this document</h3>
+
+<p>This document divided into 3 major sections.  The first describes
+  an abstract model for describing packages and files and the
+  copyright ownership and licensing of those packages and files.  The
+  second section describes how the SPDX vocabulary is rendered into
+  the tag-value format. The third section describes the a registry of
+  licenses maintained by the SPDX group which contains many of the
+  common open source licenses in use today.</p>
 
 <h2 id="section2">2 Vocabulary</h2>
 
