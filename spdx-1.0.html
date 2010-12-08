@@ -40,7 +40,7 @@ for their contributions and assistance.</p>
 
 <p>Licensed under the Creative Commons Attribution License 3.0
 (reproduced in Appendix III herein).</p>
-s
+
 <h2 id="section1">1 Introduction</h2>
 
 <p>This document defines
@@ -81,12 +81,21 @@ s
   describes the a registry of licenses maintained by the SPDX group
   which contains many of the common open source licenses in use today.</p>
 
-<h2 id="section2">2 Ontology</h2>
+<h2 id="section2">2 Vocabulary</h2>
 
-<p>This section defines the abstract model underlying SPDX in terms of
-  RDF.</p.
+<p>This section defines the vocabulary used to describe packages,
+  licenses, copyrights and other information in SPDX.  This vocabulary
+  represents the abstract model of SPDX.</p>
 
 <h3>2.1 Classes</h3>
+
+<p>An SPDX document is composed of a set of resources.  A resource is
+  an entity such a file, license or package. Each resources has a
+  class.  The class of a resource lets SPDX consumer know what sort of
+  resource it is.</p>
+
+<p>This is a list of the types of entities defined by SPDX, and what
+  properties are associated with resources of these types.</p>
 
 <div class="rdf-class" about="#SPDXDoc" typeof="owl:Class">
   <h4 id="SPDXDoc">2.1.1 <span property="rdfs:label">SPDXDoc</span></h4>
@@ -213,48 +222,44 @@ s
 
 <h3>2.2 Properties</h3>
 
+<p>Each resource in an SPDX file has as set of properties which
+  describes that item.  The class also defines what properties are
+  allowed for that resource.  The value of a property may be a literal
+  value or a resource of a specific class.</p>
+
+<p>This section provides a details description of the various
+  properties use to convey package data.  Some of the properties apply
+  to more than one class of resource.</p>
+
 <div class="rdf-property" about="#SPDXVersion" typeof="owl:DatatypeProperty">
   <h4 id="SPDXVersion">2.2.1 <span property="rdfs:label">SPDXVersion</span></h4>
-  <p property="rdfs:comment"> Provide a reference number that can be
+  <p property="rdfs:comment">This property applies to <a rel="rdfs:domain"
+  href="#SPDXDoc">SPDXDoc</a> and provide a reference number that can be
     used to understand how to parse and interpret the rest of the
     file.  It will enable both future changes to the specification and
     to support backward compatibility.</p>
 
-  <p>The version number consists of a Major and Minor version
-    indicator.  The Major field will be incremented when potentially
-    incompatible changes are made to the specification.  The Minor
-    field will be incremented when any change is made that does not
-    effect backwards compatiabiliy.</p>
+  <p>The version identifier consists a format identifier, a major and
+    a minor version indicator.  The Major field will be incremented
+    when incompatible changes are made to the specification.  The
+    Minor field will be incremented when any change is made that is
+    fully backwards compatibility.  An SPDX processor may safe read a
+    file that has the expected format identifier and major
+    version.</p>
 
-  <h5>Domain</h5> 
-  <p><a rel="rdfs:domain" href="#SPDXDoc">SPDXDoc</a></p>
-
-  <h5>Range</h5> 
-  <p>The value of this property is fixed.  The value of the
-    SPDXVersion property for all datasets encoded in this verison
-    must be:
-    <code>SPDX-1.0</code></p>
+  <p>The value of the SPDXVersion property for all datasets encoded in
+    this verison must be: <code>SPDX-1.0</code></p>
 </div> <!-- SPDXVersion -->
 
 
 <div class="rdf-property" about="#CreatedBy" typeof="owl:DatatypeProperty">
   <h4 id="CreatedBy">2.2.2 <span property="rdfs:label">CreatedBy</span></h4>
 
-  <p property="rdfs:comment">Identify how the meta data information in the
-    SPDX file was generated. If it was generated manually, it
-    should indicate – who did the analysis.  If the information in
-    the file was generated with a software tool, the file should
-    indicate an identifier and version for that tool.
-  </p>
-  
-  <h5>Domain</h5>
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>  
-
-  <h5>Range</h5>
-  
-  <p>The value of created is an <span about="#Created"
-  rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  The format of
-  this string may indicate a person, tool or organization.</p>
+  <p property="rdfs:comment">This property identifies how information
+    in the <a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a> was
+    generated.  The value of CreatedBy is an <span about="#Created"
+    rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  The format of
+    this string may indicate a person, tool or organization.</p>
 
   <pre><code class="grammar">
       company    = "Company:" *WSP name *WSP ["(" email ")"]
@@ -271,103 +276,86 @@ s
 <div class="rdf-property" about="#Created" typeof="owl:DatatypeProperty">
   <h4 id="Created">2.2.3 <span property="rdfs:label">Created</span></h4>
 
-  <p>Identify when the analysis was done and the SPDX file was
-    originally created.  This is to be specified according to combined
-    data and time in UTC format as specified in ISO 8601 standard.</p>
+  <p>This property identifies when the analysis was done and
+    the <a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a> was
+    originally created.  The value of this property is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#dateTime"><span about="#Created"
+    rel="rdfs:range" href="xsd:dateTime"/>xsd:dateTime</a></p>
 
-  <h5>Domain</h5>
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
-
-  <h5>Range</h5>
-  <p><a href="http://www.w3.org/TR/xmlschema-2/#dateTime"><span about="#Created" rel="rdfs:range" href="xsd:dateTime"/>xsd:dateTime</a></p>
-
-  <h5>Refines</h5>
-  <p><a rel="rdfs:subPropertyOf" href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></p>
+  <p>This property refines the definition of
+  <a rel="rdfs:subPropertyOf"
+  href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a>.</p>
 </div> <!-- Created -->
 
 <div class="rdf-property" about="#ReviewedBy" typeof="owl:DatatypeProperty">
   <h4 id="ReviewedBy">2.2.4 <span property="rdfs:label">ReviewedBy</span></h4>
 
-  <p property="rdfs:comment">A person who has reviewed the SPDX file
-    and the date of that review.  Note that there is no requirement
-    for a particular reviewer to add their name to the file, however
-    it may be important for participants in the software supply chain
-    to validate whether upstream providers have reviewed the SPDX
-    file.  This can be considered as an equivalent to "signed off" or
-    "reviewed by".  Additional reviewers can be added after the
-    original version of the SPDX file is created and can occur as an
-    append to the original file.
-  </p>
-  
-  <h5>Domain</h5> 
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
-
-  <h5>Range</h5>
-  
-  <p>The value of created is an <span about="#Created"
-  rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  The format of
-  this string indicates a person and a timestamp</p>
+  <p property="rdfs:comment">This property allows the recording of any
+    reviews that have been done of a <a href="#SPDXDoc"
+    rel="rdfs:domain">SPDXDoc</a>. The value of this property is
+    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#ReviewedBy"
+    rel="rdfs:range" href="xsd:string"/>xsd:string</a> containing the
+    reviews name and, optionally, email address and the date on which
+    the review took place.  </p>
 
   <pre><code class="grammar">
       review = "person *WSP timestamp"
   </code></pre>
 
-  <p>For example, "Person: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z"</p>
+  <p>For example, "Person: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z".</p>
+
+  <p>Note that there is no requirement for a particular reviewer to
+    add their name to the file, however it may be important for
+    participants in the software supply chain to validate whether
+    upstream providers have reviewed the SPDX file.  This can be
+    considered as an equivalent to "signed off" or "reviewed by".
+    Additional reviewers can be added after the original version of
+    the SPDX file is created and can occur as an append to the
+    original file.</p>
 </div> <!-- ReviewedBy -->
 
 <div class="rdf-property" about="#DeclaredName" typeof="owl:DatatypeProperty">
   <h4 id="DeclaredName">2.2.5 <span property="rdfs:label">DeclaredName</span></h4>
 
-  <p> Full name of the package as given by originator with version information
-    if available.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
-  <h5>Range</h5>
-  <p>The value is
+  <p>This property records the name and version of
+    a <a rel="rdfs:domain" href="#Package">Package</a>.  The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredName"
     rel="rdfs:range" href="xsd:string"/>xsd:string</a> that contains
     the full name, including version information if known, of the
-    package.</p>
+    package.  This property in intended for primarily human
+    consumption so the arrangement of this information is not formally
+    defined.</p>
+
 </div> <!-- DeclaredName -->
 
 <div class="rdf-property" about="#MachineName" typeof="owl:DatatypeProperty">
   <h4 id="MachineName">2.2.6 <span property="rdfs:label">MachineName</span></h4>
   
-  <p> File name of package instance.</p>
-  
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
-  <h5>Range</h5>
-  <p>The value is
+  <p>This property stores the file name of the <a rel="rdfs:domain"
+    href="#Package">Package</a>.  The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#MachineName"
     rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
-    machine generated file name and version typically includes the
-    packaging and compression methods used.</p>
+    machine generated file name and version typically includes
+    extensions to indicated the packaging and compression methods
+    used.</p>
+
+  <p>For example, "zlib-1.2.5.tar.gz".</p>
 </div> <!-- MachineName -->
 
 <div class="rdf-property" about="#SHA1" typeof="owl:DatatypeProperty">
   <h4 id="SHA1">2.2.7 <span property="rdfs:label">SHA1</span></h4>
   
-  <p> This field provides an independently reproducible mechanism that
-    permits unique identification of a specific package that
-    correlates to the data in this SPDX file. This identifier enables
-    a recipient to determine if any file in the original package has
-    been changed.  The SHA1 unique identifier mechanism will be
-    used.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a>
-  or <a rel="rdfs:domain" href="#File">File</a></p>
-
-  <h5>Range</h5>
-  <p>The value is
+  <p>This property provides an independently reproducible mechanism
+    that permits verification that a specific <a rel="rdfs:domain"
+    href="#Package">Package</a> or <a rel="rdfs:domain"
+    href="#File">File</a> correlates to the information in this SPDX
+    file. This identifier enables a recipient to determine if any file
+    in the original package has been changed.  The value is the
+    hexadecimal encoded SHA1 hash of the package or file in
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SHA1"
-    rel="rdfs:range" href="xsd:string"/>xsd:string</a> that is the
-    hexadecimal encoded SHA1 hash of the package file.  The length of
-    this values is 40 characters</p>
+    rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  The length of
+    this values is always 40 characters.</p>
+
 </div> <!-- SHA1 -->
 
 
