@@ -32,7 +32,7 @@
     <li rel="rdfs:subClassOf">
       <p typeof="owl:Restriction">
         <a href="#Copyright" rel="owl:onProperty">Copyright</a>
-        <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>).
+        <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>) or more.
       </p>
     </li>
 
@@ -40,6 +40,13 @@
       <p typeof="owl:Restriction">
         <a href="#SHA1" rel="owl:onProperty">SHA1</a>
         <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#ArtifactOf" rel="owl:onProperty">ArtifactOf</a>
+        <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>) or more.
       </p>
     </li>
   </ul>
@@ -276,6 +283,48 @@
   <pre><code>
       SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
   </code></pre>
+
+<div class="rdf-property" about="#ArtifactOf" typeof="owl:ObjectProperty">
+  <h3 id="ArtifactOf">5.5 <span property="rdfs:label">ArtifactOf</span></h3>
+
+  <h5>Purpose</h5>
+  <p>Identify the project(s) of which this file is a part.</p>
+
+  <h5>Intent</h5>
+  <p>By providing data regarding the project(s) where this file originated or occurs the reader can better identify the source and use it to do further research if needed.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#File">File</a></p>
+
+  <h5>Range</h5>
+  <p>The value is a <span about="#ArtifactOf" rel="rdfs:range" href="http://usefulinc.com/ns/doap#Project"/>DOAP Project</span>.</p>
+
+  <h4>5.6.1 RDF/XML serialization</h4>
+  <p>The value of this property is a doap:Project. For the RDF/XML format it may be any valid doap:Project resource, including a URI reference.</p>
+
+  <h5>Example</h5>
+  <pre><code>
+&lt;ArtifactOf&gt;
+  &lt;doap:name&gt;JUnit&lt;/doap:name&gt;
+  &lt;doap:homepage&gt;http://www.junit.org&lt;doap:homepage&gt;
+&lt;/ArtifactOf&gt;
+  </code></pre>
+
+  <h4>5.6.2 Tag-Value serialization</h4>
+  <p> For the tag value format project information is limited to name and homepage. These tags are are semantically equivalent to doap:name and doap:homepage properties, respectively. Either name or homepage may be omitted in the tag value format.</p>
+
+  <pre><code class="tag-value grammar">
+artifactofname     = "ArtifactOf.name" *WSP *VUNICODECHAR
+artifactofhomepage = "ArtifactOf.homepage" *WSP URI
+  </code></pre>
+
+  <h5>Example</h5>
+  <pre><code>
+ArtifactOf.name: JUnit
+ArtifactOf.homepage: http://www.junit.org
+  </code></pre>
+</div>
+
 </div>
 
 
