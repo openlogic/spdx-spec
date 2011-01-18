@@ -68,7 +68,7 @@
 
   <h5>Example</h5>
   <pre><code>
-      &lt;SPDXVersion&gt;SPDX-1.0&lt;/SPDXVersion&gt;
+&lt;SPDXVersion&gt;SPDX-1.0&lt;/SPDXVersion&gt;
   </code></pre>
 
   <h4>2.1.2 Tag-Value serialization</h4>
@@ -76,13 +76,13 @@
   <p>The SPDX version is serialized as a single tag with a string value.  As noted above "SPDX-1.0" is the only allowed value at this time.</p>
 
   <pre><code class="tag-value grammar">
-      versiondecl = "SPDXVersion:" *WSP spdxversion
-      spdxversion = "SPDX-1.0"
+versiondecl = "SPDXVersion:" *WSP spdxversion
+spdxversion = "SPDX-1.0"
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      SPDXVersion: SPDX-1.0
+SPDXVersion: SPDX-1.0
   </code></pre>
 
 </div>
@@ -109,12 +109,12 @@
   <p>The value of created by may indicate a person, tool or organization.</p>
 
   <pre><code class="grammar">
-      company    = "Company:" *WSP name *WSP ["(" email ")"]
-      tool       = "Tool:" *WSP name
-      person     = "Person:" *WSP name *WSP ["(" email ")"]
-      name       = *VUNICODECHAR
-      email      = 1*(ALPHA / DIGIT / "." / "-" / "_") "@" domainpart 1*("." domainpart)
-      domainpart = 1*(ALPHA / DIGIT / "-" / "_") 
+company    = "Company:" *WSP name *WSP ["(" email ")"]
+tool       = "Tool:" *WSP name
+person     = "Person:" *WSP name *WSP ["(" email ")"]
+name       = *VUNICODECHAR
+email      = 1*(ALPHA / DIGIT / "." / "-" / "_") "@" domainpart 1*("." domainpart)
+domainpart = 1*(ALPHA / DIGIT / "-" / "_") 
   </code></pre>
 
   <p>For example, ”Person: John Doe” (john.doe@example.com)" or "Company: My Company, Inc" (depending on which is accountable) or "Tool: spdx-gen 1.0".</p>
@@ -127,7 +127,7 @@
   <h5>Example</h5>
 
   <pre><code>
-      &lt;CreatedBy&gt;Person: John Doe (john.doe@example.com)&lt;/CreatedBy&gt;
+&lt;CreatedBy&gt;Person: John Doe (john.doe@example.com)&lt;/CreatedBy&gt;
   </code></pre>
 
   <h4>2.1.2 Tag-Value serialization</h4>
@@ -135,14 +135,14 @@
   <p>CreatedBy is serialized as a single tag with a string value.  If there are multiple participants in the analysis, each participant should be indicated with a separate entry.</p>
 
   <pre><code class="tag-value grammar">
-      createdby = "CreatedBy:" 1*(*WSP (company / tool / person))
+createdby = "CreatedBy:" 1*(*WSP (company / tool / person))
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      CreatedBy: Person:  John Doe (john.doe@example.com)
-      CreatedBy: Company: My Company, Inc.
-      CreatedBy: Tool:    spdx-gen 1.0
+CreatedBy: Person:  John Doe (john.doe@example.com)
+CreatedBy: Company: My Company, Inc.
+CreatedBy: Tool:    spdx-gen 1.0
   </code></pre>
 </div>
 
@@ -175,7 +175,7 @@
   <h5>Example</h5>
 
   <pre><code>
-      &lt;Created&gt;2010-11-02T11:02:03-0600&lt;/Created&gt;
+&lt;Created&gt;2010-11-02T11:02:03-0600&lt;/Created&gt;
   </code></pre>
 
   <h4>Tag-Value serialization</h4>
@@ -184,19 +184,19 @@
 
   <h4>Tag-Value syntax</h4>
   <pre><code class="tag-value grammar">
-      created   = "Created:" *WSP timestamp
-      timestamp = year "-" month "-" day "T" hour ":" minute ":" second "Z"
-      year      = 4*4DIGIT
-      month     = 2*2DIGIT
-      day       = 2*2DIGIT
-      hour      = 2*2DIGIT
-      minute    = 2*2DIGIT
-      second    = 2*2DIGIT
+created   = "Created:" *WSP timestamp
+timestamp = year "-" month "-" day "T" hour ":" minute ":" second "Z"
+year      = 4*4DIGIT
+month     = 2*2DIGIT
+day       = 2*2DIGIT
+hour      = 2*2DIGIT
+minute    = 2*2DIGIT
+second    = 2*2DIGIT
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      Created: 2010-11-02T17:02:03Z
+Created: 2010-11-02T17:02:03Z
   </code></pre>
 </div>
 
@@ -228,7 +228,7 @@
 
   <h5>Example</h5>
   <pre><code>
-      &lt;ReviewedBy&gt;John Doe (john.doe@example.com) 2010-11-02T17:02:03Z&lt;/ReviewedBy&gt;
+&lt;ReviewedBy&gt;John Doe (john.doe@example.com) 2010-11-02T17:02:03Z&lt;/ReviewedBy&gt;
   </code></pre>
 
   <h4>2.1.2 Tag-Value serialization</h4>
@@ -236,12 +236,12 @@
   <p>ReviewedBuse uses the same person format as <a href="#CreatedBy">CreatedBy</a> but adds a timestamp, like the value of <a href="#Created">Created</a>, to indicate when the review occurred.</p>
 
   <pre><code class="tag-value grammar">
-      reviewedby = "ReviewedBy:" person *WSP timestamp
+reviewedby = "ReviewedBy:" person *WSP timestamp
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      ReviewedBy: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z
+ReviewedBy: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z
   </code></pre>
 
 </div>

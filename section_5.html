@@ -76,7 +76,7 @@
 
   <h5>Example</h5>
   <pre><code>
-      &lt;Name&gt;/var/foo.c&lt;/Name&gt;
+&lt;Name&gt;/var/foo.c&lt;/Name&gt;
   </code></pre>
 
   <h4>2.1.1.2 Tag-Value serialization</h4>
@@ -84,12 +84,12 @@
   <p></p>
 
   <pre><code class="tag-value grammar">
-      filename = "name:" *WSP "/" *VUNICODECHAR
+filename = "name:" *WSP "/" *VUNICODECHAR
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      name: /bar/foo.c
+name: /bar/foo.c
   </code></pre>
 </div>
 
@@ -127,18 +127,18 @@
 
   <h5>Example</h5>
   <pre><code>
-      &lt;Type&gt;source&lt;/Type&gt;
+&lt;Type&gt;source&lt;/Type&gt;
   </code></pre>
 
   <h4>2.1.1.2 Tag-Value serialization</h4>
 
   <pre><code class="tag-value grammar">
-      filetype = "type:" *WSP ( "source" / "binary" / "archive" / "other" )
+filetype = "type:" *WSP ( "source" / "binary" / "archive" / "other" )
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      type: source
+type: source
   </code></pre>
 </div>
 
@@ -179,7 +179,7 @@
   
   <h5>Example</h5>
   <pre><code>
-      &lt;License rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
+&lt;License rdf:resource="http://spdx.org/licenses/LGPL-2.0"/&gt;
   </code></pre>
 
   <h4>5.6.2 Tag-Value serialization</h4>
@@ -188,15 +188,15 @@
     &quot;FullLicense&quot;-N</p>
 
   <pre><code class="tag-value grammar">
-      filelicense    = "License:" *WSP ( anyURI / spdxlicenseid / locallicenseid )
-      spdxlicenseid  = *VCHAR
-      locallicenseid = *locallicenseid
+filelicense    = "License:" *WSP ( anyURI / spdxlicenseid / locallicenseid )
+spdxlicenseid  = *VCHAR
+locallicenseid = *locallicenseid
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      License: LGPL-2.0
-      License: FullLicense-1
+License: LGPL-2.0
+License: FullLicense-1
   </code></pre>
 </div>
 
@@ -229,18 +229,18 @@
     
     <h5>Example</h5>
     <pre><code>
-        &lt;Copyright&gt;Copyright: Copyright 2008-2010 John Smith&lt;/Copyright&gt;
+&lt;Copyright&gt;Copyright: Copyright 2008-2010 John Smith&lt;/Copyright&gt;
     </code></pre>
 
     <h4>5.6.2 Tag-Value serialization</h4>
 
     <pre><code class="tag-value grammar">
-        filecopyright    = "Copyright:" *WSP *VUNICODECHAR
+filecopyright    = "Copyright:" *WSP *VUNICODECHAR
     </code></pre>
 
     <h5>Example</h5>
     <pre><code>
-        Copyright: Copyright 2008-2010 John Smith
+Copyright: Copyright 2008-2010 John Smith
     </code></pre>
 </div>
 
@@ -270,18 +270,18 @@
   
   <h5>Example</h5>
   <pre><code>
-      &lt;SHA1&gt;d6a770ba38583ed4bb4525bd96e50461655d2758&lt;/SHA1&gt;
+&lt;SHA1&gt;d6a770ba38583ed4bb4525bd96e50461655d2758&lt;/SHA1&gt;
   </code></pre>
 
   <h4>5.3.2 Tag-Value serialization</h4>
 
   <pre><code class="tag-value grammar">
-      sha1    = "SHA1:" *WSP 40 * HEXDIG
+sha1    = "SHA1:" *WSP 40 * HEXDIG
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-      SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
+SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
   </code></pre>
 
 <div class="rdf-property" about="#ArtifactOf" typeof="owl:ObjectProperty">
