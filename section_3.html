@@ -79,6 +79,13 @@
       </p>
     </li>
 
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Files" rel="owl:onProperty">Files</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).
+      </p>
+    </li>
+
   </ul>
 </div>
 
@@ -487,4 +494,44 @@ ShortDesc: gnu c library
   <pre><code>
 Description: …
   </code></pre>
+</div>
+
+<div class="rdf-property" about="#Files" typeof="owl:ObjectProperty">
+  <h3 id="Files">3.11 <span property="rdfs:label">Files</span></h3>
+
+  <h5>Purpose</h5>
+  <p>This field is the list of all the files contained in the package.</p>
+
+  <h5>Intent</h5>
+  <p>Files are associated with the package.  This field allows easy access to a list of all the files in a package.</p>
+
+  <h5>Domain</h5>
+  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
+  
+  <h5>Range</h5>
+  <p>The value is
+    a <a href="http://www.w3.org/TR/rdf-schema/#ch_list">
+      <span about="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
+            rel="rdfs:range" href="xsd:string"/>rdf:List</a> of <code>File</code> resources.</p>
+  
+  <h4>3.10.1 RDF/XML serialization</h4>
+  
+  <h5>Example</h5>
+  <pre><code>
+&lt;Files rdf:parseType="Collection"&gt;
+  &lt;File&gt;
+    &lt;Name&gt;file1.txt&lt;/Name&gt;
+    …
+  &lt;/File&gt;
+  &lt;File&gt;
+    &lt;Name&gt;file2.c&lt;/Name&gt;
+    …
+  &lt;/File&gt;
+&lt;/Files&gt;
+  </code></pre>
+
+  <h4>3.10.2 Tag-Value serialization</h4>
+
+  <p>In the tag format the relationship is implicit.  All files in an SPDX tag-value file belong to the package defined in that file. This means that this property is not explicity rendered in the tag-value format.  However, when parsing a tag-value format SPDX file all <code>File</code> resources defined in that file should be included in the value of the <code>Files</code> of the <code>Package</code>.</p>
+
 </div>
