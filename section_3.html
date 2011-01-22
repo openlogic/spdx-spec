@@ -86,16 +86,13 @@
   <h3 id="DeclaredName">3.1 <span property="rdfs:label">DeclaredName</span></h3>
 
   <h5>Purpose</h5>
-  <p> Full name of the package as given by originator with
+  <p> Full name of the <a rel="rdfs:domain" href="#Package">package</a> as given by originator with
     information if available.</p>
 
   <h5>Intent</h5>
   <p> Here, the formal name of each package is an important
     conventional technical identifier to be maintained for each
     package.</p>
-  
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
   
   <h5>Value</h5>
   <p>The value is
@@ -123,15 +120,12 @@ DeclaredName: glibc 2.11.1
   <h3 id="MachineName">3.2 <span property="rdfs:label">MachineName</span></h3>
   
   <h5>Purpose</h5>
-  <p> File name of package instance.</p>
+  <p> File name of <a rel="rdfs:domain" href="#Package">Package</a> instance.</p>
   
   <h5>Intent</h5>
   <p> Here, the actual filename of the compressed file (containing the
     package) is a significant technical element that needs to be carried
     with each package's Identification Information.</p>
-  
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
   
   <h5>Value</h5>
   <p>The value is
@@ -160,21 +154,13 @@ MachineName: glibc-2.11.1.tar.gz
   <h3 id="SHA1">3.3 <span property="rdfs:label">SHA1</span></h3>
   
   <h5>Purpose</h5>
-  <p> This field provides an
-    independently reproducible mechanism that permits unique
-    identification of a specific package that correlates to the data
-    in this SPDX file. This identifier enables a recipient to
-    determine if any file in the original package has been changed. 
-    The SHA1 unique identifier mechanism will be used.</p>
+  <p> This field provides an independently reproducible mechanism that permits unique identification of a specific <a rel="rdfs:domain" href="#Package">package</a> that correlates to the data in this SPDX file. This identifier enables a recipient to determine if any file in the original package has been changed.  The SHA1 unique identifier mechanism will be used.</p>
 
   <h5>Intent</h5>
   <p> Here, by providing an
     unique identifier of each package, confusion over which
     version/modification of a specific package the Identification
     Information references should be eliminated.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
 
   <h5>Value</h5>
   <p>The value is
@@ -204,7 +190,7 @@ SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
   
   <h5>Purpose</h5>
   <p> This field identifies the download Universal Resource
-    Locator (URL) for this package at the time that the SPDX file
+    Locator (URL) for this <a rel="rdfs:domain" href="#Package">package</a> at the time that the SPDX file
     was initially created and the analysis was done.  If there is
     no public URL, then it is explicitly marked as “unknown”.
   </p>
@@ -212,9 +198,6 @@ SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
   <h5>Intent</h5>
   <p> Here, where to download the exact package being referenced
     is a critical verification and tracking datum.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
   
   <h5>Value</h5>
   <p>The value is
@@ -242,11 +225,7 @@ URL: http://ftp.gnu.org/gnu/glibc/
   <h3 id="SourceInfo">3.5 <span property="rdfs:label">SourceInfo</span></h3>
 
   <h5>Purpose</h5>
-  <p> This is a free form text field that contains additional
-    comments about the origin of the package. For instance, this
-    field might include comments indicating whether the package
-    been pulled from a source code management system or has been
-    repackaged.</p>
+  <p> This is a free form text field that contains additional comments about the origin of the <a rel="rdfs:domain" href="#Package">package</a>. For instance, this field might include comments indicating whether the package been pulled from a source code management system or has been repackaged.</p>
   
   <h5>Intent</h5>
   <p> Here, by providing a freeform field, reviewers can provide
@@ -254,9 +233,6 @@ URL: http://ftp.gnu.org/gnu/glibc/
     discoveries, in the determination of the origin of the
     package.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
   <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#SourceInfo"
@@ -281,19 +257,7 @@ SourceInfo: This package was acquired from the standard location for glibc.
   <h3 id="DeclaredLicense">3.6 <span property="rdfs:label">DeclaredLicense</span></h3>
 
   <h5>Purpose</h5>
-  <p> This field lists the licenses that have been declared by the
-    creators of the package.  The licenses are listed using a
-    standard short form name. See Appendix I for standardized
-    license short forms. If a Declared License is not one of the
-    standardized license short forms, this field must contain a
-    reference to the full license text included in this SPDX
-    file. If no license is declared, the “NotSpecified” short form
-    in Appendix I should be used.  If it is unclear if there is a
-    license reference or not, use “Unknown” short form from
-    Appendix I.  If more than one license is formally declared for
-    package, then each should be listed.  If the creators of the
-    package offer the recipent a choice of licenses, then each of
-    the choices will be declared as a “disjunctive” license.</p>
+  <p> This field lists the licenses that have been declared by the creators of the <a rel="rdfs:domain" href="#Package">package</a>.  The licenses are listed using a standard short form name. See Appendix I for standardized license short forms. If a Declared License is not one of the standardized license short forms, this field must contain a reference to the full license text included in this SPDX file. If no license is declared, the “NotSpecified” short form in Appendix I should be used.  If it is unclear if there is a license reference or not, use “Unknown” short form from Appendix I.  If more than one license is formally declared for package, then each should be listed.  If the creators of the package offer the recipent a choice of licenses, then each of the choices will be declared as a “disjunctive” license.</p>
 
   <h5>Intent</h5>
   <p> This is simply the license identified in text in the actual
@@ -302,9 +266,6 @@ SourceInfo: This package was acquired from the standard location for glibc.
     licenses, if multiple licenses are declared at the package
     level.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
   <h5>Value</h5>
   <p>The value is
     an <a href="#License"><span about="#DeclaredLicense"
@@ -333,25 +294,12 @@ DetectedLicense: FullLicense-1
   <h3 id="DetectedLicense">3.7 <span property="rdfs:label">DetectedLicense</span></h3>
 
   <h5>Purpose</h5>
-  <p> This field list of all licenses found in the package by
-    scanning the files, manually or using automated tools.  The
-    licenses should use the standard short form names.  See
-    Appendix I for standardized license short forms.  If a
-    Detected License is not one of the standardized license short
-    forms, this field must contain a reference to the full
-    licenses text included in this SPDX file.  If no licenses are
-    detected then the “NotSpecified” short form in Appendix I
-    should be used. If it is unclear if there is a license
-    reference or not, use “Unknown” short form from Appendix
-    I.</p>
+  <p> This field list of all licenses found in the <a rel="rdfs:domain" href="#Package">package</a> by scanning the files, manually or using automated tools.  The licenses should use the standard short form names.  See Appendix I for standardized license short forms.  If a Detected License is not one of the standardized license short forms, this field must contain a reference to the full licenses text included in this SPDX file.  If no licenses are detected then the “NotSpecified” short form in Appendix I should be used. If it is unclear if there is a license reference or not, use “Unknown” short form from Appendix I.</p>
 
   <h5>Intent</h5>
   <p> Here, we intend to capture all licenses within the package
     detected by any scanning tools used by the package
     reviewer.</p>
-  
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
   
   <h5>Value</h5>
   <p>The value is
@@ -382,7 +330,7 @@ DetectedLicense: FullLicense-1
   <h3 id="DeclaredCopyright">3.8 <span property="rdfs:label">DeclaredCopyright</span></h3>
   
   <h5>Purpose</h5>
-  <p> Identify the author(s) and licensor(s) of package, as well
+  <p> Identify the author(s) and licensor(s) of <a rel="rdfs:domain" href="#Package">package</a>, as well
     as any dates present.  This will be a free form text field
     extracted from the package information files.</p>
 
@@ -392,9 +340,6 @@ DetectedLicense: FullLicense-1
     license the package, may be resolvable by knowing who to
     contact for clarity.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
   <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
@@ -419,7 +364,7 @@ DeclaredCopyright: Copyright 2008-2010 John Smith
   <h3 id="ShortDesc">3.9 <span property="rdfs:label">ShortDesc</span></h3>
   
   <h5>Purpose</h5>
-  <p> This field is a short description of the package</p>
+  <p> This field is a short description of the <a rel="rdfs:domain" href="#Package">package</a>.</p>
 
   <h5>Intent</h5>
   <p> Here, the intent is to allow a reader/reviewer of this field
@@ -427,9 +372,6 @@ DeclaredCopyright: Copyright 2008-2010 John Smith
     high level, without having to parse the source code of the
     actual package.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
   <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#DeclaredCopyright"
@@ -454,8 +396,7 @@ ShortDesc: gnu c library
   <h3 id="Description">3.10 <span property="rdfs:label">Description</span></h3>
 
   <h5>Purpose</h5>
-  <p> This field is a more detailed description of the package.
-    It may be extracted from the packages itself.
+  <p> This field is a more detailed description of the <a rel="rdfs:domain" href="#Package">package</a>.  It may be extracted from the packages itself.
   </p>
 
   <h5>Intent</h5>
@@ -466,9 +407,6 @@ ShortDesc: gnu c library
     improvements over prior version of the package, where
     applicable.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
-  
   <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#Description"

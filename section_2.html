@@ -36,27 +36,16 @@
 
 <div class="rdf-property" about="#SPDXVersion" typeof="owl:DatatypeProperty">
   <h3 id="SPDXVersion">2.1 <span property="rdfs:label">SPDXVersion</span></h3>
-  
+   
   
   <h5>Purpose</h5>
-  <p property="rdfs:comment"> Provide a reference number
-    that can be used to understand how to parse and interpret the
-    rest of the file.  It will enable both future changes to the
-    specification and to support backward compatibility.   The
-    version number consists of a Major and Minor version indicator. 
-    The Major field will be incramented when one or more sections are
-    created, modified or deleted.  The Minor field will be
-    incremented when either only the fields within a section are
-    modified or standard recognized licenses are added to appendix.</p>
+  <p property="rdfs:comment">Provide a reference number that can be used to understand how to parse and interpret the rest of the <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a>.  It will enable both future changes to the specification and to support backward compatibility.  The version number consists of a Major and Minor version indicator.  The Major field will be incremented when one or more sections are created, modified or deleted.  The Minor field will be incremented when either only the fields within a section are modified or standard recognized licenses are added to appendix.</p>
 
   <h5>Intent</h5> 
   <p>Here, parties exchanging Identification
     Information in accordance with SPDX specification need to
     provide 100% transparency as to which SPDX specification such
     Identification Information is conforming to.</p>
-
-  <h5>Domain</h5> 
-  <p><a rel="rdfs:domain" href="#SPDXDoc">SPDXDoc</a></p>
 
   <h5>Value</h5> 
   <p>The value of this property is fixed.  The value of the
@@ -92,12 +81,7 @@ SPDXVersion: SPDX-1.0
   <h2 id="CreatedBy">2.2 <span property="rdfs:label">CreatedBy</span></h2>
 
   <h5>Purpose</h5> 
-  <p property="rdfs:comment">Identify how the meta data information in the
-    SPDX file was generated. If it was generated manually, it
-    should indicate – who did the analysis.  If the information in
-    the file was generated with a software tool, the file should
-    indicate an identifier and version for that tool.
-  </p>
+  <p property="rdfs:comment">Identify how the meta data information in the <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a> was generated. If it was generated manually, it should indicate – who did the analysis.  If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.</p>
   
   <h5>Intent</h5> 
   <p>Here, the generation method
@@ -105,9 +89,6 @@ SPDXVersion: SPDX-1.0
     self determining the general reliability/accuracy of the
     Identification Information.</p>
 
-  <h5>Domain</h5>
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
-  
   <h5>Value</h5>
   <p>The value of created by may indicate a person, tool or organization.</p>
 
@@ -150,25 +131,18 @@ CreatedBy: Tool:    spdx-gen 1.0
   <h2 id="Created">2.3 <span property="rdfs:label">Created</span></h2>
 
   <h5>Purpose</h5>
-  <p>Identify when the analysis was done and the SPDX file was
-    originally created.  This is to be specified according to
-    combined data and time in UTC format as specified in ISO 8601
-    standard.
+  <p>Identify when the analysis was done and the <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a> was originally created.  This is to be specified according to combined data and time in UTC format as specified in ISO 8601 standard.
   </p>
+  
+  <p>This property refines the definition of the <a rel="rdfs:subPropertyOf" href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">Dublin Core created</a> property.</p>
 
   <h5>Intent</h5>
   <p>Here, the Time Stamp can serve as a verification as to
     whether the analysis needs to be updated.
   </p>
 
-  <h5>Domain</h5>
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
-
   <h5>Value</h5>
   <p><a href="http://www.w3.org/TR/xmlschema-2/#dateTime"><span about="#Created" rel="rdfs:range" href="xsd:dateTime"/>xsd:dateTime</a></p>
-
-  <h5>Refines</h5>
-  <p><a rel="rdfs:subPropertyOf" href="dc:created"/><a href="http://dublincore.org/documents/dcmi-terms/#terms-created">dc:created</a></p>
 
   <h4>RDF/XML serialization</h4>
 
@@ -204,25 +178,13 @@ Created: 2010-11-02T17:02:03Z
   <h2 id="ReviewedBy">2.4 <span property="rdfs:label">ReviewedBy</span></h2>
 
   <h5>Purpose</h5> 
-  <p property="rdfs:comment">List of the people who
-    have reviewed the SPDX file and the date of that review.  Note
-    that there is no requirement for a particular reviewer to add
-    their name to the file, however it may be important for
-    participants in the software supply chain to validate whether
-    upstream providers have reviewed the SPDX file.  This can be
-    considered as an equivalent to “signed off” or “reviewed
-    by”.  Additional reviewers can be added after the original
-    version of the SPDX file is created and can occur as an append to
-    the original file. 
+  <p property="rdfs:comment">List of the people who have reviewed the <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a> and the date of that review.  Note that there is no requirement for a particular reviewer to add their name to the file, however it may be important for participants in the software supply chain to validate whether upstream providers have reviewed the SPDX file.  This can be considered as an equivalent to “signed off” or “reviewed by”.  Additional reviewers can be added after the original version of the SPDX file is created and can occur as an append to the original file.
   </p>
   
   <h5>Intent</h5>
   <p>Here, as time progresses
     certain reviewers will begin to gain credibility as reliable. 
     This field intends to make such information transparent.</p>
-  
-  <h5>Domain</h5> 
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
 
   <h4>2.1.1 RDF/XML serialization</h4>
 

@@ -56,15 +56,11 @@
   <h3 id="Name">5.1 <span property="rdfs:label">Name</span></h3>
   
   <h5>Purpose</h5>
-  <p property="rdfs:comment">Identify path to file that corresponds to this information.</p>
+  <p property="rdfs:comment">Identify path to <a rel="rdfs:domain" href="#File">file</a> that corresponds to this information.</p>
   
   <h5>Intent</h5>
   <p>Here, any confusion over where a file needs to hierarchically be placed for proper functionality is mitigated.</p>
   
-
-  <h5>Domain</h5> 
-  <p><a rel="rdfs:domain" href="#File">File</a></p>
-
   <h5>Value</h5> 
   <p>The value is a
     relative <a href="http://www.w3.org/TR/xmlschema-2/#anyURI"><span about="#Name"
@@ -98,16 +94,11 @@ name: /bar/foo.c
   <h3 id="Name">5.2 <span property="rdfs:label">Type</span></h3>
   
   <h5>Purpose</h5>
-  <p property="rdfs:comment">This field Identifies common types of
-    files where there may be different treatment of copyright and
-    license information: source, binary, machine generated, etc.</p>
+  <p property="rdfs:comment">This field Identifies common types of <a rel="rdfs:domain" href="#File">files</a> where there may be different treatment of copyright and license information: source, binary, machine generated, etc.</p>
 
   <h5>Intent</h5>
   <p>Here, this field is basically the "best available" format field,
     from a developer perspective.</p>
-
-  <h5>Domain</h5> 
-  <p><a rel="rdfs:domain" href="#File">File</a></p>
 
   <h5>Value</h5> 
   <p>The value is on of the
@@ -146,29 +137,13 @@ type: source
   <h3 id="Name">5.3 <span property="rdfs:label">License</span></h3>
   
   <h5>Purpose</h5>
-  <p property="rdfs:comment">This field contains the license governing
-    the file if it is known. It will either be explicit from the file
-    header or other information found in the file’s source code or the
-    default from the package. If no license information is found it
-    should be denoted as “NotSpecified”. If no license information can
-    be determined, the license is denoted as “Unknown”. The licenses
-    should use the standard short form names. See Appendix I for
-    standardized license short forms. If a Detected License is not one
-    of the standardized license short forms, this field must contain a
-    reference to the full licenses text included in this SPDX file in
-    section 4. If more than one license is detected in the file, then
-    each should be listed. If any of the detected licenses offer the
-    recipient a choice of licenses, then each of the choices will be
-    declared as a “disjunctive” license.</p>
+  <p property="rdfs:comment">This field contains the license governing the <a rel="rdfs:domain" href="#File">file</a> if it is known. It will either be explicit from the file header or other information found in the file’s source code or the default from the package. If no license information is found it should be denoted as “NotSpecified”. If no license information can be determined, the license is denoted as “Unknown”. The licenses should use the standard short form names. See Appendix I for standardized license short forms. If a Detected License is not one of the standardized license short forms, this field must contain a reference to the full licenses text included in this SPDX file in section 4. If more than one license is detected in the file, then each should be listed. If any of the detected licenses offer the recipient a choice of licenses, then each of the choices will be declared as a “disjunctive” license.</p>
 
   <h5>Intent</h5>
   <p>Here, the intent is to have a uniform method to refer to
     each license with specificity to eliminate any license
     confusion. For example, the 3 clause BSD would have a different
     license identifier then the 4 clause BSD.</p>
-  
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#File">File</a></p>
   
   <h5>Value</h5>
   <p>The value is
@@ -204,12 +179,7 @@ License: FullLicense-1
   <h3 id="Name">5.4 <span property="rdfs:label">Copyright</span></h3>
   
   <h5>Purpose</h5>
-  <p property="rdfs:comment">This field identifies the copyright
-    holders and associated dates of their copyright that are in this
-    specific file if known. Note: Copyright holder identifier may have
-    developer names, companies, email addresses, and may be specified
-    in international character sets. This will be a freeform text
-    field extracted from the package information files.</p>
+  <p property="rdfs:comment">This field identifies the copyright holders and associated dates of their copyright that are in this specific <a rel="rdfs:domain" href="#File">file</a> if known. Note: Copyright holder identifier may have developer names, companies, email addresses, and may be specified in international character sets. This will be a freeform text field extracted from the package information files.</p>
 
   <h5>Intent</h5>
   <p>Here, similar to identifying the actual author(s) (above), by
@@ -217,9 +187,6 @@ License: FullLicense-1
     be contacted if licensing issues exist with the package, or to
     request distribution under another license more compatible with a
     
-    <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#File">File</a></p>
-  
   <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#Type"
@@ -248,16 +215,12 @@ Copyright: Copyright 2008-2010 John Smith
   <h3 id="SHA1">5.5 <span property="rdfs:label">SHA1</span></h3>
 
   <h5>Purpose</h5>
-  <p property="rdfs:comment">Provide a unique identifier to match
-    analysis information on specific files between packages.</p>
+  <p property="rdfs:comment">Provide a unique identifier to match analysis information on specific <a rel="rdfs:domain" href="#File">files</a> between packages.</p>
 
   <h5>Intent</h5>
   <p>Here, by providing an unique identifier of each file, confusion
     over which version/modification of a specific file the
     Identification Information references should be eliminated.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#File">File</a></p>
 
   <h5>Value</h5>
   <p>The value is
@@ -291,10 +254,7 @@ SHA1: d6a770ba38583ed4bb4525bd96e50461655d2758
   <p>Identify the project(s) of which this file is a part.</p>
 
   <h5>Intent</h5>
-  <p>By providing data regarding the project(s) where this file originated or occurs the reader can better identify the source and use it to do further research if needed.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#File">File</a></p>
+  <p>By providing data regarding the project(s) where this <a rel="rdfs:domain" href="#File">file</a> originated or occurs the reader can better identify the source and use it to do further research if needed.</p>
 
   <h5>Value</h5>
   <p>The value is a <span about="#ArtifactOf" rel="rdfs:range" href="http://usefulinc.com/ns/doap#Project"/>DOAP Project</span>.</p>
