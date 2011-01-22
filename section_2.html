@@ -58,7 +58,7 @@
   <h5>Domain</h5> 
   <p><a rel="rdfs:domain" href="#SPDXDoc">SPDXDoc</a></p>
 
-  <h5>Range</h5> 
+  <h5>Value</h5> 
   <p>The value of this property is fixed.  The value of the
     SPDXVersion property for all datasets encoded in this verison
     must be:
@@ -104,8 +104,11 @@ SPDXVersion: SPDX-1.0
     will assist the reader of the Identification Information in
     self determining the general reliability/accuracy of the
     Identification Information.</p>
+
+  <h5>Domain</h5>
+  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
   
-  <h5>Value Format</h5>
+  <h5>Value</h5>
   <p>The value of created by may indicate a person, tool or organization.</p>
 
   <pre><code class="grammar">
@@ -118,9 +121,6 @@ domainpart = 1*(ALPHA / DIGIT / "-" / "_")
   </code></pre>
 
   <p>For example, ”Person: John Doe” (john.doe@example.com)" or "Company: My Company, Inc" (depending on which is accountable) or "Tool: spdx-gen 1.0".</p>
-
-  <h5>Domain</h5>
-  <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
   
   <h4>2.1.1 RDF/XML serialization</h4>
 
@@ -164,7 +164,7 @@ CreatedBy: Tool:    spdx-gen 1.0
   <h5>Domain</h5>
   <p><a href="#SPDXDoc" rel="rdfs:domain">SPDXDoc</a></p>
 
-  <h5>Range</h5>
+  <h5>Value</h5>
   <p><a href="http://www.w3.org/TR/xmlschema-2/#dateTime"><span about="#Created" rel="rdfs:range" href="xsd:dateTime"/>xsd:dateTime</a></p>
 
   <h5>Refines</h5>
