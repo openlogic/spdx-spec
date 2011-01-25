@@ -2,10 +2,11 @@ require 'rake/clean'
 require 'rdf_context'
 require 'net/http'
 require 'mustache'
+require 'time'
 
-
-SPDX_SPEC_FILE_NAME = 'build/spdx-1.0.html'
-SPDX_ONT_FILE_NAME = 'build/spdx-1.0-ont.rdf'
+SPDX_SPEC_FILE_NAME = "build/spdx-DRAFT.html"
+SPDX_ONT_FILE_NAME = 'build/spdx-ont-DRAFT.rdf'
+SPDX_TVG_FILE_NAME = 'build/spdx-grammar-DRAFT.txt'
 BUILD_DIR = 'build'
 
 CLEAN.include BUILD_DIR
@@ -35,6 +36,12 @@ task "abstract" => SPDX_ONT_FILE_NAME do
   puts elem.content
 end
 
+desc "Extract tag-value format grammar"
+file SPDX_TVG_FILE_NAME => [BUILD_DIR, SPDX_SPEC_FILE_NAME] do |t|
+  spec= File.open(SPDX_SPEC_FILE_NAME){|f| Nokogiri::HTML.parse(f) }
+
+  File.open(t.name, 'w'){|f| f.write spec.search("code.grammar").map(&:content).join}
+end
 
 desc "Compile complete spec from sections"
 file SPDX_SPEC_FILE_NAME => [BUILD_DIR] + (FileList['*.html'] - FileList[SPDX_SPEC_FILE_NAME]) do |t|
@@ -48,4 +55,4 @@ file SPDX_SPEC_FILE_NAME => [BUILD_DIR] + (FileList['*.html'] - FileList[SPDX_SP
   File.open(t.name, 'w'){|f| f.write compiler.render}
 end
 
-task :default => [SPDX_ONT_FILE_NAME]
+task :default => [SPDX_SPEC_FILE_NAME, SPDX_ONT_FILE_NAME, SPDX_TVG_FILE_NAME]
