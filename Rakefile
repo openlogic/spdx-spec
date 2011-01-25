@@ -3,6 +3,7 @@ require 'rdf_context'
 require 'net/http'
 require 'mustache'
 require 'time'
+require 'git'
 
 SPDX_SPEC_FILE_NAME = "build/spdx-DRAFT.html"
 SPDX_ONT_FILE_NAME = 'build/spdx-ont-DRAFT.rdf'
@@ -50,6 +51,11 @@ file SPDX_SPEC_FILE_NAME => [BUILD_DIR] + (FileList['*.html'] - FileList[SPDX_SP
     self.template_path = File.dirname(__FILE__)
     self.template_extension = 'html'
     self.template_file = './spec.html'
+
+    def spdx_version
+      repo = Git.open(File.dirname(__FILE__))
+      "DRAFT (#{Time.now.utc.strftime("%d %b %Y %H:%M %Z")} - #{repo.current_branch} #{repo.gtree('HEAD').sha[0,6]})"
+    end
   end
 
   File.open(t.name, 'w'){|f| f.write compiler.render}
