@@ -438,19 +438,13 @@ Description: …
   <h3 id="Files">3.11 <span property="rdfs:label">Files</span></h3>
 
   <h5>Purpose</h5>
-  <p>This field is the list of all the files contained in the package.</p>
+  <p>This field is the list of all the files contained in the <a rel="rdfs:domain" href="#Package">package</a>.</p>
 
   <h5>Intent</h5>
   <p>Files are associated with the package.  This field allows easy access to a list of all the files in a package.</p>
-
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#Package">Package</a></p>
   
-  <h5>Range</h5>
-  <p>The value is
-    a <a href="http://www.w3.org/TR/rdf-schema/#ch_list">
-      <span about="#Files"
-            rel="rdfs:range" href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>rdf:List</a> of <code>File</code> resources.</p>
+  <h5>Value</h5>
+  <p>The value is a <a href="http://www.w3.org/TR/rdf-schema/#ch_list"> <span about="#Files" rel="rdfs:range" href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>rdf:List</a> of <code>File</code> resources.</p>
   
   <h4>3.10.1 RDF/XML serialization</h4>
   
