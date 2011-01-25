@@ -30,19 +30,14 @@
   <h3 id="LicenseID">4.1 <span property="rdfs:label">LicenseID</span></h3>
 
   <h5>Purpose</h5>
-  <p> Provide a unique identifier for the packages and files
-    sections to refer to non standard license text detected in the
-    package and reproduced here to aid analysis.</p>
+  <p> Provide a unique identifier for the packages and files sections to refer to non standard <a rel="rdfs:domain" href="#License">license</a> text detected in the package and reproduced here to aid analysis.</p>
 
   <h5>Intent</h5>
   <p> Here, we seek to identify in whole or in part portions of
     the package which are licensed under unfamiliar and/or
     uncommon licenses.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#License">Package</a></p>
-  
-  <h5>Range</h5>
+  <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#LicenseID"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
@@ -66,19 +61,14 @@ LicenseID: FullLicense-1
   <h3 id="LicenseText">4.2 <span property="rdfs:label">LicenseText</span></h3>
   
   <h5>Purpose</h5>
-  <p> Provide a copy of the actual text of the license extracted
-    from the package that is associated with the License ID to aid
-    in analysis.</p>
+  <p> Provide a copy of the actual text of the <a rel="rdfs:domain" href="#License">license</a> extracted from the package that is associated with the License ID to aid in analysis.</p>
 
   <h5>Intent</h5>
   <p> Here, the actual license text included in the package serves
     as confirmation that the license, and version, named in the
     header files of the package is correct.</p>
 
-  <h5>Domain</h5>
-  <p><a rel="rdfs:domain" href="#License">Package</a></p>
-  
-  <h5>Range</h5>
+  <h5>Value</h5>
   <p>The value is
     an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#LicenseID"
                                                                 rel="rdfs:range" href="xsd:string"/>xsd:string</a>.</p>
