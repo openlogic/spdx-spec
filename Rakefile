@@ -5,6 +5,19 @@ require 'mustache'
 require 'time'
 require 'git'
 
+Struct.new("SpecVersion", :version, :timestamp, :branch, :commit)
+repo = Git.open(File.dirname(__FILE__))
+VERSION = Struct::SpecVersion.new("DRAFT", Time.now.utc, repo.current_branch, repo.gtree('HEAD').sha)
+class << VERSION
+  def human_str
+    "#{version} (#{timestamp.strftime("%d %b %Y %H:%M %Z")} #{branch} #{commit[0,6]})"
+  end
+  
+  def filename_str
+    "#{version}_#{timestamp.strftime("%d%b%Y%H%M")}_#{branch}_#{commit[0,6]}"
+  end
+end
+
 SPDX_SPEC_FILE_NAME = "build/spdx-DRAFT.html"
 SPDX_ONT_FILE_NAME = 'build/spdx-ont-DRAFT.rdf'
 SPDX_TVG_FILE_NAME = 'build/spdx-grammar-DRAFT.txt'
@@ -53,12 +66,18 @@ file SPDX_SPEC_FILE_NAME => [BUILD_DIR] + (FileList['*.html'] - FileList[SPDX_SP
     self.template_file = './spec.html'
 
     def spdx_version
-      repo = Git.open(File.dirname(__FILE__))
-      "DRAFT (#{Time.now.utc.strftime("%d %b %Y %H:%M %Z")} - #{repo.current_branch} #{repo.gtree('HEAD').sha[0,6]})"
+      VERSION.human_str
     end
   end
 
   File.open(t.name, 'w'){|f| f.write compiler.render}
+end
+
+task :pkg => :default do |t|
+  pkg_name = "spdx-#{VERSION.filename_str}"
+  system "ln -s build #{pkg_name}"
+  system "tar czHf #{pkg_name}.tar.gz #{pkg_name}"
+  File.unlink pkg_name
 end
 
 task :default => [SPDX_SPEC_FILE_NAME, SPDX_ONT_FILE_NAME, SPDX_TVG_FILE_NAME]
