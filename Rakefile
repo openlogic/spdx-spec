@@ -21,6 +21,7 @@ end
 SPDX_SPEC_FILE_NAME = "build/spdx-DRAFT.html"
 SPDX_ONT_FILE_NAME = 'build/spdx-ont-DRAFT.rdf'
 SPDX_TVG_FILE_NAME = 'build/spdx-grammar-DRAFT.txt'
+SPDX_SCREEN_CSS = 'build/screen.css'
 BUILD_DIR = 'build'
 
 CLEAN.include BUILD_DIR
@@ -73,6 +74,10 @@ file SPDX_SPEC_FILE_NAME => [BUILD_DIR] + (FileList['*.html'] - FileList[SPDX_SP
   File.open(t.name, 'w'){|f| f.write compiler.render}
 end
 
+file SPDX_SCREEN_CSS => "screen.css" do |t|
+  copy "screen.css", t.name
+end
+
 task :pkg => :default do |t|
   pkg_name = "spdx-#{VERSION.filename_str}"
   system "ln -s build #{pkg_name}"
@@ -80,4 +85,5 @@ task :pkg => :default do |t|
   File.unlink pkg_name
 end
 
-task :default => [SPDX_SPEC_FILE_NAME, SPDX_ONT_FILE_NAME, SPDX_TVG_FILE_NAME]
+
+task :default => [SPDX_SPEC_FILE_NAME, SPDX_ONT_FILE_NAME, SPDX_TVG_FILE_NAME, SPDX_SCREEN_CSS]
