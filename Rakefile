@@ -22,6 +22,7 @@ SPDX_SPEC_FILE_NAME = "build/spdx-DRAFT.html"
 SPDX_ONT_FILE_NAME = 'build/spdx-ont-DRAFT.rdf'
 SPDX_TVG_FILE_NAME = 'build/spdx-grammar-DRAFT.txt'
 SPDX_SCREEN_CSS = 'build/screen.css'
+SPDX_VS_MASTER_PATCH = 'build/vs_master.patch'
 BUILD_DIR = 'build'
 
 CLEAN.include BUILD_DIR
@@ -78,6 +79,11 @@ file SPDX_SCREEN_CSS => "screen.css" do |t|
   copy "screen.css", t.name
 end
 
+file SPDX_VS_MASTER_PATCH => [BUILD_DIR] + FileList['*.html'] do |t|
+  repo.remote('origin').fetch
+  File.open(t.name, 'w'){|f| f << repo.diff(repo.gtree('HEAD').sha, 'origin/master').patch}
+end
+
 task :pkg => :default do |t|
   pkg_name = "spdx-#{VERSION.filename_str}"
   system "ln -s build #{pkg_name}"
@@ -86,4 +92,4 @@ task :pkg => :default do |t|
 end
 
 
-task :default => [SPDX_SPEC_FILE_NAME, SPDX_ONT_FILE_NAME, SPDX_TVG_FILE_NAME, SPDX_SCREEN_CSS]
+task :default => [SPDX_SPEC_FILE_NAME, SPDX_ONT_FILE_NAME, SPDX_TVG_FILE_NAME, SPDX_SCREEN_CSS, SPDX_VS_MASTER_PATCH]
