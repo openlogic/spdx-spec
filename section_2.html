@@ -1,7 +1,7 @@
 <div class="rdf-class" about="#SPDXDoc" typeof="owl:Class">
   <h2 id="SPDXDoc">2 <span property="rdfs:label">SPDXDoc</span></h2>
   
-  <p property="rdfs:comment">An SpdxDoc is a collection of license and copyright informatixon regarding one or more packages and the files contained in those packages.</p>
+  <p property="rdfs:comment">An SpdxDoc is a collection of license and copyright informatixon regarding a package and the files contained in that packages.</p>
   
   <h3>Properties</h3>
   <ul>
@@ -81,7 +81,7 @@ SPDXVersion: SPDX-1.0
   <h2 id="CreatedBy">2.2 <span property="rdfs:label">CreatedBy</span></h2>
 
   <h5>Purpose</h5> 
-  <p property="rdfs:comment">Identify how the meta data information in the <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a> was generated. If it was generated manually, it should indicate – who did the analysis.  If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.</p>
+  <p property="rdfs:comment">Identify how the meta data information in the <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a> was generated. If it was generated manually, it should indicate who did the analysis.  If the information in the file was generated with a software tool, the file should indicate an identifier and version for that tool.</p>
   
   <h5>Intent</h5> 
   <p>Here, the generation method
@@ -149,7 +149,7 @@ CreatedBy: Tool:    spdx-gen 1.0
   <h5>Example</h5>
 
   <pre><code>
-&lt;Created&gt;2010-11-02T11:02:03-0600&lt;/Created&gt;
+&lt;Created&gt;2010-11-02T11:02:03Z&lt;/Created&gt;
   </code></pre>
 
   <h4>Tag-Value serialization</h4>
@@ -186,6 +186,13 @@ Created: 2010-11-02T17:02:03Z
     certain reviewers will begin to gain credibility as reliable. 
     This field intends to make such information transparent.</p>
 
+  <h5>Value</h5>
+  <p>The value of ReviewedBy is a person, tool or company, represented as specified for <a href="#CreaetdBy">CreatedBy</a>, followed by a timestamp as specified by <a href="#Created">Created</a>.</p>
+
+  <pre><code class="grammar">
+review = person *WSP timestamp
+  </code></pre>
+
   <h4>2.1.1 RDF/XML serialization</h4>
 
   <h5>Example</h5>
@@ -198,7 +205,7 @@ Created: 2010-11-02T17:02:03Z
   <p>ReviewedBuse uses the same person format as <a href="#CreatedBy">CreatedBy</a> but adds a timestamp, like the value of <a href="#Created">Created</a>, to indicate when the review occurred.</p>
 
   <pre><code class="tag-value grammar">
-reviewedby = "ReviewedBy:" person *WSP timestamp
+reviewedby = "ReviewedBy:" *WSP review
   </code></pre>
 
   <h5>Example</h5>

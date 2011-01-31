@@ -3,8 +3,8 @@
 
   <p property="rdfs:comment">A file is a series of related octets that
   will be placed in a single file when the package is installed or
-  unpacked.  One File resources should be created for each file in a
-  Package</p>
+  unpacked.  One File instance should be created for each file in a
+  Package.</p>
 
   <h3>Properties</h3>
   <ul>
@@ -62,17 +62,13 @@
   <p>Here, any confusion over where a file needs to hierarchically be placed for proper functionality is mitigated.</p>
   
   <h5>Value</h5> 
-  <p>The value is a
-    relative <a href="http://www.w3.org/TR/xmlschema-2/#anyURI"><span about="#Name"
-                                                                      rel="rdfs:range" href="xsd:anURI"/>file URL</a>.  The package
-    should be treated the root directory.  This means all file Names
-    start with a "/" character.</p>
+  <p>The value is a <a href="http://www.w3.org/TR/xmlschema-2/#anyURI"><span about="#Name" rel="rdfs:range" href="xsd:anURI"/>file URL</a> relative to the package.</p>
 
   <h4>2.1.1.1 RDF/XML serialization</h4>
 
   <h5>Example</h5>
   <pre><code>
-&lt;Name&gt;/var/foo.c&lt;/Name&gt;
+&lt;Name&gt;var/foo.c&lt;/Name&gt;
   </code></pre>
 
   <h4>2.1.1.2 Tag-Value serialization</h4>
@@ -80,12 +76,12 @@
   <p></p>
 
   <pre><code class="tag-value grammar">
-filename = "name:" *WSP "/" *VUNICODECHAR
+filename = "name:" *WSP *VUNICODECHAR
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-name: /bar/foo.c
+name: bar/foo.c
   </code></pre>
 </div>
 
@@ -124,12 +120,12 @@ name: /bar/foo.c
   <h4>2.1.1.2 Tag-Value serialization</h4>
 
   <pre><code class="tag-value grammar">
-filetype = "type:" *WSP ( "source" / "binary" / "archive" / "other" )
+filetype = "Type:" *WSP ( "source" / "binary" / "archive" / "other" )
   </code></pre>
 
   <h5>Example</h5>
   <pre><code>
-type: source
+Type: source
   </code></pre>
 </div>
 
@@ -137,7 +133,7 @@ type: source
   <h3 id="Name">5.3 <span property="rdfs:label">License</span></h3>
   
   <h5>Purpose</h5>
-  <p property="rdfs:comment">This field contains the license governing the <a rel="rdfs:domain" href="#File">file</a> if it is known. It will either be explicit from the file header or other information found in the file’s source code or the default from the package. If no license information is found it should be denoted as “NotSpecified”. If no license information can be determined, the license is denoted as “Unknown”. The licenses should use the standard short form names. See Appendix I for standardized license short forms. If a Detected License is not one of the standardized license short forms, this field must contain a reference to the full licenses text included in this SPDX file in section 4. If more than one license is detected in the file, then each should be listed. If any of the detected licenses offer the recipient a choice of licenses, then each of the choices will be declared as a “disjunctive” license.</p>
+  <p property="rdfs:comment">This field contains the license governing the <a rel="rdfs:domain" href="#File">file</a> if it is known. It will either be explicit from the file header or other information found in the file’s source code or the default from the package. If no license information is found it should be denoted as “NotSpecified”. If no license information can be determined, the license is denoted as “Unknown”. The licenses should use the standard short form names. See Appendix I for standardized license short forms. If a License is not one of the standardized license short forms, this field must contain a reference to the full licenses text included in this SPDX file in section 4. If more than one license is detected in the file, then each should be listed. If any of the detected licenses offer the recipient a choice of licenses, then each of the choices will be declared as a “disjunctive” license.</p>
 
   <h5>Intent</h5>
   <p>Here, the intent is to have a uniform method to refer to
@@ -188,15 +184,13 @@ License: FullLicense-1
     request distribution under another license more compatible with a
     
   <h5>Value</h5>
-  <p>The value is
-    an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#Type"
-                                                                rel="rdfs:range" href="xsd:string"/>xsd:string</a>.
+  <p>The value is an <a href="http://www.w3.org/TR/xmlschema-2/#string"><span about="#Type" rel="rdfs:range" href="xsd:string"/>xsd:string</a>.  A value of "unknown" it indicates that no copyright information was detected.</p>
 
     <h4>5.6.1 RDF/XML serialization</h4>
     
     <h5>Example</h5>
     <pre><code>
-&lt;Copyright&gt;Copyright: Copyright 2008-2010 John Smith&lt;/Copyright&gt;
+&lt;Copyright&gt;Copyright 2008-2010 John Smith&lt;/Copyright&gt;
     </code></pre>
 
     <h4>5.6.2 Tag-Value serialization</h4>

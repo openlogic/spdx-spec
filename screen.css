@@ -18,7 +18,12 @@ h5 { font-size: 8pt;
 h1, h2, h3 ,h4, h5  { margin-bottom: 0.4em; }
 
 pre, p, ul { margin-bottom: 0.4em; 
-             margin-top: 0.4em; }
+             margin-top: 0.4em;}
+
+pre { margin-left: 4em;
+      background-color: WhiteSmoke; 
+      border: 1px dashed Gray; }
+
 
 body { font-family: "Arial", sans-serif; }
 
