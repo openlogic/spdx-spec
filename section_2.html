@@ -30,6 +30,12 @@
         <br/>Cardinality: Optional, zero (<span property="owl:minCardinality">0</span>) or more.</p>
     </li>
 
+    <li rel="rdfs:subClassOf">
+      <p typeof="owl:Restriction">
+        <a href="#Package" rel="owl:onProperty">Package</a>
+        <br/>Cardinality: Mandatory, one (<span property="owl:cardinality">1</span>).</p>
+    </li>
+
   </ul>
 
 </div> <!-- SPDXDoc -->
@@ -212,5 +218,30 @@ reviewedby = "ReviewedBy:" *WSP review
   <pre><code>
 ReviewedBy: John Doe (john.doe@example.com) 2010-11-02T17:02:03Z
   </code></pre>
+
+<div class="rdf-property" about="#Package" typeof="owl:ObjectProperty">
+  <h2 id="Package">2.4 <span property="rdfs:label">Package</span></h2>
+
+  <h5>Purpose</h5> 
+  <p property="rdfs:comment">The <a href="#Package">package</a> about which this <a rel="rdfs:domain" href="#SPDXDoc">SPDX document</a> contains information.</p>
+  
+  <h5>Intent</h5>
+  <p>An SPDX document represents an analysis of a single package.  The value of this field is that package. </p>
+
+  <h5>Value</h5>
+  <p>The value is a <a href="#Package" rel="rdfs:range">Package</a>.</p>
+
+  <h4>2.1.1 RDF/XML serialization</h4>
+
+  <h5>Example</h5>
+  <pre><code>
+&lt;Package&gt;
+…
+&lt;/Package&gt;
+  </code></pre>
+
+  <h4>2.1.2 Tag-Value serialization</h4>
+
+  <p>A tag-value formated SPDX document only allows one package syntactically.  When reading such a file into an rdf graph the package defined in the tag-value format is the value of this property of the SPDXDoc defined in that same file.</p>
 
 </div>
